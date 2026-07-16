@@ -1,0 +1,85 @@
+---
+import { useTranslations, getLocalePath } from '../i18n/utils';
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const p = (path: string) => getLocalePath(lang, path);
+---
+
+<footer class="relative pt-16 pb-8" style="background: var(--color-cactus-dark); color: var(--color-cloud);">
+    <!-- Dot grid -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+    <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] gap-10 mb-12">
+            <!-- Brand -->
+            <div>
+                <a href={p('/')} class="font-heading text-[1.6rem] font-extrabold tracking-tight block mb-2" style="color: var(--color-gold);">CACTUS</a>
+                <p class="text-sm leading-relaxed mt-4 max-w-[280px]" style="color: rgba(238,238,238,0.5);">
+                    {t('footer.desc')}
+                </p>
+            </div>
+
+            <!-- Expertises -->
+            <div>
+                <div class="font-heading font-semibold text-xs uppercase tracking-widest mb-5" style="color: var(--color-gold);">{t('footer.heading.expertises')}</div>
+                <a href={p('/expertises/erp/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">ERP & Gestion</a>
+                <a href={p('/expertises/migration-donnees/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Migration & Données</a>
+                <a href={p('/expertises/cybersecurite/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Cybersécurité</a>
+                <a href={p('/expertises/infrastructure/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Infrastructure & Cloud</a>
+                <a href={p('/expertises/developpement/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Développement</a>
+            </div>
+
+            <!-- Secteurs -->
+            <div>
+                <div class="font-heading font-semibold text-xs uppercase tracking-widest mb-5" style="color: var(--color-gold);">Secteurs</div>
+                <a href={p('/secteurs/transport-logistique/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Transport & Logistique</a>
+                <span class="block text-sm py-1" style="color: rgba(238,238,238,0.35);">Industrie & Agro.</span>
+                <span class="block text-sm py-1" style="color: rgba(238,238,238,0.35);">Médical & Santé</span>
+                <span class="block text-sm py-1" style="color: rgba(238,238,238,0.35);">Finance & Distrib.</span>
+                <span class="block text-sm py-1" style="color: rgba(238,238,238,0.35);">Services Pro.</span>
+            </div>
+
+            <!-- Company -->
+            <div>
+                <div class="font-heading font-semibold text-xs uppercase tracking-widest mb-5" style="color: var(--color-gold);">{t('footer.heading.company')}</div>
+                <a href={p('/resultats/cas-clients/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Cas Clients</a>
+                <a href={p('/resultats/methodologie/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Méthodologie</a>
+                <a href={p('/a-propos/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">À Propos</a>
+                <a href={p('/contact/')} class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">Contact</a>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <div class="font-heading font-semibold text-xs uppercase tracking-widest mb-5" style="color: var(--color-gold);">{t('footer.heading.contact')}</div>
+                <a href="mailto:contact@cactus.net.ma" class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">contact@cactus.net.ma</a>
+                <a href="tel:+212522343545" class="block text-sm py-1 transition-colors hover:text-white" style="color: rgba(238,238,238,0.6);">+212 5 22 34 35 45</a>
+                <span class="block text-sm py-1" style="color: rgba(238,238,238,0.6);">70 Allée des Phoenix</span>
+                <span class="block text-sm py-1" style="color: rgba(238,238,238,0.6);">Casablanca 20250, Maroc</span>
+            </div>
+        </div>
+
+        <!-- Emergency strip -->
+        <div class="flex items-center justify-between flex-wrap gap-4 p-5 px-6 rounded-[10px] mt-12" style="background: var(--color-earth-brown);">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                <span class="font-heading font-bold text-sm" style="color: var(--color-gold);">{t('footer.emergency')}</span>
+            </div>
+            <a href="tel:+212522343545" class="font-heading font-bold text-base text-white">{t('urgency.phone')}</a>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="border-t border-white/10 pt-6 mt-8 flex justify-between items-center flex-wrap gap-4">
+            <span class="text-xs" style="color: var(--color-ink-muted);">{t('footer.copyright')}</span>
+            <div class="flex gap-6">
+                <a href={p('/mentions-legales/')} class="text-xs transition-colors hover:text-cloud" style="color: var(--color-ink-muted);">{t('footer.legal')}</a>
+                <a href={p('/politique-confidentialite/')} class="text-xs transition-colors hover:text-cloud" style="color: var(--color-ink-muted);">{t('footer.privacy')}</a>
+            </div>
+        </div>
+    </div>
+</footer>

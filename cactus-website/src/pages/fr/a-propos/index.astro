@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import StatsBar from '../../../components/StatsBar.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const timeline = [
+    { year: '2006', title: 'Fondation', desc: 'Omar fonde Cactus Informatique à Casablanca avec une vision : rigueur méthodologique internationale, proximité locale.' },
+    { year: '2007', title: 'Premier partenariat long terme', desc: 'Autodistribution devient notre premier client majeur. 20 ans plus tard, ils sont toujours notre client.' },
+    { year: '2006–2015', title: 'Construction des fondations', desc: 'Développement de l\'ERP propriétaire. Premières missions de virtualisation, cybersécurité et migration. Expansion IoT.' },
+    { year: '2015–2020', title: 'Expansion sectorielle', desc: 'Transport, agroalimentaire, médical, services professionnels — nous déployons dans tous les secteurs.' },
+    { year: '2020–2026', title: 'Maturité & spécialisation', desc: 'Consolidation en cybersécurité (ISO 27002), BI et interventions d\'urgence. Réputation de « pompiers » du SI.' },
+    { year: 'Aujourd\'hui', title: '8 experts, +50 clients, +20 ans', desc: 'Et une conviction intacte : la technologie doit servir le business, pas l\'inverse.' },
+];
+
+const whyCactus = [
+    { title: 'Facturation au résultat', desc: 'Nous nous engageons sur la résolution effective. Pas de décompte d\'heures.' },
+    { title: 'Indépendance totale', desc: 'Aucune dépendance éditeur. Nos recommandations sont objectivement les meilleures pour vous.' },
+    { title: 'ERP propriétaire, 20 ans', desc: 'Un système éprouvé, modulaire, adapté à la réglementation marocaine, avec BI intégrée.' },
+    { title: 'Experts de dernier recours', desc: 'Quand votre intégrateur ne trouve pas la solution, nous intervenons.' },
+    { title: 'Transparence radicale', desc: 'Si c\'est impossible, nous le disons. Si une solution moins chère existe, nous la recommandons.' },
+    { title: 'Partenariats, pas prestations', desc: 'Autodistribution : 17 ans. La Voie Express : 20 ans. Des relations durables.' },
+];
+
+const team = {
+    engineering: ['1 Expert SI & Cybersécurité', '1 Ingénieur Consultant Système/Réseau', '2 Consultants IT transverses', '2 Techniciens Développeurs Full-Stack'],
+    operational: ['2 gestionnaires administratifs'],
+};
+---
+
+<BaseLayout
+    title="À Propos de Cactus Informatique"
+    description="Cactus Informatique, partenaire technologique depuis 2006 à Casablanca. 8 experts, 20 ans d'expérience, facturation au résultat."
+>
+    <PageHero
+        label="À propos"
+        title="Votre DSI externalisé "
+        titleHighlight="depuis 2006"
+        subtitle="Cactus Informatique est un partenaire technologique de transformation, fondé à Casablanca. Nous ne sommes pas une SSII traditionnelle."
+        breadcrumbs={[{ label: 'À Propos' }]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Contactez-nous"
+    />
+
+    <!-- Timeline -->
+    <section class="py-24">
+        <div class="max-w-[900px] mx-auto px-6">
+            <SectionHeader label="Notre histoire" title="20 ans de transformation digitale au Maroc" />
+            <div class="relative ml-6 pl-8 border-l-2" style="border-color: var(--color-cloud-dark);">
+                {timeline.map((item, i) => (
+                    <div class={`relative mb-12 last:mb-0 reveal reveal-delay-${(i % 3) + 1}`}>
+                        <div class="absolute -left-[calc(2rem+9px)] top-0 w-4 h-4 rounded-full border-[3px]"
+                             style="background: var(--color-gold); border-color: white;"></div>
+                        <p class="font-heading font-bold text-xs uppercase tracking-widest mb-1" style="color: var(--color-cactus-green);">{item.year}</p>
+                        <h3 class="font-heading font-semibold text-lg mb-2" style="color: var(--color-ink);">{item.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <StatsBar stats={[
+        { count: '20', suffix: ' ans', label: "d'existence" },
+        { count: '50', prefix: '+', label: 'clients accompagnés' },
+        { count: '8', label: 'experts pluridisciplinaires' },
+        { count: '17', suffix: ' ans', label: 'partenariat le plus long' },
+    ]} />
+
+    <!-- Pourquoi Cactus -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Pourquoi nous choisir" title="Pourquoi choisir Cactus ?" />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                {whyCactus.map((item, i) => (
+                    <div class={`bg-white border rounded-2xl p-7 transition-all hover:shadow-md reveal reveal-delay-${(i % 3) + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(219,204,99,0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{item.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[900px] mx-auto px-6">
+            <SectionHeader label="Notre équipe" title="8 experts pluridisciplinaires" subtitle="L'agilité d'une structure à taille humaine permet des décisions rapides et des relations clients directes." />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2">
+                <div class="bg-white rounded-2xl p-8 reveal">
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4" style="color: var(--color-cactus-green);">Pôle Ingénierie (6 experts)</p>
+                    <ul class="space-y-3">
+                        {team.engineering.map(member => (
+                            <li class="flex items-start gap-3 text-sm" style="color: var(--color-ink-soft);">
+                                <svg class="shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                {member}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-8 reveal reveal-delay-2">
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4" style="color: var(--color-cactus-green);">Pôle Opérationnel</p>
+                    <ul class="space-y-3">
+                        {team.operational.map(member => (
+                            <li class="flex items-start gap-3 text-sm" style="color: var(--color-ink-soft);">
+                                <svg class="shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                {member}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coordinates -->
+    <section class="py-24">
+        <div class="max-w-[900px] mx-auto px-6">
+            <SectionHeader label="Nos coordonnées" title="Où nous trouver" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2">
+                <div class="reveal">
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-ink-soft);">
+                        <strong class="block mb-1">Adresse :</strong>
+                        70 Allée des Phoenix, Casablanca 20250, Maroc
+                    </p>
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-ink-soft);">
+                        <strong class="block mb-1">Téléphone :</strong>
+                        +212 5 22 34 35 45 / +212 5 22 31 65 37
+                    </p>
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-ink-soft);">
+                        <strong class="block mb-1">Email :</strong>
+                        contact@cactus.net.ma
+                    </p>
+                </div>
+                <div class="reveal reveal-delay-2">
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3" style="color: var(--color-cactus-green);">Couverture géographique</p>
+                    <div class="flex flex-wrap gap-2">
+                        {['Casablanca', 'Rabat', 'El Jadida', 'Safi', 'Marrakech', 'Ben Guérir', 'International'].map(city => (
+                            <span class="inline-flex items-center text-xs font-heading font-semibold px-3 py-1 rounded-full" style="background: rgba(71,106,51,0.08); color: var(--color-cactus-green);">{city}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Prêt à travailler avec un vrai partenaire ?"
+        text="Discutons de vos défis IT — diagnostic gratuit, sans engagement."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

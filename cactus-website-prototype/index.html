@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cactus — Partenaire IT de confiance au Maroc</title>
+    <meta name="description" content="Cactus Informatique : ERP, cybersécurité, migration de données et infrastructure cloud. Votre DSI externalisé depuis 2006 à Casablanca. Contactez-nous.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cactus — Partenaire IT de confiance au Maroc">
+    <meta property="og:description" content="ERP, cybersécurité, migration de données et infrastructure cloud. Votre DSI externalisé depuis 2006 à Casablanca.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_MA">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["Organization", "LocalBusiness"],
+        "name": "Cactus Informatique",
+        "url": "https://cactus.ma",
+        "logo": "https://cactus.ma/images/logo.svg",
+        "description": "Partenaire IT de confiance au Maroc. ERP, cybersécurité, migration de données, infrastructure cloud.",
+        "telephone": "+212522343545",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "70 Allée des Phoenix",
+            "addressLocality": "Casablanca",
+            "postalCode": "20250",
+            "addressCountry": "MA"
+        },
+        "foundingDate": "2006",
+        "numberOfEmployees": "8",
+        "areaServed": "MA"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════
+         HEADER
+         ═══════════════════════════════════════ -->
+    <header class="header" id="header">
+        <div class="header__inner">
+            <a href="/" class="header__logo">CACTUS</a>
+
+            <nav class="header__nav" aria-label="Navigation principale">
+                <a href="expertises.html" class="header__nav-link">Expertises</a>
+                <a href="secteurs.html" class="header__nav-link">Secteurs</a>
+                <a href="resultats.html" class="header__nav-link">Résultats</a>
+                <a href="a-propos.html" class="header__nav-link">À Propos</a>
+            </nav>
+
+            <div class="header__ctas">
+                <a href="urgence.html" class="btn btn--urgence">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    Urgence
+                </a>
+                <a href="contact.html" class="btn btn--primary">Contactez-nous</a>
+            </div>
+
+            <!-- Mobile toggle -->
+            <button class="header__toggle" aria-label="Menu" aria-expanded="false">
+                <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="expertises.html">Expertises</a>
+        <a href="secteurs.html">Secteurs</a>
+        <a href="resultats.html">Résultats</a>
+        <a href="a-propos.html">À Propos</a>
+        <div class="mobile-menu__ctas">
+            <a href="urgence.html" class="btn btn--urgence" style="justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                Urgence IT
+            </a>
+            <a href="contact.html" class="btn btn--primary" style="justify-content: center;">Contactez-nous</a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 1: HERO
+         ═══════════════════════════════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero__bg"></div>
+        <div class="hero__grid"></div>
+        <div class="hero__glow"></div>
+
+        <div class="hero__content">
+            <div class="hero__badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                Partenaire IT depuis 2006
+            </div>
+
+            <h1 class="hero__title">
+                Votre <span>partenaire technologique</span> de confiance au Maroc
+            </h1>
+
+            <p class="hero__subtitle">
+                Cactus construit, sécurise et modernise les fondations numériques des entreprises marocaines. ERP propriétaire, cybersécurité, migration de données, infrastructure cloud — nous sommes votre DSI externalisé.
+            </p>
+
+            <div class="hero__ctas">
+                <a href="contact.html" class="btn btn--primary-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    Contactez-nous
+                </a>
+                <a href="urgence.html" class="btn btn--ghost">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    Urgence IT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 2: SHORTCUTS
+         ═══════════════════════════════════════ -->
+    <section class="section section--dark" id="shortcuts">
+        <div class="container">
+            <div class="section__label reveal">Accès rapide</div>
+            <div class="section__divider reveal"></div>
+            <h2 class="section__title reveal" style="color: var(--white);">Que cherchez-vous à accomplir ?</h2>
+
+            <div class="cards-grid cards-grid--3" style="margin-top: var(--sp-10);">
+                <!-- Card 1 -->
+                <a href="expertises-erp.html" class="shortcut-card reveal reveal-delay-1">
+                    <div class="shortcut-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+                    </div>
+                    <h3 class="shortcut-card__title">Moderniser mon ERP</h3>
+                    <p class="shortcut-card__text">Centralisez votre gestion commerciale, comptabilité et RH dans un seul système modulaire.</p>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="expertises-cybersecurite.html" class="shortcut-card reveal reveal-delay-2">
+                    <div class="shortcut-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+                    </div>
+                    <h3 class="shortcut-card__title">Sécuriser mon SI</h3>
+                    <p class="shortcut-card__text">Audit de sécurité, tests d'intrusion, conformité ISO 27002 — protégez vos données.</p>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="expertises-migration.html" class="shortcut-card reveal reveal-delay-3">
+                    <div class="shortcut-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                    </div>
+                    <h3 class="shortcut-card__title">Migrer mes données</h3>
+                    <p class="shortcut-card__text">Migration fluide entre plateformes hétérogènes avec garantie de résultat.</p>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="expertises-infrastructure.html" class="shortcut-card reveal reveal-delay-1">
+                    <div class="shortcut-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+                    </div>
+                    <h3 class="shortcut-card__title">Fiabiliser mon infrastructure</h3>
+                    <p class="shortcut-card__text">Virtualisation, haute disponibilité, VPN sécurisés et cloud Azure.</p>
+                </a>
+
+                <!-- Card 5 -->
+                <a href="expertises-developpement.html" class="shortcut-card reveal reveal-delay-2">
+                    <div class="shortcut-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3 class="shortcut-card__title">Développer une application</h3>
+                    <p class="shortcut-card__text">Applications web, mobile et API sur mesure, calées sur vos processus métier.</p>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="urgence.html" class="shortcut-card reveal reveal-delay-3" style="border-color: rgba(111,50,3,0.3);">
+                    <div class="shortcut-card__icon" style="background: rgba(111,50,3,0.15);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--earth-brown-light);"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    </div>
+                    <h3 class="shortcut-card__title">Résoudre une urgence IT</h3>
+                    <p class="shortcut-card__text">ERP bloqué, panne serveur ? Nous intervenons comme "pompiers" là où d'autres ont échoué.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 3: EXPERTISES PREVIEW
+         ═══════════════════════════════════════ -->
+    <section class="section" id="expertises">
+        <div class="container">
+            <div class="section__label reveal">Nos expertises</div>
+            <div class="section__divider reveal"></div>
+            <h2 class="section__title reveal">Cinq domaines pour transformer votre SI</h2>
+            <p class="section__subtitle reveal">Chaque expertise est soutenue par plus de vingt ans d'expérience terrain et une méthodologie centrée sur le résultat.</p>
+
+            <div class="cards-grid cards-grid--3" style="margin-top: var(--sp-10);">
+                <!-- ERP -->
+                <div class="card reveal reveal-delay-1">
+                    <div class="card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+                    </div>
+                    <h3 class="card__title">ERP & Gestion d'Entreprise</h3>
+                    <p class="card__text">Notre ERP propriétaire, développé et éprouvé depuis 20 ans. Modulaire, adaptable, avec Business Intelligence intégrée.</p>
+                    <a href="expertises-erp.html" class="card__link">
+                        En savoir plus
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Migration -->
+                <div class="card reveal reveal-delay-2">
+                    <div class="card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                    </div>
+                    <h3 class="card__title">Migration & Données</h3>
+                    <p class="card__text">Migrations complexes avec garantie de résultat. De l'AS400 au SQL Server, de Sage à notre ERP — sans interruption.</p>
+                    <a href="expertises-migration.html" class="card__link">
+                        En savoir plus
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Cybersécurité -->
+                <div class="card reveal reveal-delay-3">
+                    <div class="card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+                    </div>
+                    <h3 class="card__title">Cybersécurité</h3>
+                    <p class="card__text">Audits, pentests, conformité ISO 27002, plans de reprise. La sécurité de votre SI n'est pas une option.</p>
+                    <a href="expertises-cybersecurite.html" class="card__link">
+                        En savoir plus
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Infrastructure -->
+                <div class="card reveal reveal-delay-1">
+                    <div class="card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+                    </div>
+                    <h3 class="card__title">Infrastructure & Cloud</h3>
+                    <p class="card__text">VMware, Hyper-V, Azure, VPN multisites. Des architectures haute disponibilité pour des entreprises qui ne peuvent pas s'arrêter.</p>
+                    <a href="expertises-infrastructure.html" class="card__link">
+                        En savoir plus
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Développement -->
+                <div class="card reveal reveal-delay-2">
+                    <div class="card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3 class="card__title">Développement Sur Mesure</h3>
+                    <p class="card__text">Applications métier, web, mobile, API. Agnostiques en langage, nous nous adaptons à votre écosystème technique.</p>
+                    <a href="expertises-developpement.html" class="card__link">
+                        En savoir plus
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--sp-10);" class="reveal">
+                <a href="expertises.html" class="btn btn--outline">
+                    Découvrir toutes nos expertises
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 4: STATS
+         ═══════════════════════════════════════ -->
+    <section class="section section--dark stats" id="stats">
+        <div class="container">
+            <div class="stats__grid">
+                <div class="stats__item reveal reveal-delay-1">
+                    <div class="stats__number" data-count="20" data-suffix=" ans">0</div>
+                    <div class="stats__label">d'expertise IT</div>
+                </div>
+                <div class="stats__item reveal reveal-delay-2">
+                    <div class="stats__number" data-count="50" data-prefix="+">0</div>
+                    <div class="stats__label">clients accompagnés</div>
+                </div>
+                <div class="stats__item reveal reveal-delay-3">
+                    <div class="stats__number" data-count="8">0</div>
+                    <div class="stats__label">experts pluridisciplinaires</div>
+                </div>
+                <div class="stats__item reveal reveal-delay-4">
+                    <div class="stats__number" data-count="0">0</div>
+                    <div class="stats__label">dépendance éditeur</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 5: CASE STUDIES
+         ═══════════════════════════════════════ -->
+    <section class="section" id="case-studies">
+        <div class="container">
+            <div class="section__label reveal">Résultats prouvés</div>
+            <div class="section__divider reveal"></div>
+            <h2 class="section__title reveal">Ils nous font confiance</h2>
+            <p class="section__subtitle reveal">Des partenariats de longue durée avec des entreprises exigeantes.</p>
+
+            <div class="cards-grid cards-grid--3" style="margin-top: var(--sp-10);">
+                <!-- Autodistribution -->
+                <div class="case-card reveal reveal-delay-1">
+                    <span class="case-card__badge">Transport & Logistique</span>
+                    <h3 class="case-card__client">Autodistribution</h3>
+                    <p class="case-card__desc">17 ans de partenariat. Virtualisation VMware, sécurité réseau, VPN multisites et nomades. Le partenariat IT le plus durable de notre portefeuille.</p>
+                    <div class="case-card__tags">
+                        <span class="tag">VMware</span>
+                        <span class="tag">VPN</span>
+                        <span class="tag">17 ans</span>
+                    </div>
+                </div>
+
+                <!-- Avon -->
+                <div class="case-card reveal reveal-delay-2">
+                    <span class="case-card__badge">Distribution</span>
+                    <h3 class="case-card__client">Avon Beauty Products</h3>
+                    <p class="case-card__desc">Migration et interfaçage de données massives entre systèmes hétérogènes AS400 et SQL Server. Un cas d'école en ingénierie de la donnée.</p>
+                    <div class="case-card__tags">
+                        <span class="tag">AS400</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">Migration</span>
+                    </div>
+                </div>
+
+                <!-- Notaires -->
+                <div class="case-card reveal reveal-delay-3">
+                    <span class="case-card__badge">Services Professionnels</span>
+                    <h3 class="case-card__client">Ordre des Notaires du Maroc</h3>
+                    <p class="case-card__desc">Audit de sécurité, tests de pénétration et validation de conformité pour l'accès aux API sensibles de l'institution.</p>
+                    <div class="case-card__tags">
+                        <span class="tag">Pentest</span>
+                        <span class="tag">API</span>
+                        <span class="tag">Conformité</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--sp-10);" class="reveal">
+                <a href="resultats-cas-clients.html" class="btn btn--outline">
+                    Voir tous nos cas clients
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 6: SECTORS
+         ═══════════════════════════════════════ -->
+    <section class="section section--gray" id="sectors">
+        <div class="container">
+            <div class="section__label reveal">Nos secteurs</div>
+            <div class="section__divider reveal"></div>
+            <h2 class="section__title reveal">Des solutions adaptées à votre secteur</h2>
+
+            <div class="sector-grid" style="margin-top: var(--sp-10);">
+                <a href="secteurs-transport.html" class="sector-card reveal reveal-delay-1">
+                    <div class="sector-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 13.52 9H12v9"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="17" cy="18" r="2"/></svg>
+                    </div>
+                    <h3 class="sector-card__title">Transport & Logistique</h3>
+                </a>
+
+                <a href="secteurs.html" class="sector-card reveal reveal-delay-2">
+                    <div class="sector-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    </div>
+                    <h3 class="sector-card__title">Industrie & Agro.</h3>
+                </a>
+
+                <a href="secteurs.html" class="sector-card reveal reveal-delay-3">
+                    <div class="sector-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/></svg>
+                    </div>
+                    <h3 class="sector-card__title">Médical & Santé</h3>
+                </a>
+
+                <a href="secteurs.html" class="sector-card reveal reveal-delay-4">
+                    <div class="sector-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3 class="sector-card__title">Finance & Distrib.</h3>
+                </a>
+
+                <a href="secteurs.html" class="sector-card reveal reveal-delay-5">
+                    <div class="sector-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="sector-card__title">Services Pro.</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 7: METHODOLOGY
+         ═══════════════════════════════════════ -->
+    <section class="section" id="methodology">
+        <div class="container">
+            <div class="section__label reveal">Notre approche</div>
+            <div class="section__divider reveal"></div>
+            <h2 class="section__title reveal">L'ingénierie du résultat en 4 étapes</h2>
+            <p class="section__subtitle reveal">Nous ne facturons pas à l'heure. Nous nous engageons sur la résolution effective de vos problèmes.</p>
+
+            <div class="timeline" style="margin-top: var(--sp-12);">
+                <div class="timeline__step reveal reveal-delay-1">
+                    <div class="timeline__number">1</div>
+                    <h3 class="timeline__title">Diagnostic</h3>
+                    <p class="timeline__text">Analyse approfondie de votre existant. Nous identifions les vrais problèmes, pas les symptômes.</p>
+                </div>
+                <div class="timeline__step reveal reveal-delay-2">
+                    <div class="timeline__number">2</div>
+                    <h3 class="timeline__title">Conception</h3>
+                    <p class="timeline__text">Architecture de la solution optimale, avec traçabilité complète depuis vos spécifications.</p>
+                </div>
+                <div class="timeline__step reveal reveal-delay-3">
+                    <div class="timeline__number">3</div>
+                    <h3 class="timeline__title">Déploiement</h3>
+                    <p class="timeline__text">Mise en production progressive, sans interruption. Tests de sécurisation à chaque étape.</p>
+                </div>
+                <div class="timeline__step reveal reveal-delay-4">
+                    <div class="timeline__number">4</div>
+                    <h3 class="timeline__title">Accompagnement</h3>
+                    <p class="timeline__text">Support continu, formation, maintenance proactive. Un partenariat, pas une prestation.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--sp-10);" class="reveal">
+                <a href="resultats-methodologie.html" class="btn btn--outline">
+                    En savoir plus sur notre méthodologie
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 8: LOGO MARQUEE
+         ═══════════════════════════════════════ -->
+    <section class="marquee" id="clients">
+        <div class="marquee__track">
+            <span class="marquee__item">Autodistribution</span>
+            <span class="marquee__item">Avon Beauty Products</span>
+            <span class="marquee__item">Centrale Danone</span>
+            <span class="marquee__item">La Voie Express</span>
+            <span class="marquee__item">Active Tech (Segula)</span>
+            <span class="marquee__item">Ordre des Notaires</span>
+            <span class="marquee__item">Archivex</span>
+            <span class="marquee__item">Mido Maroc</span>
+            <span class="marquee__item">MEA Food</span>
+            <span class="marquee__item">Detroit Industries</span>
+            <span class="marquee__item">Prevas</span>
+            <span class="marquee__item">Simec</span>
+            <span class="marquee__item">Yves Rouger</span>
+            <span class="marquee__item">Gilmarfer</span>
+            <!-- Duplicated for seamless loop -->
+            <span class="marquee__item">Autodistribution</span>
+            <span class="marquee__item">Avon Beauty Products</span>
+            <span class="marquee__item">Centrale Danone</span>
+            <span class="marquee__item">La Voie Express</span>
+            <span class="marquee__item">Active Tech (Segula)</span>
+            <span class="marquee__item">Ordre des Notaires</span>
+            <span class="marquee__item">Archivex</span>
+            <span class="marquee__item">Mido Maroc</span>
+            <span class="marquee__item">MEA Food</span>
+            <span class="marquee__item">Detroit Industries</span>
+            <span class="marquee__item">Prevas</span>
+            <span class="marquee__item">Simec</span>
+            <span class="marquee__item">Yves Rouger</span>
+            <span class="marquee__item">Gilmarfer</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 9: URGENCY
+         ═══════════════════════════════════════ -->
+    <section class="section section--earth urgency" id="urgency">
+        <div class="urgency__glow"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="urgency__label reveal">Intervention d'urgence</div>
+            <h2 class="urgency__title reveal">ERP bloqué, panne serveur, incident de sécurité ?</h2>
+            <div class="urgency__phone reveal">+212 5 22 34 35 45</div>
+            <p class="urgency__text reveal">Nous intervenons comme experts de dernier recours. Réponse sous 2 heures ouvrées.</p>
+            <div class="reveal">
+                <a href="urgence.html" class="btn btn--gold">
+                    Demande d'urgence
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 10: FINAL CTA
+         ═══════════════════════════════════════ -->
+    <section class="section section--dark cta-section" id="cta">
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 class="cta-section__title reveal">Discutons de votre projet</h2>
+            <p class="cta-section__text reveal">Chaque entreprise a des défis IT uniques. Parlons des vôtres — nous vous proposerons une approche sur mesure, sans engagement.</p>
+            <div class="reveal">
+                <a href="contact.html" class="btn btn--primary-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    Contactez-nous
+                </a>
+            </div>
+            <p class="cta-section__phone reveal">Ou appelez-nous directement : +212 5 22 34 35 45</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="header__logo" style="margin-bottom: var(--sp-2);">CACTUS</div>
+                    <p class="footer__brand-desc">
+                        Partenaire technologique de confiance depuis 2006. Nous construisons, sécurisons et modernisons les fondations numériques des entreprises marocaines.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="footer__heading">Expertises</div>
+                    <a href="expertises-erp.html" class="footer__link">ERP & Gestion</a>
+                    <a href="expertises-migration.html" class="footer__link">Migration & Données</a>
+                    <a href="expertises-cybersecurite.html" class="footer__link">Cybersécurité</a>
+                    <a href="expertises-infrastructure.html" class="footer__link">Infrastructure & Cloud</a>
+                    <a href="expertises-developpement.html" class="footer__link">Développement</a>
+                </div>
+
+                <div>
+                    <div class="footer__heading">Entreprise</div>
+                    <a href="resultats-cas-clients.html" class="footer__link">Cas Clients</a>
+                    <a href="resultats-methodologie.html" class="footer__link">Méthodologie</a>
+                    <a href="a-propos.html" class="footer__link">À Propos</a>
+                    <a href="secteurs.html" class="footer__link">Secteurs</a>
+                </div>
+
+                <div>
+                    <div class="footer__heading">Contact</div>
+                    <a href="mailto:contact@cactus.net.ma" class="footer__link">contact@cactus.net.ma</a>
+                    <a href="tel:+212522343545" class="footer__link">+212 5 22 34 35 45</a>
+                    <span class="footer__link">70 Allée des Phoenix</span>
+                    <span class="footer__link">Casablanca 20250, Maroc</span>
+                </div>
+            </div>
+
+            <!-- Emergency strip -->
+            <div class="footer__emergency">
+                <div class="footer__emergency-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold);"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    <span class="footer__emergency-label">Urgence IT</span>
+                </div>
+                <a href="tel:+212522343545" class="footer__emergency-phone">+212 5 22 34 35 45</a>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer__bottom">
+                <span class="footer__copyright">&copy; 2006–2026 Cactus Informatique. Tous droits réservés.</span>
+                <div class="footer__legal">
+                    <a href="mentions-legales.html">Mentions légales</a>
+                    <a href="politique-confidentialite.html">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

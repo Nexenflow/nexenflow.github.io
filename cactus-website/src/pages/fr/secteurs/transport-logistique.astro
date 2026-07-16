@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import StatsBar from '../../../components/StatsBar.astro';
+import UrgencyBanner from '../../../components/UrgencyBanner.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const challenges = [
+    { title: 'Multi-sites & mobilité', desc: 'Vos sites sont dispersés, vos équipes en mouvement. Votre SI doit les connecter en temps réel.' },
+    { title: 'Traçabilité & conformité', desc: 'Chaque colis, chaque lot, chaque véhicule doit être tracé sans ralentir vos opérations.' },
+    { title: 'Disponibilité 24/7', desc: 'Le transport ne connaît pas les horaires de bureau. Votre infrastructure doit suivre le rythme.' },
+    { title: 'Pilotage en temps réel', desc: 'Les décisions logistiques se prennent en minutes. Vos dirigeants ont besoin de KPI actualisés.' },
+];
+
+const solutions = [
+    { title: 'ERP avec gestion multi-dépôts', desc: 'Notre ERP gère nativement les transferts inter-dépôts, la traçabilité des lots et la gestion de flotte.', href: p('/expertises/erp/') },
+    { title: 'VPN multisites & nomades', desc: 'Interconnexion sécurisée de tous vos sites et accès nomade pour vos collaborateurs.', href: p('/expertises/infrastructure/') },
+    { title: 'Infrastructure virtualisée', desc: 'Architectures VMware conçues pour le zéro arrêt non planifié.', href: p('/expertises/infrastructure/') },
+    { title: 'Business Intelligence logistique', desc: 'Tableaux de bord : rotations de stocks, performance des dépôts, coûts logistiques.', href: p('/expertises/erp/') },
+    { title: 'Cybersécurité adaptée', desc: 'Sécurisation réseau multi-sites, pare-feux, gestion des accès, plans de reprise.', href: p('/expertises/cybersecurite/') },
+];
+
+const techBadges = ['VMware', 'VPN IPSec/SSL', 'Hyper-V', 'SQL Server', 'ERP Cactus', 'BI Dashboards', 'Pare-feux matériels'];
+---
+
+<BaseLayout
+    title="IT pour le Transport & la Logistique — Cactus"
+    description="Solutions IT pour le transport et la logistique au Maroc : ERP multi-dépôts, VPN multisites, virtualisation, BI. Partenaire d'Autodistribution depuis 2007."
+>
+    <PageHero
+        label="Transport & Logistique"
+        title="Le transport ne s'arrête jamais — "
+        titleHighlight="votre IT non plus"
+        subtitle="Depuis 2007, nous accompagnons les acteurs majeurs du transport marocain. Notre partenariat le plus ancien dure depuis 17 ans."
+        breadcrumbs={[
+            { label: 'Secteurs', href: p('/secteurs/') },
+            { label: 'Transport & Logistique' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Diagnostic infrastructure"
+    />
+
+    <!-- Challenges -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Vos défis" title="Les défis IT du transport & de la logistique" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {challenges.map((ch, i) => (
+                    <div class={`flex items-start gap-5 bg-white border rounded-2xl p-7 reveal reveal-delay-${i + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center font-heading font-bold text-sm text-white" style="background: var(--color-earth-brown);">
+                            {i + 1}
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-base mb-1" style="color: var(--color-ink);">{ch.title}</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{ch.desc}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Nos solutions" title="Ce que nous déployons pour le transport" />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                {solutions.map((sol, i) => (
+                    <a href={sol.href}
+                       class={`group relative bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 3) + 1}`}
+                       style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{sol.title}</h3>
+                        <p class="text-sm leading-relaxed mb-3" style="color: var(--color-ink-soft);">{sol.desc}</p>
+                        <span class="inline-flex items-center gap-1 font-heading font-semibold text-xs group-hover:gap-2 transition-all" style="color: var(--color-cactus-green);">
+                            Voir l'expertise <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </span>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study: Autodistribution -->
+    <section class="py-24 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <SectionHeader label="Cas client" title="Autodistribution — 17 ans de partenariat" variant="dark" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-4">
+                <div class="reveal reveal-left">
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-2" style="color: var(--color-amber);">Le défi</p>
+                    <p class="text-sm leading-relaxed mb-6" style="color: rgba(238,238,238,0.7);">Infrastructure vieillissante, sites dispersés non connectés, ERP Sage X3 avec problèmes de synchronisation comptable.</p>
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-2" style="color: var(--color-amber);">Notre intervention</p>
+                    <ul class="space-y-2">
+                        {['Virtualisation complète sous VMware', 'VPN multisites et nomades sécurisés', 'Sécurisation réseau (pare-feu, accès)', 'Diagnostic BDD pour synchronisation Sage X3'].map(item => (
+                            <li class="flex items-start gap-2 text-sm" style="color: rgba(238,238,238,0.7);">
+                                <svg class="shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div class="reveal reveal-right">
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-2" style="color: var(--color-amber);">Résultat</p>
+                    <p class="text-sm leading-relaxed mb-6" style="color: rgba(238,238,238,0.7);">Infrastructure modernisée, sites connectés, ERP stabilisé. 17 ans de confiance ininterrompue.</p>
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3" style="color: var(--color-amber);">Expertises déployées</p>
+                    <div class="flex flex-wrap gap-2">
+                        {['Infrastructure & Cloud', 'Cybersécurité', 'ERP'].map(tag => (
+                            <span class="inline-flex items-center text-xs font-heading font-semibold px-3 py-1 rounded-full" style="background: rgba(71,106,51,0.2); color: var(--color-gold);">{tag}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech badges -->
+    <section class="py-16 text-center">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-6 reveal" style="color: var(--color-cactus-green);">Technologies déployées</p>
+            <div class="flex flex-wrap justify-center gap-3 reveal">
+                {techBadges.map(tech => (
+                    <span class="inline-flex items-center px-4 py-2 rounded-full font-heading font-semibold text-xs" style="background: rgba(71,106,51,0.08); color: var(--color-cactus-green);">{tech}</span>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <UrgencyBanner
+        title="Panne critique sur votre infrastructure transport ?"
+        ctaHref={p('/urgence/')}
+        ctaLabel="Demande d'urgence"
+    />
+
+    <FinalCta
+        title="Votre logistique mérite une IT à la hauteur"
+        text="Diagnostic de votre infrastructure — nous proposerons un plan de modernisation adapté à vos contraintes."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

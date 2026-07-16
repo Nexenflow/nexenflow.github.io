@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import StatsBar from '../../../components/StatsBar.astro';
+import UrgencyBanner from '../../../components/UrgencyBanner.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const challenges = [
+    { title: 'Connexion physique/numérique', desc: 'Vos automates de production et ponts-bascules doivent communiquer avec votre SI sans ressaisie manuelle.' },
+    { title: 'Suivi de fabrication & TRS', desc: 'Mesurer le Taux de Rendement Synthétique (TRS) en temps réel pour optimiser vos lignes industrielles.' },
+    { title: 'Traçabilité des lots stricte', desc: 'Du composant brut au produit fini, garantir une traçabilité totale pour répondre aux normes réglementaires.' },
+    { title: 'Continuité de service 24/7', desc: 'Une usine de production ne peut pas s\'arrêter. Votre infrastructure doit être hautement résiliente.' },
+];
+
+const solutions = [
+    { title: 'IoT Industriel & Intégration', desc: 'Lecture, traitement et retransmission des données de vos automates de production vers votre ERP.', href: p('/expertises/developpement/') },
+    { title: 'Module pesage & Ponts-bascules', desc: 'Interfaçage bidirectionnel direct entre les équipements de pesée physiques et le système central.', href: p('/expertises/developpement/') },
+    { title: 'ERP Production sur-mesure', desc: 'Suivi des ordres de fabrication (OF), gestion des stocks de matières premières et traçabilité.', href: p('/expertises/erp/') },
+    { title: 'Infrastructure de production résiliente', desc: 'Architectures serveurs physiques et virtuelles sous VMware redondées pour résister aux pannes.', href: p('/expertises/infrastructure/') },
+    { title: 'Sécurisation des réseaux industriels', desc: 'Isolation et protection de vos réseaux d\'usine (OT) contre les attaques logicielles.', href: p('/expertises/cybersecurite/') },
+];
+
+const techBadges = ['Modbus / OPC-UA', 'VPN OT-IT', 'VMware vSphere', 'SQL Server', 'ERP Cactus', 'BI Production', 'Intégration API PLC'];
+---
+
+<BaseLayout
+    title="IT pour l'Industrie & l'Agroalimentaire — Cactus"
+    description="Solutions IT pour l'industrie et l'agroalimentaire au Maroc : IoT industriel, intégration ponts-bascules, ERP production et traçabilité des lots."
+>
+    <PageHero
+        label="Industrie & Agroalimentaire"
+        title="Connecter vos machines physiques "
+        titleHighlight="à votre décisionnel"
+        subtitle="Nous construisons les ponts numériques entre vos équipements de production et votre ERP pour automatiser vos flux industriels."
+        breadcrumbs={[
+            { label: 'Secteurs', href: p('/secteurs/') },
+            { label: 'Industrie & Agroalimentaire' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Diagnostic industriel IT/OT"
+    />
+
+    <!-- Challenges -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Vos défis" title="Les défis IT du secteur industriel" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {challenges.map((ch, i) => (
+                    <div class={`flex items-start gap-5 bg-white border rounded-2xl p-7 reveal reveal-delay-${i + 1}`}
+                          style="border-color: var(--color-cloud-dark);">
+                        <div class="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center font-heading font-bold text-sm text-white" style="background: var(--color-earth-brown);">
+                            {i + 1}
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-semibold text-base mb-1" style="color: var(--color-ink);">{ch.title}</h3>
+                            <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{ch.desc}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Nos solutions" title="Notre expertise dans l'usine" />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                {solutions.map((sol, i) => (
+                    <a href={sol.href}
+                       class={`group relative bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 3) + 1}`}
+                       style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{sol.title}</h3>
+                        <p class="text-sm leading-relaxed mb-3" style="color: var(--color-ink-soft);">{sol.desc}</p>
+                        <span class="inline-flex items-center gap-1 font-heading font-semibold text-xs group-hover:gap-2 transition-all" style="color: var(--color-cactus-green);">
+                            Voir l'expertise <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </span>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study: Centrale Danone & Production avicole -->
+    <section class="py-24 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <SectionHeader label="Cas client" title="Centrale Danone & Agro-industrie" variant="dark" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-4">
+                <div class="reveal reveal-left">
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-2" style="color: var(--color-amber);">Le défi</p>
+                    <p class="text-sm leading-relaxed mb-6" style="color: rgba(238,238,238,0.7);">Saisie manuelle des poids sur ponts-bascules entraînant des erreurs de facturation, manque de traçabilité des lots et absence de suivi de production en temps réel.</p>
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-2" style="color: var(--color-amber);">Notre intervention</p>
+                    <ul class="space-y-2">
+                        {['Interfaçage matériel direct des ponts-bascules avec l\'ERP', 'Automatisation des flux de données sans saisie humaine', 'Module de traçabilité des lots de fabrication', 'Business Intelligence et data analytics de production'].map(item => (
+                            <li class="flex items-start gap-2 text-sm" style="color: rgba(238,238,238,0.7);">
+                                <svg class="shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div class="reveal reveal-right">
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-2" style="color: var(--color-amber);">Résultat</p>
+                    <p class="text-sm leading-relaxed mb-6" style="color: rgba(238,238,238,0.7);">0% d\'erreurs de pesage, gains de temps significatifs dans la saisie des flux logistiques, visibilité instantanée sur les rendements de fabrication.</p>
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3" style="color: var(--color-amber);">Expertises déployées</p>
+                    <div class="flex flex-wrap gap-2">
+                        {['Développement', 'ERP', 'Migration & Données'].map(tag => (
+                            <span class="inline-flex items-center text-xs font-heading font-semibold px-3 py-1 rounded-full" style="background: rgba(71,106,51,0.2); color: var(--color-gold);">{tag}</span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech badges -->
+    <section class="py-16 text-center">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-6 reveal" style="color: var(--color-cactus-green);">Technologies industrielles maîtrisées</p>
+            <div class="flex flex-wrap justify-center gap-3 reveal">
+                {techBadges.map(tech => (
+                    <span class="inline-flex items-center px-4 py-2 rounded-full font-heading font-semibold text-xs" style="background: rgba(71,106,51,0.08); color: var(--color-cactus-green);">{tech}</span>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <UrgencyBanner
+        title="Panne de ligne ou d'ERP de production bloqué ?"
+        ctaHref={p('/urgence/')}
+        ctaLabel="Intervention d'urgence sous 2h"
+    />
+
+    <FinalCta
+        title="Optimisez vos opérations industrielles dès aujourd'hui"
+        text="Contactez nos ingénieurs pour un audit IT/OT initial gratuit et sans engagement."
+        ctaLabel="Planifier un diagnostic"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

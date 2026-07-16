@@ -1,0 +1,29 @@
+---
+import { getLocalePath } from '../i18n/utils';
+
+interface BreadcrumbItem {
+    label: string;
+    href?: string;
+}
+
+interface Props {
+    items: BreadcrumbItem[];
+    lang: string;
+}
+
+const { items, lang } = Astro.props;
+---
+
+<nav class="breadcrumbs flex items-center gap-1.5 text-xs font-medium" aria-label="Fil d'Ariane">
+    <a href={getLocalePath(lang, '/')} class="text-ink-muted hover:text-cactus-green transition-colors">Accueil</a>
+    {items.map((item, i) => (
+        <>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-ink-muted opacity-50 shrink-0"><path d="m9 18 6-6-6-6"/></svg>
+            {item.href ? (
+                <a href={item.href} class="text-ink-muted hover:text-cactus-green transition-colors">{item.label}</a>
+            ) : (
+                <span class="text-ink" aria-current="page">{item.label}</span>
+            )}
+        </>
+    ))}
+</nav>

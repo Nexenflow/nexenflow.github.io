@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import ExpertiseCard from '../../../components/ExpertiseCard.astro';
+import StatsBar from '../../../components/StatsBar.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import UrgencyBanner from '../../../components/UrgencyBanner.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+---
+
+<BaseLayout
+    title="Nos Expertises IT — Cactus Informatique"
+    description="ERP, cybersécurité, migration de données, infrastructure cloud et développement sur mesure. Découvrez les 5 expertises de Cactus Informatique au Maroc."
+>
+    <PageHero
+        label="Nos expertises"
+        title="Cinq domaines d'expertise pour "
+        titleHighlight="transformer votre SI"
+        subtitle="Depuis 2006, Cactus Informatique déploie cinq domaines d'expertise complémentaires. Chaque expertise est soutenue par plus de vingt ans d'expérience terrain et une méthodologie centrée sur le résultat."
+        breadcrumbs={[{ label: 'Expertises' }]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Diagnostic gratuit"
+        ctaSecondaryHref={p('/urgence/')}
+        ctaSecondaryLabel="Urgence IT"
+    />
+
+    <!-- Expertises Grid -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Nos 5 domaines"
+                title="Des expertises complémentaires, un seul partenaire"
+                subtitle="Nous ne vendons pas du temps — nous nous engageons sur des résultats mesurables."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                <ExpertiseCard
+                    title="ERP & Gestion d'Entreprise"
+                    description="Notre ERP propriétaire, conçu et éprouvé depuis plus de 20 ans, centralise l'ensemble de vos processus métier. Modulaire et activable à la carte."
+                    href={p('/expertises/erp/')}
+                    icon="table"
+                    tags={['20 ans', 'Modulaire', 'BI intégrée']}
+                    delay={1}
+                />
+                <ExpertiseCard
+                    title="Migration & Données"
+                    description="Migrations fluides et sécurisées entre plateformes hétérogènes — depuis Excel, SAP, Sage ou AS400 — avec un engagement de résultat."
+                    href={p('/expertises/migration-donnees/')}
+                    icon="database"
+                    tags={['AS400', 'SQL Server', 'Garantie']}
+                    delay={2}
+                />
+                <ExpertiseCard
+                    title="Cybersécurité"
+                    description="Audits de sécurité, tests d'intrusion, conformité ISO 27002, plans de reprise d'activité. Philosophie du Zéro Faille."
+                    href={p('/expertises/cybersecurite/')}
+                    icon="shield"
+                    tags={['Pentest', 'ISO 27002', 'PRA']}
+                    delay={3}
+                />
+                <ExpertiseCard
+                    title="Infrastructure & Cloud"
+                    description="VMware, Hyper-V, Azure, VPN multisites. Des architectures haute disponibilité pour des entreprises qui ne peuvent pas s'arrêter."
+                    href={p('/expertises/infrastructure/')}
+                    icon="server"
+                    tags={['VMware', 'Azure', 'VPN']}
+                    delay={1}
+                />
+                <ExpertiseCard
+                    title="Développement Sur Mesure"
+                    description="Applications métier, web, mobile, API. Agnostiques en langage, nous nous adaptons à votre écosystème technique."
+                    href={p('/expertises/developpement/')}
+                    icon="code"
+                    tags={['Web', 'Mobile', 'API']}
+                    delay={2}
+                />
+            </div>
+        </div>
+    </section>
+
+    <StatsBar stats={[
+        { count: '20', suffix: ' ans', label: "d'expertise IT" },
+        { count: '50', prefix: '+', label: 'clients accompagnés' },
+        { count: '8', label: 'experts pluridisciplinaires' },
+        { count: '0', label: 'dépendance éditeur' },
+    ]} />
+
+    <!-- FAQ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader
+                label="Questions fréquentes"
+                title="FAQ — Expertises"
+            />
+            <FaqAccordion items={[
+                { question: 'Comment choisir l\'expertise adaptée à mon besoin ?', answer: 'Chaque projet commence par un diagnostic gratuit. Nous analysons votre existant et recommandons l\'approche optimale — sans engagement et en toute indépendance (nous ne dépendons d\'aucun éditeur).' },
+                { question: 'Travaillez-vous avec des technologies spécifiques ?', answer: 'Nous sommes agnostiques : VMware, Hyper-V, Azure, SQL Server, Sage, SAP, Oracle, Linux, Windows — nous nous adaptons à votre environnement, jamais l\'inverse.' },
+                { question: 'Quelle est votre couverture géographique ?', answer: 'Basés à Casablanca, nous intervenons sur tout le Maroc (Rabat, El Jadida, Safi, Marrakech, Ben Guérir...) et à l\'international selon les projets.' },
+            ]} />
+        </div>
+    </section>
+
+    <UrgencyBanner
+        ctaHref={p('/urgence/')}
+        ctaLabel="Demande d'urgence"
+    />
+
+    <FinalCta
+        title="Discutons de votre projet"
+        text="Chaque entreprise a des défis IT uniques. Parlons des vôtres — nous vous proposerons une approche sur mesure, sans engagement."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

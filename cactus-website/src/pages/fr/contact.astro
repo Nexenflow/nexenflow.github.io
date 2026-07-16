@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import UrgencyBanner from '../../components/UrgencyBanner.astro';
+import { getLocalePath } from '../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const cities = ['Casablanca (siège)', 'Rabat', 'El Jadida', 'Safi', 'Marrakech', 'Ben Guérir'];
+---
+
+<BaseLayout
+    title="Contactez-nous — Cactus Informatique"
+    description="Contactez Cactus Informatique à Casablanca pour un diagnostic IT gratuit. ERP, cybersécurité, migration, infrastructure, développement sur mesure."
+>
+    <PageHero
+        label="Contact"
+        title="Discutons de votre "
+        titleHighlight="projet"
+        subtitle="Chaque entreprise a des défis IT uniques. Parlons des vôtres — nous commençons toujours par un diagnostic, gratuit et sans engagement."
+        breadcrumbs={[{ label: 'Contact' }]}
+        lang={lang}
+    />
+
+    <!-- Form + Info -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-16">
+                <!-- Form -->
+                <div class="reveal">
+                    <SectionHeader label="Formulaire de contact" title="Envoyez-nous votre demande" />
+                    <ContactForm variant="standard" lang={lang} />
+                </div>
+
+                <!-- Info -->
+                <div class="reveal reveal-delay-2">
+                    <SectionHeader label="Coordonnées" title="Nos informations" />
+
+                    <div class="space-y-6">
+                        <div class="bg-cloud rounded-2xl p-6">
+                            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3" style="color: var(--color-cactus-green);">Adresse</p>
+                            <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">70 Allée des Phoenix<br />Casablanca 20250, Maroc</p>
+                        </div>
+                        <div class="bg-cloud rounded-2xl p-6">
+                            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3" style="color: var(--color-cactus-green);">Téléphone</p>
+                            <a href="tel:+212522343545" class="block text-sm font-semibold mb-1 transition-colors hover:text-cactus-green" style="color: var(--color-ink);">+212 5 22 34 35 45</a>
+                            <a href="tel:+212522316537" class="block text-sm transition-colors hover:text-cactus-green" style="color: var(--color-ink-soft);">+212 5 22 31 65 37</a>
+                        </div>
+                        <div class="bg-cloud rounded-2xl p-6">
+                            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3" style="color: var(--color-cactus-green);">Email</p>
+                            <a href="mailto:contact@cactus.net.ma" class="text-sm font-semibold transition-colors hover:text-cactus-green" style="color: var(--color-ink);">contact@cactus.net.ma</a>
+                        </div>
+                        <div class="bg-cloud rounded-2xl p-6">
+                            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3" style="color: var(--color-cactus-green);">Horaires</p>
+                            <p class="text-sm" style="color: var(--color-ink-soft);">
+                                Lundi — Vendredi : 9h00 — 18h00<br />
+                                Samedi — Dimanche : Fermé
+                            </p>
+                            <p class="text-xs mt-2" style="color: var(--color-ink-muted);">
+                                Pour les urgences en dehors des horaires, utilisez notre <a href={p('/urgence/')} class="font-semibold" style="color: var(--color-earth-brown);">service d'urgence IT</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Geographic Coverage -->
+    <section class="py-16" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Couverture"
+                title="Notre couverture géographique"
+                subtitle="Basés à Casablanca, nous intervenons sur l'ensemble du territoire marocain."
+                align="center"
+            />
+            <div class="flex flex-wrap justify-center gap-3 reveal">
+                {cities.map(city => (
+                    <span class="inline-flex items-center px-4 py-2 rounded-full font-heading font-semibold text-sm"
+                          style="background: rgba(71,106,51,0.08); color: var(--color-cactus-green);">{city}</span>
+                ))}
+            </div>
+            <p class="text-xs mt-4 reveal" style="color: var(--color-ink-muted);">Interventions internationales sur demande.</p>
+        </div>
+    </section>
+
+    <UrgencyBanner
+        ctaHref={p('/urgence/')}
+        ctaLabel="Formulaire d'urgence"
+    />
+</BaseLayout>

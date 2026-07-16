@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import FeatureTable from '../../../components/FeatureTable.astro';
+import CaseStudyCard from '../../../components/CaseStudyCard.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import UrgencyBanner from '../../../components/UrgencyBanner.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const services = [
+    { title: 'Virtualisation (VMware & Hyper-V)', desc: 'Transition vers des environnements virtualisés haute performance. Optimisation des ressources, consolidation des serveurs, haute disponibilité.' },
+    { title: 'Cloud (Microsoft Azure)', desc: 'Administration et déploiement Azure : machines virtuelles, stockage, réseaux virtuels, sauvegarde cloud. Architecturé pour la performance et le contrôle des coûts.' },
+    { title: 'Hébergement haute disponibilité', desc: 'Installation de serveurs physiques et hébergement web pour les entreprises qui ne peuvent pas se permettre une minute d\'arrêt.' },
+    { title: 'Réseaux & VPN', desc: 'Interconnexion de sites distants sécurisée : VPN multisite (connexion permanente entre succursales), VPN nomade (accès sécurisé en déplacement).' },
+    { title: 'Serveurs de communication indépendants', desc: 'Messagerie professionnelle dédiée, serveurs SMS & Fax. Réduction OPEX, souveraineté des données, indépendance du Cloud public.' },
+];
+---
+
+<BaseLayout
+    title="Infrastructure IT & Cloud — Cactus"
+    description="Virtualisation VMware/Hyper-V, cloud Azure, VPN sécurisés, hébergement haute disponibilité. Infrastructure IT résiliente pour les entreprises marocaines."
+>
+    <PageHero
+        label="Infrastructure & Cloud"
+        title="Des fondations qui "
+        titleHighlight="ne fléchissent pas"
+        subtitle="Votre infrastructure IT est le socle de toute votre activité numérique. Nous concevons des architectures résilientes, performantes et souveraines."
+        breadcrumbs={[
+            { label: 'Expertises', href: p('/expertises/') },
+            { label: 'Infrastructure & Cloud' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Audit infrastructure"
+    />
+
+    <!-- Services -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Nos services"
+                title="Infrastructure de bout en bout"
+                subtitle="Une infrastructure invisible quand tout va bien — indispensable quand ça compte."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                {services.map((svc, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 3) + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                             style="background: rgba(219,204,99,0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);">
+                                <rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{svc.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{svc.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Avantages -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="Pourquoi nous choisir" title="Pourquoi Cactus pour votre infrastructure ?" />
+            <FeatureTable rows={[
+                { label: '17 ans chez Autodistribution', value: 'Preuve de fiabilité — infrastructure maintenue et évoluée pendant 17 ans chez un même client.' },
+                { label: 'Souveraineté des données', value: 'Hébergement local, conformité aux réglementations marocaines.' },
+                { label: 'OPEX optimisé', value: 'Nous recommandons les solutions qui réduisent vos coûts récurrents.' },
+                { label: 'Multi-environnement', value: 'VMware, Hyper-V, Linux, Windows, Azure — nous nous adaptons à votre existant.' },
+                { label: 'Haute disponibilité', value: 'Architectures conçues pour le zéro arrêt non planifié.' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- Cas clients -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Cas clients" title="Infrastructure — nos preuves" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                <CaseStudyCard badge="17 ans" client="Autodistribution"
+                    description="Virtualisation VMware, sécurité réseau, VPN multisites et nomades. Le partenariat infrastructure le plus durable."
+                    tags={['VMware', 'VPN', 'Sécurité réseau']} href={p('/resultats/cas-clients/')} delay={1} />
+                <CaseStudyCard badge="ISO 27002" client="Active Tech (Segula Technologies)"
+                    description="Architecture infrastructure/sécurité, déploiement VPN, accompagnement ISO 27002."
+                    tags={['Architecture', 'VPN', 'ISO 27002']} href={p('/resultats/cas-clients/')} delay={2} />
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="FAQ" title="FAQ — Infrastructure & Cloud" />
+            <FaqAccordion items={[
+                { question: 'Dois-je passer en cloud ou rester en on-premise ?', answer: 'Cela dépend de vos besoins. Nous recommandons souvent une approche hybride. Nous vous conseillerons objectivement — nous ne dépendons d\'aucun fournisseur cloud.' },
+                { question: 'Pouvez-vous gérer mon infrastructure à distance ?', answer: 'Oui. Grâce aux VPN et aux outils d\'administration à distance, nous assurons la surveillance et la maintenance où que vous soyez.' },
+                { question: 'Que se passe-t-il en cas de panne serveur ?', answer: 'Nos architectures haute disponibilité minimisent les pannes. En cas d\'incident, nous intervenons en priorité. Pour les urgences critiques, utilisez notre service d\'urgence IT.' },
+            ]} />
+        </div>
+    </section>
+
+    <UrgencyBanner
+        title="Panne serveur critique ?"
+        text="Nous diagnostiquons et rétablissons le service dans les meilleurs délais."
+        ctaHref={p('/urgence/')}
+        ctaLabel="Demande d'urgence"
+    />
+
+    <FinalCta
+        title="Votre infrastructure est-elle à la hauteur ?"
+        text="Audit de votre infrastructure actuelle — nous identifierons les points de fragilité."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

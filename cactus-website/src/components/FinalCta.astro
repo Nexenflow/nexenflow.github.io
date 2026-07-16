@@ -1,0 +1,39 @@
+---
+interface Props {
+    title: string;
+    text: string;
+    ctaLabel: string;
+    ctaHref: string;
+    phone?: string;
+}
+
+const { title, text, ctaLabel, ctaHref, phone } = Astro.props;
+---
+
+<section class="relative text-center py-24 dot-grid" style="background: var(--color-cactus-dark);">
+    <div class="max-w-[1200px] mx-auto px-6 relative z-[1]">
+        <h2 class="font-heading font-bold text-white mb-4 reveal"
+            style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
+            {title}
+        </h2>
+        <p class="text-base max-w-[520px] mx-auto mb-8 reveal" style="color: rgba(238,238,238,0.7);">
+            {text}
+        </p>
+        <div class="reveal">
+            <a href={ctaHref}
+               class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-base rounded-full px-8 py-4 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+               style="background: var(--color-cactus-green);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+                </svg>
+                {ctaLabel}
+            </a>
+        </div>
+        {phone && (
+            <p class="font-heading font-semibold text-sm mt-4 reveal" style="color: var(--color-gold);">
+                Ou appelez-nous directement : {phone}
+            </p>
+        )}
+    </div>
+</section>

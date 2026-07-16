@@ -1,0 +1,428 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations, getLocalePath } from '../../i18n/utils';
+
+const lang = 'fr';
+const t = useTranslations(lang);
+const p = (path: string) => getLocalePath(lang, path);
+---
+
+<BaseLayout
+    title="Cactus — Partenaire IT de confiance au Maroc"
+    description="Cactus Informatique : ERP, cybersécurité, migration de données et infrastructure cloud. Votre DSI externalisé depuis 2006 à Casablanca."
+>
+    <!-- Schema.org -->
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": ["Organization", "LocalBusiness"],
+            "name": "Cactus Informatique",
+            "url": "https://cactus.ma",
+            "telephone": "+212522343545",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "70 Allée des Phoenix",
+                "addressLocality": "Casablanca",
+                "postalCode": "20250",
+                "addressCountry": "MA"
+            },
+            "foundingDate": "2006",
+            "numberOfEmployees": "8",
+            "areaServed": "MA"
+        })} />
+    </Fragment>
+
+    <!-- ═══════════════════════════════════════
+         COMBINED TOP DECK CONTAINER (Hero & Shortcuts)
+         ═══════════════════════════════════════ -->
+    <div class="relative overflow-hidden">
+        <!-- tsParticles interactive constellation canvas restricted to the top 2 sections -->
+        <div id="tsparticles" class="absolute inset-0 z-[1] pointer-events-none"></div>
+
+        <!-- ═══════════════════════════════════════
+             SECTION 1: HERO
+             ═══════════════════════════════════════ -->
+        <section class="relative min-h-screen flex items-center justify-center" style="background: var(--color-cactus-dark); padding: calc(72px + 4rem) 1.5rem 4rem;">
+            <!-- Animated gradient bg -->
+            <div class="absolute -inset-1/2 w-[200%] h-[200%]" style="background: conic-gradient(from 0deg at 50% 50%, var(--color-cactus-dark) 0deg, var(--color-hero-mid) 90deg, var(--color-ink) 180deg, var(--color-hero-mid) 270deg, var(--color-cactus-dark) 360deg); animation: heroRotate 30s linear infinite;"></div>
+            <!-- Dot grid -->
+            <div class="absolute inset-0 z-[1]" style="background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 32px 32px;"></div>
+            <!-- Glow -->
+            <div class="absolute w-[600px] h-[600px] rounded-full z-[1] top-[20%] left-[30%]" style="background: radial-gradient(circle, rgba(71,106,51,0.2) 0%, transparent 70%); animation: glowPulse 6s ease-in-out infinite;"></div>
+
+        <div class="relative z-[2] text-center max-w-[780px]">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-heading font-semibold uppercase tracking-wide mb-8 opacity-0 translate-y-4" style="background: rgba(219,204,99,0.1); border: 1px solid rgba(219,204,99,0.2); color: var(--color-gold); animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                {t('hero.badge')}
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-heading font-extrabold text-white leading-[1.1] tracking-tight mb-6 opacity-0 translate-y-6" style="font-size: clamp(2.4rem, 5.5vw, 4rem); letter-spacing: -0.035em; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s forwards;">
+                {t('hero.title_start')}<span style="color: var(--color-gold);">{t('hero.title_highlight')}</span>{t('hero.title_end')}
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="mx-auto max-w-[620px] mb-10 opacity-0 translate-y-6" style="font-size: clamp(1rem, 1.8vw, 1.15rem); color: rgba(238,238,238,0.75); line-height: 1.75; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;">
+                {t('hero.subtitle')}
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex gap-4 justify-center flex-wrap opacity-0 translate-y-6" style="animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.8s forwards;">
+                <a href={p('/contact/')} class="inline-flex items-center gap-2 font-heading font-semibold text-base rounded-full px-8 py-4 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    {t('cta.contact')}
+                </a>
+                <a href={p('/urgence/')} class="inline-flex items-center gap-2 font-heading font-semibold text-base rounded-full px-7 py-4 transition-all hover:bg-gold hover:text-cactus-dark" style="background: transparent; color: var(--color-gold); border: 2px solid rgba(219,204,99,0.4);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    {t('cta.urgence')} IT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 2: SHORTCUTS
+         ═══════════════════════════════════════ -->
+    <section class="relative py-24 dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-[1]">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 reveal" style="color: var(--color-gold);">{t('shortcuts.label')}</p>
+            <div class="w-12 h-[3px] rounded mb-6 reveal" style="background: var(--color-amber);"></div>
+            <h2 class="font-heading font-bold text-white mb-10 reveal" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; letter-spacing: -0.025em;">{t('shortcuts.title')}</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                    { href: p('/expertises/erp/'), icon: 'table', title: 'Moderniser mon ERP', text: 'Centralisez votre gestion commerciale, comptabilité et RH dans un seul système modulaire.' },
+                    { href: p('/expertises/cybersecurite/'), icon: 'shield', title: 'Sécuriser mon SI', text: "Audit de sécurité, tests d'intrusion, conformité ISO 27002 — protégez vos données." },
+                    { href: p('/expertises/migration-donnees/'), icon: 'database', title: 'Migrer mes données', text: 'Migration fluide entre plateformes hétérogènes avec garantie de résultat.' },
+                    { href: p('/expertises/infrastructure/'), icon: 'server', title: 'Fiabiliser mon infrastructure', text: 'Virtualisation, haute disponibilité, VPN sécurisés et cloud Azure.' },
+                    { href: p('/expertises/developpement/'), icon: 'code', title: 'Développer une application', text: 'Applications web, mobile et API sur mesure, calées sur vos processus métier.' },
+                    { href: p('/urgence/'), icon: 'alert', title: 'Résoudre une urgence IT', text: 'ERP bloqué, panne serveur ? Nous intervenons comme "pompiers" là où d\'autres ont échoué.' },
+                ].map((card, i) => (
+                    <a href={card.href} class={`block p-6 rounded-2xl border transition-all hover:-translate-y-1 hover:border-cactus-green reveal reveal-delay-${(i % 3) + 1}`} style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.08); backdrop-filter: blur(8px);">
+                        <div class="w-11 h-11 rounded-[10px] flex items-center justify-center mb-4" style={`background: ${card.icon === 'alert' ? 'rgba(111,50,3,0.15)' : 'rgba(219,204,99,0.1)'};`}>
+                            {card.icon === 'table' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>}
+                            {card.icon === 'shield' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>}
+                            {card.icon === 'database' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>}
+                            {card.icon === 'server' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>}
+                            {card.icon === 'code' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-gold);"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>}
+                            {card.icon === 'alert' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-earth-light);"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>}
+                        </div>
+                        <h3 class="font-heading font-semibold text-white text-[0.95rem] mb-2">{card.title}</h3>
+                        <p class="text-[0.82rem] leading-relaxed" style="color: rgba(238,238,238,0.6);">{card.text}</p>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 3: EXPERTISES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 reveal" style="color: var(--color-cactus-green);">{t('expertises.label')}</p>
+            <div class="w-12 h-[3px] rounded mb-6 reveal" style="background: var(--color-amber);"></div>
+            <h2 class="font-heading font-bold mb-4 reveal" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--color-ink); line-height: 1.15; letter-spacing: -0.025em;">{t('expertises.title')}</h2>
+            <p class="text-base max-w-[600px] mb-10 reveal" style="color: var(--color-ink-soft);">{t('expertises.subtitle')}</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                    { href: p('/expertises/erp/'), title: 'ERP & Gestion d\'Entreprise', text: 'Notre ERP propriétaire, développé et éprouvé depuis 20 ans. Modulaire, adaptable, avec Business Intelligence intégrée.', icon: 'table' },
+                    { href: p('/expertises/migration-donnees/'), title: 'Migration & Données', text: 'Migrations complexes avec garantie de résultat. De l\'AS400 au SQL Server, de Sage à notre ERP — sans interruption.', icon: 'database' },
+                    { href: p('/expertises/cybersecurite/'), title: 'Cybersécurité', text: 'Audits, pentests, conformité ISO 27002, plans de reprise. La sécurité de votre SI n\'est pas une option.', icon: 'shield' },
+                    { href: p('/expertises/infrastructure/'), title: 'Infrastructure & Cloud', text: 'VMware, Hyper-V, Azure, VPN multisites. Des architectures haute disponibilité pour des entreprises qui ne peuvent pas s\'arrêter.', icon: 'server' },
+                    { href: p('/expertises/developpement/'), title: 'Développement Sur Mesure', text: 'Applications métier, web, mobile, API. Agnostiques en langage, nous nous adaptons à votre écosystème technique.', icon: 'code' },
+                ].map((card, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-8 transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 3) + 1}`} style="border-color: var(--color-cloud-dark);">
+                        <!-- Top bar animation -->
+                        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl origin-left scale-x-0 transition-transform duration-400 group-hover:scale-x-100" style="background: var(--color-cactus-green);"></div>
+                        <!-- Icon -->
+                        <div class="w-[52px] h-[52px] rounded-[10px] flex items-center justify-center mb-5 transition-colors" style="background: rgba(219,204,99,0.15);">
+                            {card.icon === 'table' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>}
+                            {card.icon === 'database' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>}
+                            {card.icon === 'shield' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>}
+                            {card.icon === 'server' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>}
+                            {card.icon === 'code' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>}
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg mb-2" style="color: var(--color-ink);">{card.title}</h3>
+                        <p class="text-sm leading-relaxed mb-5" style="color: var(--color-ink-soft);">{card.text}</p>
+                        <a href={card.href} class="inline-flex items-center gap-1 font-heading font-semibold text-xs group-hover:gap-2 transition-all" style="color: var(--color-cactus-green);">
+                            {t('expertises.link')}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                ))}
+            </div>
+
+            <div class="text-center mt-10 reveal">
+                <a href={p('/expertises/')} class="inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-6 py-3 border-2 transition-all hover:bg-cactus-green hover:text-white" style="color: var(--color-cactus-green); border-color: var(--color-cactus-green);">
+                    {t('expertises.cta')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 4: STATS
+         ═══════════════════════════════════════ -->
+    <section class="relative py-16 dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-[1]">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                {[
+                    { count: '20', suffix: ' ans', label: t('stats.years') },
+                    { count: '50', prefix: '+', label: t('stats.clients') },
+                    { count: '8', label: t('stats.experts') },
+                    { count: '0', label: t('stats.vendor') },
+                ].map((stat, i) => (
+                    <div class={`relative reveal reveal-delay-${i + 1}`}>
+                        {i > 0 && <div class="hidden lg:block absolute left-0 top-[20%] h-[60%] w-px" style="background: rgba(238,238,238,0.12);"></div>}
+                        <div class="font-heading font-extrabold leading-none mb-2" style={`font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--color-gold);`} data-count={stat.count} data-prefix={stat.prefix || ''} data-suffix={stat.suffix || ''}>0</div>
+                        <div class="text-sm font-medium" style="color: rgba(238,238,238,0.6);">{stat.label}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 5: CASE STUDIES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 reveal" style="color: var(--color-cactus-green);">{t('cases.label')}</p>
+            <div class="w-12 h-[3px] rounded mb-6 reveal" style="background: var(--color-amber);"></div>
+            <h2 class="font-heading font-bold mb-4 reveal" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--color-ink); line-height: 1.15;">{t('cases.title')}</h2>
+            <p class="text-base max-w-[600px] mb-10 reveal" style="color: var(--color-ink-soft);">{t('cases.subtitle')}</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                    { badge: 'Transport & Logistique', client: 'Autodistribution', desc: '17 ans de partenariat. Virtualisation VMware, sécurité réseau, VPN multisites et nomades.', tags: ['VMware', 'VPN', '17 ans'] },
+                    { badge: 'Distribution', client: 'Avon Beauty Products', desc: 'Migration et interfaçage de données massives entre systèmes hétérogènes AS400 et SQL Server.', tags: ['AS400', 'SQL Server', 'Migration'] },
+                    { badge: 'Services Professionnels', client: 'Ordre des Notaires du Maroc', desc: "Audit de sécurité, tests de pénétration et validation de conformité pour l'accès aux API sensibles.", tags: ['Pentest', 'API', 'Conformité'] },
+                ].map((c, i) => (
+                    <div class={`flex flex-col bg-white border rounded-2xl p-8 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${i + 1}`} style="border-color: var(--color-cloud-dark);">
+                        <span class="inline-flex items-center w-fit text-xs font-heading font-semibold px-3 py-1 rounded-full mb-4" style="background: rgba(211,157,76,0.12); color: var(--color-earth-brown);">{c.badge}</span>
+                        <h3 class="font-heading font-bold text-lg mb-2" style="color: var(--color-ink);">{c.client}</h3>
+                        <p class="text-sm leading-relaxed mb-5 flex-grow" style="color: var(--color-ink-soft);">{c.desc}</p>
+                        <div class="flex flex-wrap gap-2">
+                            {c.tags.map(tag => (
+                                <span class="inline-flex items-center text-xs font-heading font-semibold px-2.5 py-1 rounded-full" style="background: rgba(71,106,51,0.08); color: var(--color-cactus-green);">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <div class="text-center mt-10 reveal">
+                <a href={p('/resultats/cas-clients/')} class="inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-6 py-3 border-2 transition-all hover:bg-cactus-green hover:text-white" style="color: var(--color-cactus-green); border-color: var(--color-cactus-green);">
+                    {t('cases.cta')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 6: SECTORS
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 reveal" style="color: var(--color-cactus-green);">{t('sectors.label')}</p>
+            <div class="w-12 h-[3px] rounded mb-6 reveal" style="background: var(--color-amber);"></div>
+            <h2 class="font-heading font-bold mb-10 reveal" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--color-ink); line-height: 1.15;">{t('sectors.title')}</h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+                {[
+                    { title: 'Transport & Logistique', href: p('/secteurs/transport/'), icon: 'truck' },
+                    { title: 'Industrie & Agro.', href: p('/secteurs/'), icon: 'factory' },
+                    { title: 'Médical & Santé', href: p('/secteurs/'), icon: 'medical' },
+                    { title: 'Finance & Distrib.', href: p('/secteurs/'), icon: 'finance' },
+                    { title: 'Services Pro.', href: p('/secteurs/'), icon: 'users' },
+                ].map((s, i) => (
+                    <a href={s.href} class={`text-center p-8 py-6 bg-white border rounded-2xl transition-all hover:-translate-y-1 hover:shadow-md hover:border-cactus-green reveal reveal-delay-${i + 1}`} style="border-color: var(--color-cloud-dark);">
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors" style="background: rgba(219,204,99,0.15);">
+                            {s.icon === 'truck' && <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 13.52 9H12v9"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="17" cy="18" r="2"/></svg>}
+                            {s.icon === 'factory' && <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>}
+                            {s.icon === 'medical' && <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/></svg>}
+                            {s.icon === 'finance' && <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>}
+                            {s.icon === 'users' && <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                        </div>
+                        <h3 class="font-heading font-semibold text-sm" style="color: var(--color-ink);">{s.title}</h3>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 7: METHODOLOGY
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 reveal" style="color: var(--color-cactus-green);">{t('methodology.label')}</p>
+            <div class="w-12 h-[3px] rounded mb-6 reveal" style="background: var(--color-amber);"></div>
+            <h2 class="font-heading font-bold mb-4 reveal" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--color-ink); line-height: 1.15;">{t('methodology.title')}</h2>
+            <p class="text-base max-w-[600px] mb-12 reveal" style="color: var(--color-ink-soft);">{t('methodology.subtitle')}</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <!-- Connecting line (desktop) -->
+                <div class="hidden lg:block absolute top-[26px] h-[2px]" style="left: calc(12.5% + 18px); right: calc(12.5% + 18px); background: var(--color-cloud-dark);"></div>
+                {[
+                    { num: '1', title: 'Diagnostic', text: 'Analyse approfondie de votre existant. Nous identifions les vrais problèmes, pas les symptômes.' },
+                    { num: '2', title: 'Conception', text: 'Architecture de la solution optimale, avec traçabilité complète depuis vos spécifications.' },
+                    { num: '3', title: 'Déploiement', text: 'Mise en production progressive, sans interruption. Tests de sécurisation à chaque étape.' },
+                    { num: '4', title: 'Accompagnement', text: 'Support continu, formation, maintenance proactive. Un partenariat, pas une prestation.' },
+                ].map((step, i) => (
+                    <div class={`text-center relative reveal reveal-delay-${i + 1}`}>
+                        <div class="w-[52px] h-[52px] rounded-full flex items-center justify-center mx-auto mb-5 relative z-[2] font-heading font-bold text-lg text-white" style={`background: var(--color-cactus-green); box-shadow: 0 0 0 6px var(--color-cloud);`}>{step.num}</div>
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{step.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{step.text}</p>
+                    </div>
+                ))}
+            </div>
+
+            <div class="text-center mt-10 reveal">
+                <a href={p('/resultats/methodologie/')} class="inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-6 py-3 border-2 transition-all hover:bg-cactus-green hover:text-white" style="color: var(--color-cactus-green); border-color: var(--color-cactus-green);">
+                    {t('methodology.cta')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 8: LOGO MARQUEE
+         ═══════════════════════════════════════ -->
+    <section class="overflow-hidden py-10 border-y relative" style="border-color: var(--color-cloud);">
+        <!-- Fade edges -->
+        <div class="absolute top-0 bottom-0 left-0 w-[120px] z-[2] pointer-events-none" style="background: linear-gradient(to right, white, transparent);"></div>
+        <div class="absolute top-0 bottom-0 right-0 w-[120px] z-[2] pointer-events-none" style="background: linear-gradient(to left, white, transparent);"></div>
+        <div class="flex gap-12 hover:[animation-play-state:paused]" style="animation: marqueeScroll 40s linear infinite; width: max-content;">
+            {['Autodistribution', 'Avon Beauty Products', 'Centrale Danone', 'La Voie Express', 'Active Tech (Segula)', 'Ordre des Notaires', 'Archivex', 'Mido Maroc', 'MEA Food', 'Detroit Industries', 'Prevas', 'Simec', 'Yves Rouger', 'Gilmarfer',
+              'Autodistribution', 'Avon Beauty Products', 'Centrale Danone', 'La Voie Express', 'Active Tech (Segula)', 'Ordre des Notaires', 'Archivex', 'Mido Maroc', 'MEA Food', 'Detroit Industries', 'Prevas', 'Simec', 'Yves Rouger', 'Gilmarfer'
+            ].map(name => (
+                <span class="font-heading font-semibold text-sm whitespace-nowrap tracking-wide shrink-0" style="color: var(--color-ink-muted);">{name}</span>
+            ))}
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 9: URGENCY
+         ═══════════════════════════════════════ -->
+    <section class="relative text-center py-16 overflow-hidden" style="background: linear-gradient(135deg, var(--color-earth-brown) 0%, var(--color-earth-deep) 100%);">
+        <!-- Glow -->
+        <div class="absolute w-[500px] h-[500px] rounded-full -top-[200px] -right-[100px] pointer-events-none" style="background: radial-gradient(circle, rgba(219,204,99,0.08) 0%, transparent 60%);"></div>
+        <div class="max-w-[1200px] mx-auto px-6 relative z-[1]">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4 reveal" style="color: var(--color-gold);">{t('urgency.label')}</p>
+            <h2 class="font-heading font-bold text-white mb-4 reveal" style="font-size: clamp(1.4rem, 3vw, 2.2rem);">{t('urgency.title')}</h2>
+            <div class="font-heading font-extrabold mb-6 reveal" style="font-size: clamp(1.6rem, 4vw, 2.8rem); color: var(--color-gold);">{t('urgency.phone')}</div>
+            <p class="text-base mb-8 reveal" style="color: rgba(255,255,255,0.7);">{t('urgency.text')}</p>
+            <div class="reveal">
+                <a href={p('/urgence/')} class="inline-flex items-center gap-2 font-heading font-semibold text-base rounded-full px-8 py-4 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--color-gold); color: var(--color-cactus-dark);">
+                    {t('urgency.cta')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 10: FINAL CTA
+         ═══════════════════════════════════════ -->
+    <section class="relative text-center py-24 dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-[1]">
+            <h2 class="font-heading font-bold text-white mb-4 reveal" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">{t('cta_final.title')}</h2>
+            <p class="text-base max-w-[520px] mx-auto mb-8 reveal" style="color: rgba(238,238,238,0.7);">{t('cta_final.text')}</p>
+            <div class="reveal">
+                <a href={p('/contact/')} class="inline-flex items-center gap-2 font-heading font-semibold text-base rounded-full px-8 py-4 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    {t('cta.contact')}
+                </a>
+            </div>
+            <p class="font-heading font-semibold text-sm mt-4 reveal" style="color: var(--color-gold);">{t('cta_final.phone')} {t('urgency.phone')}</p>
+        </div>
+    </section>
+
+    <!-- tsParticles Slim CDN -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof tsParticles === 'undefined') return;
+
+            tsParticles.load("tsparticles", {
+                fpsLimit: 60,
+                fullScreen: {
+                    enable: false
+                },
+                particles: {
+                    number: {
+                        value: 70,
+                        density: {
+                            enable: true,
+                            area: 900
+                        }
+                    },
+                    color: {
+                        value: ["#DBCC63", "#476A33"]
+                    },
+                    shape: {
+                        type: "circle"
+                    },
+                    opacity: {
+                        value: 0.15
+                    },
+                    size: {
+                        value: { min: 1.5, max: 4.5 }
+                    },
+                    links: {
+                        enable: false,
+                        distance: 140,
+                        color: "#EEEEEE",
+                        opacity: 0.06,
+                        width: 1.2
+                    },
+                    move: {
+                        enable: true,
+                        speed: 1.2,
+                        direction: "none",
+                        random: false,
+                        straight: false,
+                        outModes: {
+                            default: "out"
+                        }
+                    }
+                },
+                interactivity: {
+                    detectsOn: "window",
+                    events: {
+                        onHover: {
+                            enable: true,
+                            mode: "grab"
+                        },
+                        onClick: {
+                            enable: true,
+                            mode: "push"
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 180,
+                            links: {
+                                opacity: 0.15
+                            }
+                        },
+                        push: {
+                            quantity: 4
+                        }
+                    }
+                },
+                detectRetina: true
+            });
+        });
+    </script>
+</BaseLayout>

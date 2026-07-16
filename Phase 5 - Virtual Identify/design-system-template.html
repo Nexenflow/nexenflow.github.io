@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cactus Informatique — Design System & Color Mapping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CACTUS INFORMATIQUE — DESIGN SYSTEM
+           Color Palette & Usage Guide
+           ============================================ */
+
+        /* ── DESIGN TOKENS ── */
+        :root {
+            /* PRIMARY — Brand Identity */
+            --cactus-green: #476A33;         /* Main brand color. Used for: primary buttons, links, active states, brand elements */
+            --cactus-green-dark: #364022;    /* Deep olive. Used for: header bg, dark hero sections, footer bg, mega menu bg */
+
+            /* ACCENTS — Attention & Warmth */
+            --gold: #DBCC63;                 /* Golden highlight. Used for: CTAs, badges, hover accents, star ratings, pricing highlights */
+            --amber: #D39D4C;                /* Warm amber. Used for: secondary accents, icon fills, borders, tag backgrounds, subtle highlights */
+            --earth-brown: #6F3203;          /* Dark earth. Used for: emergency CTA bg, strong warning accents, premium anchoring elements */
+
+            /* NEUTRALS — Text & Background */
+            --ink: #181818;                  /* Near black. Used for: body text, headings on light bg, primary text everywhere */
+            --cloud: #EEEEEE;               /* Light gray. Used for: section backgrounds (alternating), card backgrounds, subtle borders */
+
+            /* DERIVED — Computed from palette (change base colors above, these adapt) */
+            --white: #FFFFFF;
+            --cactus-green-light: #5a8543;   /* Hover state for cactus-green */
+            --earth-brown-light: #8a4205;    /* Hover state for earth-brown */
+            --earth-brown-deep: #4a2201;     /* Gradient end for urgency section */
+            --hero-gradient-mid: #2a3318;    /* Hero gradient midpoint (dark olive deeper) */
+            --gold-dark: #8a7520;            /* Darker gold for text on gold-soft backgrounds */
+            --gold-soft: rgba(219, 204, 99, 0.15);  /* Gold at 15% — subtle highlight backgrounds */
+            --amber-soft: rgba(211, 157, 76, 0.12);  /* Amber at 12% — tag/badge backgrounds */
+            --cloud-dark: #D5D5D5;           /* Darker gray for borders */
+            --ink-soft: #555555;             /* Secondary text — descriptions, captions */
+            --ink-muted: #888888;            /* Muted text — metadata, timestamps */
+
+            /* TYPOGRAPHY */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            /* SPACING */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
+
+            /* BORDERS */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+
+            /* SHADOWS */
+            --shadow-sm: 0 1px 3px rgba(24, 24, 24, 0.08);
+            --shadow-md: 0 4px 12px rgba(24, 24, 24, 0.10);
+            --shadow-lg: 0 8px 30px rgba(24, 24, 24, 0.12);
+        }
+
+        /* ── RESET ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--ink);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+
+
+        /* ============================================
+           HEADER — Dark Olive Background (#364022)
+           ============================================ */
+        .header {
+            background: var(--cactus-green-dark);
+            padding: var(--space-md) var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .header__logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);  /* Logo text in gold on dark olive */
+            letter-spacing: -0.02em;
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            list-style: none;
+        }
+
+        .header__nav a {
+            color: var(--cloud);  /* Nav links: light gray on dark olive */
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .header__nav a:hover {
+            color: var(--gold);  /* Hover: gold accent */
+        }
+
+        /* Emergency CTA — Earth Brown background */
+        .btn-urgence {
+            background: var(--earth-brown);
+            color: var(--white);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .btn-urgence:hover {
+            background: var(--earth-brown-light);
+            transform: translateY(-1px);
+        }
+
+        /* Primary CTA — Cactus Green background */
+        .btn-primary {
+            background: var(--cactus-green);
+            color: var(--white);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--cactus-green-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(71, 106, 51, 0.35);
+        }
+
+        /* Secondary CTA — Outlined with Gold */
+        .btn-secondary {
+            background: transparent;
+            color: var(--cactus-green);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            border: 2px solid var(--cactus-green);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--cactus-green);
+            color: var(--white);
+        }
+
+        /* Ghost button (on dark backgrounds) */
+        .btn-ghost {
+            background: transparent;
+            color: var(--gold);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-ghost:hover {
+            background: var(--gold);
+            color: var(--cactus-green-dark);
+        }
+
+
+        /* ============================================
+           HERO — Dark Olive Gradient Background
+           ============================================ */
+        .hero {
+            background: linear-gradient(160deg, var(--cactus-green-dark) 0%, var(--hero-gradient-mid) 60%, var(--ink) 100%);
+            padding: var(--space-4xl) var(--space-xl);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle pattern overlay */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(71, 106, 51, 0.2) 0%, transparent 60%);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            background: var(--gold-soft);
+            color: var(--gold);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-lg);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(219, 204, 99, 0.3);
+        }
+
+        .hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--white);  /* Heading on dark bg: pure white */
+            line-height: 1.15;
+            margin-bottom: var(--space-lg);
+            letter-spacing: -0.03em;
+        }
+
+        .hero__title span {
+            color: var(--gold);  /* Key words highlighted in gold */
+        }
+
+        .hero__subtitle {
+            font-size: 1.15rem;
+            color: var(--cloud);  /* Subtitle: light gray (softer than white) */
+            line-height: 1.7;
+            margin-bottom: var(--space-2xl);
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero__ctas {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+
+        /* ============================================
+           SECTION ON WHITE — Default Content Sections
+           ============================================ */
+        .section {
+            padding: var(--space-4xl) var(--space-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section__label {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--cactus-green);  /* Section label: brand green */
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .section__title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            color: var(--ink);  /* Section title: near black */
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.02em;
+        }
+
+        .section__subtitle {
+            font-size: 1.05rem;
+            color: var(--ink-soft);  /* Description text: softer ink */
+            max-width: 640px;
+            margin-bottom: var(--space-2xl);
+        }
+
+
+        /* ============================================
+           SECTION ON GRAY — Alternating Background
+           ============================================ */
+        .section--gray {
+            background: var(--cloud);  /* Alternating section: light gray */
+        }
+
+        .section--gray .section__title {
+            color: var(--ink);
+        }
+
+
+        /* ============================================
+           EXPERTISE CARDS — White cards with green accent
+           ============================================ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--cloud-dark);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--cactus-green);  /* Hover border: brand green */
+        }
+
+        .card__icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gold-soft);  /* Icon container: soft gold background */
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .card__icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--amber);  /* Icon fill: warm amber */
+        }
+
+        .card__title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--ink);  /* Card title: near black */
+            margin-bottom: var(--space-sm);
+        }
+
+        .card__text {
+            font-size: 0.9rem;
+            color: var(--ink-soft);  /* Card body: softer ink */
+            line-height: 1.65;
+            margin-bottom: var(--space-md);
+        }
+
+        .card__link {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--cactus-green);  /* Card link: brand green */
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .card__link:hover {
+            color: var(--cactus-green-light);
+        }
+
+        /* Card on gray background */
+        .section--gray .card {
+            border-color: transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+
+        /* ============================================
+           STATS COUNTER — Gold accent on dark
+           ============================================ */
+        .stats {
+            background: var(--cactus-green-dark);  /* Dark olive background */
+            padding: var(--space-3xl) var(--space-xl);
+        }
+
+        .stats__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-xl);
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stats__number {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--gold);  /* Stat numbers: gold for impact */
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stats__label {
+            font-size: 0.9rem;
+            color: var(--cloud);  /* Stat labels: light gray */
+            font-weight: 500;
+        }
+
+
+        /* ============================================
+           BADGES & TAGS — Amber accent
+           ============================================ */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            background: var(--amber-soft);  /* Badge background: soft amber */
+            color: var(--earth-brown);      /* Badge text: dark brown */
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            letter-spacing: 0.02em;
+        }
+
+        .badge--green {
+            background: rgba(71, 106, 51, 0.12);
+            color: var(--cactus-green);
+        }
+
+        .badge--gold {
+            background: var(--gold-soft);
+            color: var(--gold-dark);
+        }
+
+
+        /* ============================================
+           URGENCY SECTION — Earth Brown dominant
+           ============================================ */
+        .urgency {
+            background: linear-gradient(135deg, var(--earth-brown) 0%, var(--earth-brown-deep) 100%);
+            padding: var(--space-3xl) var(--space-xl);
+            text-align: center;
+            position: relative;
+        }
+
+        .urgency::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(219, 204, 99, 0.08) 0%, transparent 50%);
+        }
+
+        .urgency__content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .urgency__title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+
+        .urgency__phone {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--gold);  /* Phone number: gold for visibility */
+            margin-bottom: var(--space-lg);
+            letter-spacing: 0.02em;
+        }
+
+        .urgency__text {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: var(--space-xl);
+        }
+
+
+        /* ============================================
+           METHODOLOGY — Cactus Green accent line
+           ============================================ */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-lg);
+            counter-reset: step;
+        }
+
+        .step {
+            position: relative;
+            padding-left: var(--space-2xl);
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--cactus-green);  /* Step numbers: brand green circle */
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step__title {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--ink);
+            margin-bottom: var(--space-xs);
+        }
+
+        .step__text {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
+
+
+        /* ============================================
+           CLIENT LOGOS — Muted on light background
+           ============================================ */
+        .logos {
+            background: var(--white);
+            padding: var(--space-2xl) var(--space-xl);
+            border-top: 1px solid var(--cloud);
+            border-bottom: 1px solid var(--cloud);
+        }
+
+        .logos__grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2xl);
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logos__item {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--ink-muted);  /* Client names: muted gray — understated */
+            letter-spacing: 0.02em;
+        }
+
+
+        /* ============================================
+           FOOTER — Dark Olive (matches header)
+           ============================================ */
+        .footer {
+            background: var(--cactus-green-dark);
+            color: var(--cloud);
+            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-2xl);
+            max-width: 1200px;
+            margin: 0 auto var(--space-2xl);
+        }
+
+        .footer__heading {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gold);  /* Footer column titles: gold */
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-md);
+        }
+
+        .footer__link {
+            display: block;
+            color: rgba(238, 238, 238, 0.7);  /* Footer links: semi-transparent cloud */
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer__link:hover {
+            color: var(--white);
+        }
+
+        .footer__emergency {
+            background: var(--earth-brown);  /* Emergency strip: earth brown */
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .footer__emergency-label {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        .footer__emergency-phone {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--white);
+            font-size: 1rem;
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(238, 238, 238, 0.15);
+            padding-top: var(--space-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .footer__copyright {
+            font-size: 0.8rem;
+            color: var(--ink-muted);
+        }
+
+        .footer__legal a {
+            color: var(--ink-muted);
+            font-size: 0.8rem;
+            margin-left: var(--space-md);
+        }
+
+        .footer__legal a:hover {
+            color: var(--cloud);
+        }
+
+
+        /* ============================================
+           FORM — Clean with Green accents
+           ============================================ */
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--ink);
+            margin-bottom: var(--space-xs);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--cloud-dark);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--ink);
+            background: var(--white);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--cactus-green);  /* Focus state: brand green */
+            box-shadow: 0 0 0 3px rgba(71, 106, 51, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: var(--ink-muted);
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888888' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+        }
+
+
+        /* ============================================
+           LINKS & TEXT
+           ============================================ */
+        .link {
+            color: var(--cactus-green);  /* Text links: brand green */
+            font-weight: 500;
+        }
+
+        .link:hover {
+            color: var(--cactus-green-light);
+        }
+
+        .text-muted {
+            color: var(--ink-soft);
+        }
+
+        .text-accent {
+            color: var(--cactus-green);
+        }
+
+        .highlight {
+            background: var(--gold-soft);  /* Text highlight: soft gold */
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+
+        /* ============================================
+           DIVIDER — Amber accent line
+           ============================================ */
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--amber);  /* Decorative line: warm amber */
+            border-radius: 2px;
+            margin-bottom: var(--space-lg);
+        }
+
+
+        /* ============================================
+           COLOR REFERENCE TABLE
+           ============================================ */
+        .color-ref {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-xl);
+        }
+
+        .color-ref table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .color-ref th, .color-ref td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--cloud);
+            font-size: 0.9rem;
+        }
+
+        .color-ref th {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--ink);
+            background: var(--cloud);
+        }
+
+        .swatch {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            vertical-align: middle;
+            margin-right: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .header { flex-wrap: wrap; gap: var(--space-md); }
+            .header__nav { gap: var(--space-md); font-size: 0.85rem; }
+            .hero { padding: var(--space-3xl) var(--space-md); }
+            .section { padding: var(--space-2xl) var(--space-md); }
+            .stats { padding: var(--space-2xl) var(--space-md); }
+            .footer__grid { grid-template-columns: repeat(2, 1fr); }
+            .footer__bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════════════════════════════════
+         HEADER — #364022 background
+         ════════════════════════════════════════ -->
+    <header class="header">
+        <div class="header__logo">CACTUS</div>
+        <nav>
+            <ul class="header__nav">
+                <li><a href="#">Expertises</a></li>
+                <li><a href="#">Secteurs</a></li>
+                <li><a href="#">Resultats</a></li>
+                <li><a href="#">A Propos</a></li>
+                <li><button class="btn-urgence">
+                    <!-- Lucide: AlertTriangle -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    Urgence
+                </button></li>
+                <li><button class="btn-primary">Contactez-nous</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ════════════════════════════════════════
+         HERO — Gradient from #364022 → #181818
+         ════════════════════════════════════════ -->
+    <section class="hero">
+        <div class="hero__content">
+            <div class="hero__badge">Partenaire IT depuis 2006</div>
+            <h1 class="hero__title">
+                Votre <span>partenaire technologique</span> de confiance au Maroc
+            </h1>
+            <p class="hero__subtitle">
+                Cactus construit, securise et modernise les fondations numeriques des entreprises marocaines. ERP proprietaire, cybersecurite, migration de donnees, infrastructure cloud.
+            </p>
+            <div class="hero__ctas">
+                <button class="btn-primary" style="font-size: 1rem; padding: 14px 28px;">
+                    <!-- Lucide: MessageCircle -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    Contactez-nous
+                </button>
+                <button class="btn-ghost">
+                    <!-- Lucide: AlertTriangle -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    Urgence IT
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         STATS — #364022 background, #DBCC63 numbers
+         ════════════════════════════════════════ -->
+    <section class="stats">
+        <div class="stats__grid">
+            <div>
+                <div class="stats__number">20</div>
+                <div class="stats__label">Ans d'expertise</div>
+            </div>
+            <div>
+                <div class="stats__number">+50</div>
+                <div class="stats__label">Clients accompagnes</div>
+            </div>
+            <div>
+                <div class="stats__number">8</div>
+                <div class="stats__label">Experts techniques</div>
+            </div>
+            <div>
+                <div class="stats__number">0</div>
+                <div class="stats__label">Dependance editeur</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         EXPERTISES — White bg, cards with green accents
+         ════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section__label">Nos expertises</div>
+        <div class="divider"></div>
+        <h2 class="section__title">Cinq domaines pour transformer votre SI</h2>
+        <p class="section__subtitle">Chaque expertise est soutenue par plus de vingt ans d'experience terrain et une methodologie centree sur le resultat.</p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg>
+                </div>
+                <h3 class="card__title">ERP & Gestion d'Entreprise</h3>
+                <p class="card__text">ERP proprietaire modulaire, 20 ans de maturite. Gestion commerciale, comptabilite, paie, stocks, BI integree.</p>
+                <div style="margin-bottom: 12px;">
+                    <span class="badge">Sage</span>
+                    <span class="badge">SAP</span>
+                    <span class="badge--green badge">ERP Cactus</span>
+                </div>
+                <a href="#" class="card__link">
+                    En savoir plus
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="card__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                </div>
+                <h3 class="card__title">Migration & Donnees</h3>
+                <p class="card__text">Migrations fluides entre plateformes heterogenes avec garantie de resultat. AS400, SQL Server, Sage, SAP.</p>
+                <div style="margin-bottom: 12px;">
+                    <span class="badge">AS400</span>
+                    <span class="badge">SQL Server</span>
+                </div>
+                <a href="#" class="card__link">
+                    En savoir plus
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="card__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h3 class="card__title">Cybersecurite</h3>
+                <p class="card__text">Audits, pentests, ISO 27002, plans de reprise. La securite de votre SI avec une philosophie Zero Faille.</p>
+                <div style="margin-bottom: 12px;">
+                    <span class="badge--gold badge">ISO 27002</span>
+                    <span class="badge">Pentest</span>
+                </div>
+                <a href="#" class="card__link">
+                    En savoir plus
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         METHODOLOGY — Gray bg, green step numbers
+         ════════════════════════════════════════ -->
+    <section class="section section--gray">
+        <div class="section__label">Notre approche</div>
+        <div class="divider"></div>
+        <h2 class="section__title">L'ingenierie du resultat en 4 etapes</h2>
+        <p class="section__subtitle">Nous ne facturons pas a l'heure. Nous nous engageons sur la resolution effective de vos problemes.</p>
+
+        <div class="steps">
+            <div class="step">
+                <h3 class="step__title">Diagnostic</h3>
+                <p class="step__text">Analyse approfondie de votre existant. Nous identifions les vrais problemes, pas les symptomes.</p>
+            </div>
+            <div class="step">
+                <h3 class="step__title">Conception</h3>
+                <p class="step__text">Architecture de la solution optimale, avec tracabilite complete depuis vos specifications.</p>
+            </div>
+            <div class="step">
+                <h3 class="step__title">Deploiement</h3>
+                <p class="step__text">Mise en production progressive, sans interruption. Tests de securisation a chaque etape.</p>
+            </div>
+            <div class="step">
+                <h3 class="step__title">Accompagnement</h3>
+                <p class="step__text">Support continu, formation, maintenance proactive. Un partenariat, pas une prestation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CLIENT LOGOS — White bg, muted text
+         ════════════════════════════════════════ -->
+    <section class="logos">
+        <div class="logos__grid">
+            <span class="logos__item">Autodistribution</span>
+            <span class="logos__item">Avon</span>
+            <span class="logos__item">Centrale Danone</span>
+            <span class="logos__item">La Voie Express</span>
+            <span class="logos__item">Segula Technologies</span>
+            <span class="logos__item">Notaires du Maroc</span>
+            <span class="logos__item">Mido Maroc</span>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CONTACT FORM — White bg, green focus states
+         ════════════════════════════════════════ -->
+    <section class="section">
+        <div style="max-width: 560px;">
+            <div class="section__label">Contact</div>
+            <div class="divider"></div>
+            <h2 class="section__title">Discutons de votre projet</h2>
+            <p class="section__subtitle">Diagnostic gratuit, sans engagement.</p>
+
+            <form>
+                <div class="form-group">
+                    <label class="form-label">Nom complet</label>
+                    <input type="text" class="form-input" placeholder="Votre nom">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Entreprise</label>
+                    <input type="text" class="form-input" placeholder="Nom de votre entreprise">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email professionnel</label>
+                    <input type="email" class="form-input" placeholder="vous@entreprise.ma">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Besoin</label>
+                    <select class="form-input form-select">
+                        <option value="">Selectionnez votre besoin</option>
+                        <option>ERP & Gestion d'entreprise</option>
+                        <option>Migration de donnees</option>
+                        <option>Cybersecurite</option>
+                        <option>Infrastructure & Cloud</option>
+                        <option>Developpement sur mesure</option>
+                        <option>Urgence IT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-input" rows="4" placeholder="Decrivez votre besoin"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 14px;">
+                    Envoyer
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         URGENCY STRIP — #6F3203 background
+         ════════════════════════════════════════ -->
+    <section class="urgency">
+        <div class="urgency__content">
+            <p style="color: var(--gold); font-family: var(--font-heading); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Intervention d'urgence</p>
+            <h2 class="urgency__title">ERP bloque, panne serveur, incident de securite ?</h2>
+            <div class="urgency__phone">+212 5 22 34 35 45</div>
+            <p class="urgency__text">Nous intervenons comme experts de dernier recours. Reponse sous 2 heures ouvrees.</p>
+            <button class="btn-primary" style="background: var(--gold); color: var(--cactus-green-dark); font-size: 1rem; padding: 14px 28px;">
+                Demande d'urgence
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         FOOTER — #364022 background
+         ════════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="footer__grid">
+            <div>
+                <div class="footer__heading">Expertises</div>
+                <a href="#" class="footer__link">ERP & Gestion</a>
+                <a href="#" class="footer__link">Migration & Data</a>
+                <a href="#" class="footer__link">Cybersecurite</a>
+                <a href="#" class="footer__link">Infrastructure</a>
+                <a href="#" class="footer__link">Developpement</a>
+            </div>
+            <div>
+                <div class="footer__heading">Secteurs</div>
+                <a href="#" class="footer__link">Transport & Logistique</a>
+                <a href="#" class="footer__link">Industrie & Agro.</a>
+                <a href="#" class="footer__link">Medical & Sante</a>
+                <a href="#" class="footer__link">Finance & Distrib.</a>
+            </div>
+            <div>
+                <div class="footer__heading">Entreprise</div>
+                <a href="#" class="footer__link">Notre Histoire</a>
+                <a href="#" class="footer__link">Notre Equipe</a>
+                <a href="#" class="footer__link">Pourquoi Cactus</a>
+                <a href="#" class="footer__link">Carrieres</a>
+            </div>
+            <div>
+                <div class="footer__heading">Contact</div>
+                <a href="#" class="footer__link">contact@cactus.net.ma</a>
+                <a href="#" class="footer__link">+212 5 22 34 35 45</a>
+                <a href="#" class="footer__link">Casablanca 20250, Maroc</a>
+
+                <div class="footer__emergency">
+                    <span class="footer__emergency-label">Urgence IT</span>
+                    <span class="footer__emergency-phone">+212 5 22 34 35 45</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span class="footer__copyright">&copy; 2006-2026 Cactus Informatique. Tous droits reserves.</span>
+            <div class="footer__legal">
+                <a href="#">Mentions legales</a>
+                <a href="#">Confidentialite</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ════════════════════════════════════════
+         COLOR REFERENCE TABLE
+         ════════════════════════════════════════ -->
+    <div class="color-ref">
+        <h2 style="font-family: var(--font-heading); margin-bottom: 24px; color: var(--ink);">Color Assignment Reference</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>Hex</th>
+                    <th>Role</th>
+                    <th>Used For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="swatch" style="background: var(--cactus-green);"></span> Cactus Green</td>
+                    <td><code>#476A33</code></td>
+                    <td>Primary Brand</td>
+                    <td>Primary buttons, links, focus states, section labels, step numbers, card hover borders, form focus rings</td>
+                </tr>
+                <tr>
+                    <td><span class="swatch" style="background: var(--cactus-green-dark);"></span> Dark Olive</td>
+                    <td><code>#364022</code></td>
+                    <td>Dark Surfaces</td>
+                    <td>Header bg, footer bg, hero gradient, stats section bg, mega menu bg, dark section backgrounds</td>
+                </tr>
+                <tr>
+                    <td><span class="swatch" style="background: var(--gold);"></span> Gold</td>
+                    <td><code>#DBCC63</code></td>
+                    <td>Highlight Accent</td>
+                    <td>Logo text, hero keyword highlight, stat numbers, badge backgrounds, footer headings, nav hover, ghost button border, urgency phone number</td>
+                </tr>
+                <tr>
+                    <td><span class="swatch" style="background: var(--amber);"></span> Amber</td>
+                    <td><code>#D39D4C</code></td>
+                    <td>Warm Accent</td>
+                    <td>Card icon fills, decorative dividers, technology badge backgrounds, secondary highlights, subtle accents</td>
+                </tr>
+                <tr>
+                    <td><span class="swatch" style="background: var(--earth-brown);"></span> Earth Brown</td>
+                    <td><code>#6F3203</code></td>
+                    <td>Urgency / Premium</td>
+                    <td>Emergency CTA button, urgency section bg, footer emergency strip, badge text on amber bg, strong warning elements</td>
+                </tr>
+                <tr>
+                    <td><span class="swatch" style="background: var(--ink);"></span> Ink</td>
+                    <td><code>#181818</code></td>
+                    <td>Primary Text</td>
+                    <td>All headings on light bg, body text, card titles, form labels, section titles</td>
+                </tr>
+                <tr>
+                    <td><span class="swatch" style="background: var(--cloud);"></span> Cloud</td>
+                    <td><code>#EEEEEE</code></td>
+                    <td>Light Surface</td>
+                    <td>Alternating section bg, card borders, text on dark bg (hero subtitle, nav links, footer links), logo strip borders</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

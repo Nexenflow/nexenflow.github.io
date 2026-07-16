@@ -1,0 +1,27 @@
+# Dependency directories
+cactus-website/node_modules/
+cactus-website-prototype/node_modules/
+
+# Build outputs
+cactus-website/dist/
+cactus-website-prototype/dist/
+
+# Astro cache and logs
+cactus-website/.astro/
+cactus-website-prototype/.astro/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db

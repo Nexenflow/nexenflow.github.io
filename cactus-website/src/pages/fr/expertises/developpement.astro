@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import CaseStudyCard from '../../../components/CaseStudyCard.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const services = [
+    { title: 'Applications métier', desc: 'Logiciels de gestion conçus sur mesure pour automatiser vos processus spécifiques. De la conception à la mise en production.' },
+    { title: 'Applications web & mobile', desc: 'Applications web accessibles depuis un navigateur. Applications mobiles Android pour vos équipes terrain.' },
+    { title: 'Intégrations API', desc: 'API REST et SOAP, connecteurs entre systèmes hétérogènes, validation de conformité API dans des contextes réglementés.' },
+    { title: 'Automatisation de processus', desc: 'Identification et automatisation des tâches répétitives. Gain de temps, réduction des erreurs.' },
+];
+
+const processSteps = [
+    { num: '01', title: 'Analyse métier', desc: 'Nous comprenons vos processus réels en travaillant avec vos équipes terrain.' },
+    { num: '02', title: 'Spécifications', desc: 'Cahier des charges technique avec traçabilité complète jusqu\'à vos besoins d\'origine.' },
+    { num: '03', title: 'Développement itératif', desc: 'Livraisons incrémentales, validation à chaque étape — vous voyez le produit grandir.' },
+    { num: '04', title: 'Tests & sécurité', desc: 'Tests fonctionnels, tests de sécurité, validation des performances.' },
+    { num: '05', title: 'Déploiement', desc: 'Mise en production sans interruption de votre activité.' },
+    { num: '06', title: 'Formation & support', desc: 'Vos équipes sont formées, le support continu est assuré.' },
+];
+
+const technologies = ['C', 'PHP', 'Python', 'Java', 'JavaScript', 'SQL Server', 'MySQL', 'PostgreSQL', 'Oracle', 'Android', 'REST', 'SOAP', 'Azure'];
+---
+
+<BaseLayout
+    title="Développement d'Applications Métier — Cactus"
+    description="Applications métier, web, mobile et API sur mesure. Équipe full-stack agnostique en langage. Cactus Informatique à Casablanca, Maroc."
+>
+    <PageHero
+        label="Développement Sur Mesure"
+        title="Des applications qui épousent vos "
+        titleHighlight="processus métier"
+        subtitle="Les 20% manquants des logiciels du marché sont souvent les plus critiques. Nous concevons des applications calées sur vos besoins réels."
+        breadcrumbs={[
+            { label: 'Expertises', href: p('/expertises/') },
+            { label: 'Développement' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Discuter de votre projet"
+    />
+
+    <!-- Services -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Nos services" title="Développement de bout en bout" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {services.map((svc, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${i + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                             style="background: rgba(219,204,99,0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);">
+                                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg mb-2" style="color: var(--color-ink);">{svc.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{svc.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Notre approche" title="6 étapes, de l'idée à la production" />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                {processSteps.map((step, i) => (
+                    <div class={`bg-white rounded-2xl p-7 reveal reveal-delay-${(i % 3) + 1}`}>
+                        <span class="font-heading font-extrabold text-3xl" style="color: var(--color-gold); opacity: 0.5;">{step.num}</span>
+                        <h3 class="font-heading font-semibold text-base mb-2 mt-2" style="color: var(--color-ink);">{step.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{step.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6 text-center">
+            <SectionHeader label="Technologies" title="Agnostiques en langage" subtitle="Nous choisissons la technologie adaptée à votre projet, pas celle que nous imposons." align="center" />
+            <div class="flex flex-wrap justify-center gap-3 mt-2 reveal">
+                {technologies.map(tech => (
+                    <span class="inline-flex items-center px-4 py-2 rounded-full font-heading font-semibold text-sm"
+                          style="background: rgba(71,106,51,0.08); color: var(--color-cactus-green);">{tech}</span>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Cas clients -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Cas clients" title="Développement — nos réalisations" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                <CaseStudyCard badge="Mobile ERP" client="Modules satellites ERP"
+                    description="Applications mobiles sécurisées pour équipes commerciales — gestion des factures et tableaux de bord à distance."
+                    tags={['Android', 'API', 'ERP']} delay={1} />
+                <CaseStudyCard badge="API réglementée" client="Conseil National des Notaires"
+                    description="Développement et validation de conformité API dans un contexte réglementé à haute sécurité."
+                    tags={['API', 'Sécurité', 'Conformité']} href={p('/resultats/cas-clients/')} delay={2} />
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="FAQ" title="FAQ — Développement Sur Mesure" />
+            <FaqAccordion items={[
+                { question: 'Combien de temps faut-il pour développer une application ?', answer: 'De 4 semaines pour une application simple à 4-6 mois pour un système complexe. Vous recevez des livrables intermédiaires régulièrement.' },
+                { question: 'Est-ce que ça coûte plus cher qu\'un logiciel du marché ?', answer: 'Sur le court terme, parfois. Sur le long terme, rarement. Pas de licence annuelle, pas de fonctionnalités inutiles payées.' },
+                { question: 'Maintenez-vous les applications après le développement ?', answer: 'Oui. Contrats de maintenance proactive incluant corrections, mises à jour de sécurité, et évolutions fonctionnelles.' },
+                { question: 'Pouvez-vous reprendre un projet abandonné par un autre prestataire ?', answer: 'Oui. Nous auditons le code existant, identifions les problèmes et proposons un plan de reprise clair.' },
+            ]} />
+        </div>
+    </section>
+
+    <FinalCta
+        title="Votre prochain outil métier n'existe pas encore"
+        text="Construisons-le ensemble. Nous commençons toujours par comprendre votre métier avant de parler technologie."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

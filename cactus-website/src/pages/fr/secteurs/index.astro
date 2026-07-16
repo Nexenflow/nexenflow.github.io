@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import StatsBar from '../../../components/StatsBar.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const sectors = [
+    { title: 'Transport & Logistique', desc: 'VPN multisites, gestion de flotte, traçabilité en temps réel, infrastructure haute disponibilité.', refs: 'Autodistribution (depuis 2007), La Voie Express (depuis 20 ans)', href: p('/secteurs/transport-logistique/'), available: true },
+    { title: 'Industrie & Agroalimentaire', desc: 'IoT industriel, automates de production, ponts-bascules, ERP production.', refs: 'Centrale Danone, usines de production avicole', href: p('/secteurs/industrie-agroalimentaire/'), available: true },
+    { title: 'Médical & Santé', desc: 'IoT médical, scanners OCR, intégration moniteurs ECG, sécurité des données patient.', refs: 'Déploiements à Marrakech, Rabat, Fès', href: p('/secteurs/medical-sante/'), available: true },
+    { title: 'Finance & Distribution', desc: 'Business Intelligence, data analytics, ERP caisse POS, gestion commerciale.', refs: 'Environnements financiers et grande distribution', available: false },
+    { title: 'Services Professionnels', desc: 'Audits de sécurité, conformité API, infrastructure sécurisée, ERP adapté.', refs: 'Conseil National de l\'Ordre des Notaires', available: false },
+];
+
+const sectorIcons: Record<string, string> = {
+    'Transport & Logistique': '<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/><path d="M2 6h20"/>',
+    'Industrie & Agroalimentaire': '<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/>',
+    'Médical & Santé': '<path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>',
+    'Finance & Distribution': '<line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+    'Services Professionnels': '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+};
+---
+
+<BaseLayout
+    title="Solutions IT par Secteur d'Activité — Cactus"
+    description="Solutions IT adaptées à votre secteur : transport, industrie, médical, finance, services professionnels. Cactus Informatique, partenaire sectoriel au Maroc."
+>
+    <PageHero
+        label="Nos secteurs"
+        title="Des solutions IT adaptées à votre "
+        titleHighlight="secteur d'activité"
+        subtitle="Un ERP pour une usine ne ressemble pas à celui d'un cabinet de notaires. Nous construisons depuis 20 ans des ponts entre le monde physique et les systèmes d'information."
+        breadcrumbs={[{ label: 'Secteurs' }]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Discuter de vos défis"
+    />
+
+    <!-- Sectors Grid -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="5 secteurs d'expertise"
+                title="Chaque secteur a ses défis — nous les connaissons"
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {sectors.map((sector, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-8 transition-all ${sector.available ? 'hover:-translate-y-1.5 hover:shadow-lg hover:border-cactus-green' : 'opacity-80'} reveal reveal-delay-${(i % 4) + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="flex items-start gap-5">
+                            <div class="shrink-0 w-[52px] h-[52px] rounded-[10px] flex items-center justify-center"
+                                 style="background: rgba(219,204,99,0.15);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);">
+                                    <Fragment set:html={sectorIcons[sector.title] || ''} />
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-heading font-semibold text-lg mb-2" style="color: var(--color-ink);">{sector.title}</h3>
+                                <p class="text-sm leading-relaxed mb-3" style="color: var(--color-ink-soft);">{sector.desc}</p>
+                                <p class="text-xs font-heading font-semibold mb-4" style="color: var(--color-cactus-green);">Réf. : {sector.refs}</p>
+                                {sector.available ? (
+                                    <a href={sector.href} class="inline-flex items-center gap-1 font-heading font-semibold text-xs group-hover:gap-2 transition-all" style="color: var(--color-cactus-green);">
+                                        En savoir plus <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </a>
+                                ) : (
+                                    <span class="text-xs font-heading font-semibold" style="color: var(--color-ink-muted);">Disponible prochainement</span>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <StatsBar stats={[
+        { count: '5', label: 'secteurs d\'expertise' },
+        { count: '50', prefix: '+', label: 'clients accompagnés' },
+        { count: '20', suffix: ' ans', label: 'd\'expérience terrain' },
+        { count: '8', label: 'experts pluridisciplinaires' },
+    ]} />
+
+    <!-- Not found -->
+    <section class="py-24">
+        <div class="max-w-[600px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Votre secteur"
+                title="Vous ne trouvez pas votre secteur ?"
+                subtitle="Notre expertise est transversale. Contactez-nous pour discuter de vos défis — nous avons probablement déjà résolu un problème similaire."
+                align="center"
+            />
+            <div class="reveal">
+                <a href={p('/contact/')}
+                   class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white"
+                   style="background: var(--color-cactus-green);">
+                    Contactez-nous
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Discutons de vos défis sectoriels"
+        text="Chaque secteur a ses contraintes. Parlons des vôtres — diagnostic gratuit, sans engagement."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

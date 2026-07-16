@@ -1,0 +1,475 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import CaseStudyCard from '../../../components/CaseStudyCard.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+// All 10 Case Studies & Client References for our state-of-the-art GSAP 3D Orbital Carousel
+const allCaseStudies = [
+    { badge: 'Depuis 2007 (17 ans)', client: 'Autodistribution', desc: 'Virtualisation VMware, sécurité réseau, VPN multisites and nomades, diagnostic Sage X3 / comptabilité. 17 ans de confiance ininterrompue.', tags: ['Infrastructure', 'Cybersécurité', 'ERP'] },
+    { badge: 'Données massives', client: 'Avon Beauty Products', desc: 'Interfaçage complexe et haute disponibilité entre AS400 et SQL Server pour le traitement de volumes massifs. Tableaux de bord décisionnels BI.', tags: ['Migration', 'BI', 'SQL Server'] },
+    { badge: 'Ordre professionnel', client: 'Notaires du Maroc', desc: 'Audit de sécurité complet, tests d\'intrusion (Pentest), conformité réglementaire et sécurisation des API d\'échange nationales.', tags: ['Cybersécurité', 'Audit', 'API'] },
+    { badge: 'ISO 27002', client: 'Active Tech (Segula)', desc: 'Architecture infrastructure/sécurité, déploiement VPN IPSec, accompagnement vers la certification internationale ISO 27002.', tags: ['Cybersécurité', 'Infrastructure', 'ISO 27002'] },
+    { badge: 'Agroalimentaire', client: 'Centrale Danone', desc: 'Business Intelligence, modélisation de données et data analytics dans un environnement de production industrielle 24/7.', tags: ['BI', 'Data Analytics', 'ERP'] },
+    { badge: 'Depuis 20 ans', client: 'La Voie Express', desc: 'Conception et maintenance du système d\'information critique de logistique nationale depuis plus de deux décennies en flux tendu.', tags: ['Infrastructure', 'Développement', 'Logistique'] },
+    { badge: 'Remédiation', client: 'Broychim', desc: 'Remédiation post-incident : remplacement de pare-feu matériel, nettoyage d\'accès FTP vulnérables, sécurisation du nom de domaine.', tags: ['Cybersécurité', 'Remédiation'] },
+    { badge: 'Audit risques & PRA', client: 'Archivex', desc: 'Détection et mesure des risques SI, audit d\'infrastructure, élaboration du Plan de Reprise d\'Activité (PRA) et sécurisation physique.', tags: ['Cybersécurité', 'Audit', 'PRA'] },
+    { badge: 'Ind. Automobile', client: 'Mido Maroc', desc: 'Accompagnement SI critique, sécurisation des flux de données industrielles et modernisation complète de l\'infrastructure serveur.', tags: ['Infrastructure', 'Support 24/7'] },
+    { badge: 'Agro-industrie', client: 'MEA Food', desc: 'Optimisation des bases de données SQL, interfaçage des automates de production avec la gestion commerciale ERP Cactus.', tags: ['ERP', 'SQL', 'Intégration'] }
+];
+---
+
+<BaseLayout
+    title="Cas Clients & Résultats — Cactus Informatique"
+    description="Découvrez nos cas clients, notre méthodologie de facturation au résultat et 20 ans de missions IT critiques réussies au Maroc."
+>
+    <PageHero
+        label="Résultats"
+        title="Nos résultats parlent "
+        titleHighlight="d'eux-mêmes"
+        subtitle="Nous ne vendons pas du temps. Nous nous engageons sur des résultats mesurables. Une promesse tenue depuis 2006, auprès de plus de 50 entreprises."
+        breadcrumbs={[{ label: 'Résultats' }]}
+        lang={lang}
+        ctaHref={p('/resultats/cas-clients/')}
+        ctaLabel="Voir nos cas clients"
+        ctaSecondaryHref={p('/resultats/methodologie/')}
+        ctaSecondaryLabel="Notre méthodologie"
+    />
+
+    <!-- 1. Top Section: The 3 Featured Case Studies -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Cas phares"
+                title="Des entreprises exigeantes nous font confiance"
+                subtitle="Certaines depuis plus de 17 ans. Focus sur trois de nos missions emblématiques au Maroc."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
+                <CaseStudyCard badge="17 ans" client="Autodistribution"
+                    description="Virtualisation VMware, VPN multisites, diagnostic ERP Sage X3. 17 ans de partenariat ininterrompu."
+                    tags={['Infrastructure', 'ERP', 'Cybersécurité']} href={p('/resultats/cas-clients/')} delay={1} />
+                <CaseStudyCard badge="Données massives" client="Avon Beauty Products"
+                    description="Interfaçage AS400 ↔ SQL Server, tableaux de bord décisionnels pour volumes massifs."
+                    tags={['Migration', 'BI']} href={p('/resultats/cas-clients/')} delay={2} />
+                <CaseStudyCard badge="Sécurité" client="Conseil National des Notaires"
+                    description="Audit de sécurité complet, tests de pénétration, conformité API dans un contexte réglementaire strict."
+                    tags={['Cybersécurité', 'API']} href={p('/resultats/cas-clients/')} delay={3} />
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. State-of-the-Art GSAP 3D Orbital Carousel Showcase -->
+    <section class="py-24 relative overflow-hidden" style="background: var(--color-cactus-dark);">
+        <!-- Ambient Glowing Orbs inside dark hero section -->
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full opacity-20 pointer-events-none blur-3xl" style="background: var(--color-gold);"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 rounded-full opacity-15 pointer-events-none blur-3xl" style="background: var(--color-cactus-green);"></div>
+
+        <div class="max-w-[1280px] mx-auto px-6 relative z-10 mb-12">
+            <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 pb-8 border-b border-white/10">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-heading font-semibold tracking-wider mb-4 bg-white/10 border border-gold/40 text-gold shadow-sm backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        Carrousel GSAP 3D Orbital — 60 FPS
+                    </div>
+                    <h2 class="font-heading font-bold text-3xl md:text-4xl tracking-tight text-white mb-3 leading-tight">
+                        L'intégralité de nos missions en <span style="color: var(--color-gold);">mouvement continu</span>
+                    </h2>
+                    <p class="text-sm md:text-base text-cloud/80 leading-relaxed">
+                        Les cartes défilent au premier plan de droite à gauche, puis pivotent et <strong>retournent en arrière par l'arrière-plan</strong> avec réduction d'échelle et transition d'opacité (<code>opacity: 0</code>) lorsqu'elles sont invisibles, éliminant tout clignotement.
+                    </p>
+                </div>
+
+                <!-- Interactive Glassmorphic Control Toolbar -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto">
+                    <!-- Live Performance Monitor Badge -->
+                    <div class="flex items-center justify-between sm:justify-start gap-3 bg-ink/80 px-4 py-3 rounded-2xl border border-white/15 backdrop-blur-md text-xs font-heading shadow-xl">
+                        <div class="flex items-center gap-2">
+                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#0ae448]" id="gsap-status-light"></span>
+                            <span class="text-white/70">Moteur:</span>
+                            <strong class="font-mono text-white text-sm" id="gsap-fps">60 FPS</strong>
+                        </div>
+                        <span class="text-white/20">|</span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-white/70">Vitesse:</span>
+                            <strong class="font-mono text-gold text-sm" id="gsap-scale">1.0x</strong>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Controls & Speed Modifiers -->
+                    <div class="flex items-center gap-2 self-end sm:self-auto">
+                        <button id="slider-prev" class="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:text-ink hover:border-gold transition-all active:scale-90 shadow-lg cursor-pointer" aria-label="Précédent" title="Faire tourner à gauche">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        </button>
+                        <button id="slider-pause" class="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:text-ink hover:border-gold transition-all active:scale-90 shadow-lg cursor-pointer" aria-label="Pause/Lecture" title="Mettre en pause / reprendre">
+                            <svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+                            <svg id="icon-play" class="hidden" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                        </button>
+                        <button id="slider-next" class="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-gold hover:text-ink hover:border-gold transition-all active:scale-90 shadow-lg cursor-pointer" aria-label="Suivant" title="Faire tourner à droite">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                        <span class="text-white/20 mx-1 hidden md:inline">|</span>
+                        <button id="speed-toggle" class="h-11 px-3.5 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-xs font-heading font-semibold text-white hover:bg-white/20 transition-all active:scale-95 shadow-lg cursor-pointer" title="Modifier la vitesse">
+                            ⚡ Vitesse
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The 3D Orbital Track (Centered relative absolute positioning for continuous depth rotation) -->
+        <div class="relative w-full cursor-grab active:cursor-grabbing select-none py-6 z-10" id="gsap-slider-container" style="height: 520px;">
+            <div class="relative w-full h-full" id="gsap-slider-track">
+                {allCaseStudies.map((cs, i) => (
+                    <div class="gsap-card-slot w-[290px] sm:w-[370px] absolute top-50 left-50" style="transform: translate(-50%, -50%); box-sizing: border-box;">
+                        <div class="gsap-card relative bg-white border border-cloud-dark rounded-3xl p-8 w-full h-full min-h-[460px] transition-all duration-300 flex flex-col justify-between shadow-xl"
+                             style="will-change: transform, opacity;">
+                            <!-- Top Green Accent Bar -->
+                            <div class="absolute top-0 left-6 right-6 h-1.5 rounded-b-full transition-colors duration-300" style="background: var(--color-cactus-green);"></div>
+
+                            <div>
+                                <!-- Card Header Metadata -->
+                                <div class="flex items-center justify-between gap-3 mb-5 pt-2">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-heading font-semibold border border-cactus-green/20"
+                                          style="background: rgba(71,106,51,0.08); color: var(--color-cactus-green);">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                        {cs.badge}
+                                    </span>
+                                    <span class="text-lg font-heading font-bold opacity-20 tracking-tighter" style="color: var(--color-ink);">#{String(i + 1).padStart(2, '0')}</span>
+                                </div>
+
+                                <!-- Client Name & Description -->
+                                <h3 class="font-heading font-bold text-xl sm:text-2xl mb-3 tracking-tight" style="color: var(--color-ink);">{cs.client}</h3>
+                                <p class="text-sm sm:text-[15px] leading-relaxed mb-6" style="color: var(--color-ink-soft);">{cs.desc}</p>
+                            </div>
+
+                            <!-- Card Footer Tech Stack & Action Link -->
+                            <div class="pt-5 border-t border-cloud flex flex-col gap-4">
+                                <div class="flex flex-wrap gap-1.5">
+                                    {cs.tags.map(tag => (
+                                        <span class="text-xs font-heading font-medium px-3 py-1 rounded-lg bg-cloud border border-cloud-dark/50 text-ink-soft">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <div class="flex items-center justify-between pt-1">
+                                    <span class="text-xs font-heading font-semibold text-ink-muted">Résultat garanti</span>
+                                    <a href={p('/resultats/cas-clients/')} class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-cactus-green hover:gap-2 transition-all p-1" aria-label={`Détails ${cs.client}`}>
+                                        Consulter <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <!-- Visual Speed / Drag Hint Footer -->
+        <div class="max-w-[1280px] mx-auto px-6 mt-10 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-heading text-cloud/70 border-t border-white/10 pt-6">
+            <span class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6Z"/></svg>
+                Faites pivoter le carrousel 3D au drag ou utilisez les contrôleurs pour modifier la vitesse et le sens de rotation.
+            </span>
+            <a href={p('/resultats/cas-clients/')} class="font-heading font-semibold text-gold hover:underline flex items-center gap-1">
+                Voir toutes nos références clients →
+            </a>
+        </div>
+    </section>
+
+    <!-- Methodology Link -->
+    <section class="py-24 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[800px] mx-auto px-6 text-center relative z-10">
+            <SectionHeader
+                label="Notre approche"
+                title="Facturation au résultat, posture de « pompier » technique"
+                subtitle="Notre façon de travailler est notre plus grand différenciateur. Découvrez notre méthodologie unique."
+                variant="dark"
+                align="center"
+            />
+            <div class="reveal">
+                <a href={p('/resultats/methodologie/')}
+                   class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5"
+                   style="background: transparent; color: var(--color-gold); border: 2px solid rgba(219,204,99,0.4);">
+                    Découvrir notre méthodologie
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog placeholder -->
+    <section class="py-24">
+        <div class="max-w-[600px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Bientôt disponible"
+                title="Blog & Insights"
+                subtitle="Articles, guides et retours d'expérience sur l'ERP, la cybersécurité, la migration de données et l'infrastructure IT au Maroc."
+                align="center"
+            />
+            <p class="text-sm reveal" style="color: var(--color-ink-muted);">En cours de rédaction — revenez bientôt.</p>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Un défi similaire ?"
+        text="Contactez-nous pour discuter de votre situation. Nous commençons toujours par un diagnostic — gratuit et sans engagement."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+
+    <!-- GSAP CDN Scripts (Isolated specifically on /fr/resultats/ for exact speed testing without site bloat) -->
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof gsap === 'undefined') return;
+
+            gsap.registerPlugin(Draggable);
+
+            const cardSlots = gsap.utils.toArray('.gsap-card-slot');
+            const container = document.getElementById('gsap-slider-container');
+            const prevBtn = document.getElementById('slider-prev');
+            const nextBtn = document.getElementById('slider-next');
+            const pauseBtn = document.getElementById('slider-pause');
+            const speedBtn = document.getElementById('speed-toggle');
+            const iconPause = document.getElementById('icon-pause');
+            const iconPlay = document.getElementById('icon-play');
+            const scaleText = document.getElementById('gsap-scale');
+            const fpsText = document.getElementById('gsap-fps');
+            const statusLight = document.getElementById('gsap-status-light');
+
+            if (!cardSlots.length || !container) return;
+
+            // 1. High-Precision FPS Monitor
+            let lastTime = performance.now();
+            let frames = 0;
+            function updateFPS(now) {
+                frames++;
+                if (now > lastTime + 1000) {
+                    const fps = Math.round((frames * 1000) / (now - lastTime));
+                    if (fpsText) fpsText.textContent = `${fps} FPS`;
+                    if (statusLight) {
+                        if (fps >= 55) statusLight.style.backgroundColor = '#0ae448';
+                        else if (fps >= 35) statusLight.style.backgroundColor = '#dbcc63';
+                        else statusLight.style.backgroundColor = '#ff4545';
+                    }
+                    frames = 0;
+                    lastTime = now;
+                }
+                requestAnimationFrame(updateFPS);
+            }
+            requestAnimationFrame(updateFPS);
+
+            // 2. Safe progress wrapper (guarantees strictly positive wrap [0.0, 1.0])
+            const wrapProgress = (val) => {
+                let w = val % 1.0;
+                return w < 0 ? w + 1.0 : w;
+            };
+
+            // 3. 3D Elliptical Orbital Motion Setup
+            let orbitData = { progress: 0.0 };
+            let activeSpeed = 1.0;
+            let isPaused = false;
+            let isDragging = false;
+
+            let cardWidth = cardSlots[0].offsetWidth;
+            const gap = 36;
+            let step = cardWidth + gap;
+
+            function updateLoop() {
+                const totalCards = cardSlots.length;
+                const containerWidth = container.offsetWidth;
+                cardWidth = cardSlots[0].offsetWidth; // Dynamic layout read
+                step = cardWidth + gap;
+
+                // Fixed visible layout parameters
+                const frontFraction = 0.5;
+                const minX = -cardWidth - 60;
+                const maxX = containerWidth + 60;
+                const trackLength = maxX - minX;
+
+                cardSlots.forEach((slot, i) => {
+                    // Compute normalized local progress for each card
+                    let pCard = wrapProgress(orbitData.progress + (i / totalCards));
+
+                    let x = 0;
+                    let y = 0;
+                    let opacity = 1.0;
+                    let scale = 1.0;
+                    let zIndex = 10;
+
+                    if (pCard <= frontFraction) {
+                        // FRONT TRACK (Moving from Right to Left)
+                        let t = pCard / frontFraction; // 0.0 (right edge) to 1.0 (left edge)
+                        x = maxX - t * trackLength;
+                        y = 0;
+                        scale = 1.0;
+                        
+                        // Dynamic z-index based on proximity to center (prevents Card 0 vs Card 9 stack issues!)
+                        zIndex = 10 + Math.round((1.0 - Math.abs(t - 0.5) * 2.0) * 25);
+
+                        // Edge opacity fades (strictly fades at extreme boundaries)
+                        if (t < 0.12) {
+                            opacity = gsap.utils.mapRange(0.0, 0.12, 0.0, 1.0, t);
+                        } else if (t > 0.88) {
+                            opacity = gsap.utils.mapRange(0.88, 1.0, 1.0, 0.0, t);
+                        } else {
+                            opacity = 1.0;
+                        }
+                    } else {
+                        // BACK TRACK (Moving Back left-to-right in background)
+                        let t = (pCard - frontFraction) / (1.0 - frontFraction); // 0.0 to 1.0
+                        x = minX + t * trackLength;
+                        y = 35;
+                        scale = 0.82;
+                        zIndex = 1;
+                        opacity = 0.0; // Completely invisible while moving back
+                    }
+
+                    gsap.set(slot, {
+                        x: x,
+                        y: y,
+                        scale: scale,
+                        zIndex: zIndex,
+                        opacity: opacity,
+                        transformOrigin: "center center"
+                    });
+                });
+            }
+
+            // Animate progress via custom GSAP timeline for speed manipulation
+            const loop = gsap.timeline({
+                repeat: -1,
+                paused: false,
+                defaults: { ease: "none" }
+            });
+
+            loop.to(orbitData, {
+                progress: 1.0,
+                duration: 26,
+                onUpdate: updateLoop
+            });
+
+            window.addEventListener('resize', updateLoop);
+            updateLoop();
+
+            function updateMonitor(scale) {
+                if (scaleText) scaleText.textContent = `${scale.toFixed(1)}x`;
+            }
+
+            // Hover deceleration
+            container.addEventListener('mouseenter', () => {
+                if (!isPaused && !isDragging) {
+                    gsap.to(loop, { timeScale: 0.25, duration: 0.6, ease: "power2.out" });
+                    updateMonitor(0.25);
+                }
+            });
+
+            container.addEventListener('mouseleave', () => {
+                if (!isPaused && !isDragging) {
+                    gsap.to(loop, { timeScale: activeSpeed, duration: 0.6, ease: "power2.out" });
+                    updateMonitor(activeSpeed);
+                }
+            });
+
+            // Navigation controls (increment or decrement loop progress dynamically)
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    let targetProgress = wrapProgress(orbitData.progress - (1.0 / cardSlots.length));
+                    gsap.to(loop, { progress: targetProgress, duration: 0.8, ease: "power2.out" });
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    let targetProgress = wrapProgress(orbitData.progress + (1.0 / cardSlots.length));
+                    gsap.to(loop, { progress: targetProgress, duration: 0.8, ease: "power2.out" });
+                });
+            }
+
+            if (pauseBtn) {
+                pauseBtn.addEventListener('click', () => {
+                    isPaused = !isPaused;
+                    if (isPaused) {
+                        gsap.to(loop, { timeScale: 0, duration: 0.5, ease: "power2.out" });
+                        updateMonitor(0.0);
+                        if (iconPause) iconPause.classList.add('hidden');
+                        if (iconPlay) iconPlay.classList.remove('hidden');
+                        pauseBtn.classList.add('bg-gold', 'text-ink', 'border-gold');
+                    } else {
+                        gsap.to(loop, { timeScale: activeSpeed, duration: 0.5, ease: "power2.out" });
+                        updateMonitor(activeSpeed);
+                        if (iconPause) iconPause.classList.remove('hidden');
+                        if (iconPlay) iconPlay.classList.add('hidden');
+                        pauseBtn.classList.remove('bg-gold', 'text-ink', 'border-gold');
+                    }
+                });
+            }
+
+            // Speed multiplier toggle button
+            if (speedBtn) {
+                speedBtn.addEventListener('click', () => {
+                    if (isPaused) return;
+                    if (activeSpeed === 1.0) activeSpeed = 1.8;
+                    else if (activeSpeed === 1.8) activeSpeed = 0.5;
+                    else activeSpeed = 1.0;
+
+                    gsap.to(loop, { timeScale: activeSpeed, duration: 0.4, ease: "power2.out" });
+                    updateMonitor(activeSpeed);
+                    speedBtn.textContent = `⚡ Vitesse: ${activeSpeed.toFixed(1)}x`;
+                });
+            }
+
+            // 4. Fully Synchronized Draggable proxy progress tracker
+            let dragProxy = document.createElement("div");
+            dragProxy.style.position = "absolute";
+            dragProxy.style.width = "0px";
+            dragProxy.style.height = "0px";
+            dragProxy.style.pointerEvents = "none";
+            container.appendChild(dragProxy);
+
+            let startProgress = 0;
+
+            Draggable.create(dragProxy, {
+                trigger: container,
+                type: "x",
+                onPress() {
+                    isDragging = true;
+                    // Read current progress from the active timeline to prevent sync snapping
+                    startProgress = loop.progress();
+                    
+                    // Reset coordinate system cleanly and align Draggable's starting points
+                    gsap.set(dragProxy, { x: 0 });
+                    this.update();
+
+                    // Instantly pause timeline scale during dragging
+                    loop.timeScale(0);
+                    updateMonitor(0.0);
+                },
+                onDrag() {
+                    // Map horizontal offset relative to startProgress directly to timeline progress
+                    let deltaProgress = (this.startX - this.x) / container.offsetWidth;
+                    let targetProg = wrapProgress(startProgress + deltaProgress);
+                    
+                    // Directly animate the timeline progress playhead, syncing animated attributes and DOM updates!
+                    loop.progress(targetProg);
+                },
+                onRelease() {
+                    isDragging = false;
+                    if (!isPaused) {
+                        // Smoothly restore the target speed timescale from the exact drop coordinate
+                        gsap.to(loop, { timeScale: activeSpeed, duration: 0.4, ease: "power2.out" });
+                        updateMonitor(activeSpeed);
+                    }
+                }
+            });
+        });
+    </script>
+</BaseLayout>

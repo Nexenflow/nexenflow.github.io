@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import FeatureTable from '../../../components/FeatureTable.astro';
+import CaseStudyCard from '../../../components/CaseStudyCard.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import UrgencyBanner from '../../../components/UrgencyBanner.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const modules = [
+    { title: 'Gestion Commerciale', desc: 'Automatisation complète du cycle de vente : clients, devis, commandes, bons de livraison, factures, avoirs, règlements.' },
+    { title: 'Comptabilité & Télédéclaration', desc: 'Plan comptable, écritures automatiques, lettrage, états comptables. Télédéclaration interfacée directement.' },
+    { title: 'Gestion des Stocks', desc: 'Mouvements, transferts multi-dépôts, traçabilité des lots, alertes de seuil. Visibilité logistique complète.' },
+    { title: 'Caisse & POS', desc: 'Interface tactile pour l\'encaissement, connectée en temps réel au module stocks.' },
+    { title: 'Paie & RH', desc: 'Contrats, éléments variables, congés, télédéclarations sociales. Conformité marocaine.' },
+    { title: 'Production', desc: 'Suivi des processus de fabrication, ordres de production, traçabilité complète.' },
+    { title: 'Pointage', desc: 'Gestion du temps de présence avec intégration directe aux pointeuses physiques.' },
+    { title: 'Pesage & Ponts-Bascules', desc: 'Module natif s\'interfaçant directement avec les ponts-bascules : 1ère/2ème pesée, calcul automatique du poids net.' },
+    { title: 'Business Intelligence', desc: 'Tableaux de bord dynamiques : chiffre d\'affaires, marges, créances, rotation des stocks, top ventes.' },
+    { title: 'Serveurs de Communication', desc: 'Messagerie indépendante, serveurs SMS & Fax. Réduction OPEX, souveraineté des données.' },
+];
+---
+
+<BaseLayout
+    title="ERP Modulaire pour PME au Maroc — Cactus"
+    description="ERP propriétaire modulaire conçu pour les PME marocaines. Gestion commerciale, comptabilité, paie, stocks, BI. Plus de 20 ans de maturité produit."
+>
+    <PageHero
+        label="ERP & Gestion d'Entreprise"
+        title="La solution modulaire conçue pour les "
+        titleHighlight="PME marocaines"
+        subtitle="Depuis plus de 20 ans, nous concevons, maintenons et faisons évoluer notre propre ERP, construit sur une architecture modulaire activable à la carte."
+        breadcrumbs={[
+            { label: 'Expertises', href: p('/expertises/') },
+            { label: 'ERP' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Diagnostic gratuit"
+    />
+
+    <!-- Modules Grid -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Modules disponibles"
+                title="10 modules, activables à la carte"
+                subtitle="Chaque module alimente une couche de données centralisée destinée au pilotage décisionnel."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
+                {modules.map((mod, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 4) + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="flex items-start gap-4">
+                            <div class="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center font-heading font-bold text-sm text-white" style="background: var(--color-cactus-green);">
+                                {String(i + 1).padStart(2, '0')}
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-semibold text-[0.95rem] mb-1" style="color: var(--color-ink);">{mod.title}</h3>
+                                <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{mod.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Pompier ERP Section -->
+    <section class="py-24 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <SectionHeader
+                label="Expertise ERP Tiers"
+                title="Le « pompier » des installations ERP bloquées"
+                subtitle="Nous intervenons comme expert de dernier recours pour débloquer des installations ERP tiers lorsque d'autres intégrateurs échouent."
+                variant="dark"
+            />
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
+                {[
+                    { name: 'Sage 1000 & Sage X3', desc: 'Diagnostic direct en base de données, correction des anomalies de synchronisation.' },
+                    { name: 'SAP', desc: 'Migration et résolution de blocages sur les systèmes SAP.' },
+                    { name: 'Agir & autres', desc: 'Reprise et finalisation de projets ERP abandonnés par d\'autres prestataires.' },
+                ].map((item, i) => (
+                    <div class={`bg-white/5 rounded-2xl p-7 border border-white/10 reveal reveal-delay-${i + 1}`}>
+                        <h3 class="font-heading font-semibold text-lg mb-2 text-white">{item.name}</h3>
+                        <p class="text-sm leading-relaxed" style="color: rgba(238,238,238,0.6);">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Avantages -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader
+                label="Pourquoi nous choisir"
+                title="Pourquoi choisir l'ERP Cactus ?"
+            />
+            <FeatureTable rows={[
+                { label: 'Modulaire', value: 'Activez uniquement les modules dont vous avez besoin — payez pour ce que vous utilisez.' },
+                { label: '20 ans de maturité', value: 'Pas un produit en version bêta — un système éprouvé en production depuis 2006.' },
+                { label: 'Adapté au Maroc', value: 'Conformité fiscale marocaine native (télédéclarations, plan comptable local).' },
+                { label: 'Indépendant', value: 'Pas de licence éditeur tierce — vous ne dépendez que de nous.' },
+                { label: 'BI intégrée', value: 'Tableaux de bord natifs — pas besoin d\'un outil BI séparé.' },
+                { label: 'IoT ready', value: 'Connectez ponts-bascules, pointeuses, automates industriels directement à votre ERP.' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- Cas clients -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Cas clients"
+                title="Ils nous font confiance pour leur ERP"
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                <CaseStudyCard
+                    badge="Depuis 2007"
+                    client="Autodistribution"
+                    description="Diagnostic direct en base de données pour synchroniser l'ERP Sage X3 avec la comptabilité. 17 ans de partenariat continu."
+                    tags={['ERP Sage X3', 'Diagnostic BDD', 'Comptabilité']}
+                    href={p('/resultats/cas-clients/')}
+                    delay={1}
+                />
+                <CaseStudyCard
+                    badge="Données massives"
+                    client="Avon Beauty Products"
+                    description="Interfaçage complexe AS400 ↔ SQL Server avec création de tableaux de bord décisionnels."
+                    tags={['AS400', 'SQL Server', 'BI']}
+                    href={p('/resultats/cas-clients/')}
+                    delay={2}
+                />
+            </div>
+        </div>
+    </section>
+
+    <!-- Secteurs ERP -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Secteurs"
+                title="Secteurs où notre ERP excelle"
+            />
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
+                {[
+                    { title: 'Transport & Logistique', desc: 'Gestion de flotte, multi-dépôts, traçabilité.', href: p('/secteurs/transport-logistique/') },
+                    { title: 'Industrie & Agroalimentaire', desc: 'Production, pesage, automates industriels.' },
+                    { title: 'Finance & Distribution', desc: 'Gestion commerciale, caisse POS, BI.' },
+                ].map((item, i) => (
+                    <div class={`bg-white border rounded-2xl p-6 transition-all hover:shadow-md hover:border-cactus-green reveal reveal-delay-${i + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{item.title}</h3>
+                        <p class="text-sm leading-relaxed mb-3" style="color: var(--color-ink-soft);">{item.desc}</p>
+                        {item.href && (
+                            <a href={item.href} class="font-heading font-semibold text-xs transition-colors" style="color: var(--color-cactus-green);">
+                                Voir le secteur →
+                            </a>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="FAQ" title="FAQ — ERP Cactus" />
+            <FaqAccordion items={[
+                { question: 'Combien coûte la mise en place de l\'ERP Cactus ?', answer: 'Chaque déploiement est personnalisé. Le coût dépend du nombre de modules activés et de la complexité de vos processus métier. Nous pratiquons la facturation au résultat — contactez-nous pour un diagnostic gratuit.' },
+                { question: 'Puis-je migrer depuis Sage ou SAP vers votre ERP ?', answer: 'Oui. Nous réalisons des migrations fluides depuis Sage 1000, Sage X3, SAP et d\'autres systèmes. Notre engagement : zéro perte de données et continuité de votre activité pendant la migration.' },
+                { question: 'L\'ERP fonctionne-t-il sur mobile ?', answer: 'Oui. Nous développons des modules satellites (applications mobiles Android) permettant aux équipes commerciales et au COMEX d\'accéder aux tableaux de bord et de gérer les factures à distance.' },
+                { question: 'Êtes-vous dépendants d\'un éditeur ?', answer: 'Non. Notre ERP est propriétaire. Nous ne dépendons d\'aucun éditeur externe, ce qui garantit une totale indépendance et des coûts maîtrisés sur le long terme.' },
+            ]} />
+        </div>
+    </section>
+
+    <UrgencyBanner
+        title="Mon ERP est bloqué !"
+        text="Nous intervenons en urgence sur les installations ERP bloquées — Sage, SAP, ou autre."
+        ctaHref={p('/urgence/')}
+        ctaLabel="Demande d'urgence"
+    />
+
+    <FinalCta
+        title="Modernisez votre gestion d'entreprise"
+        text="Diagnostic gratuit de votre système actuel. Nous identifierons les modules adaptés à vos besoins."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

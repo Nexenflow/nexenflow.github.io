@@ -1,0 +1,29 @@
+---
+interface Props {
+    names?: string[];
+}
+
+const { names = [
+    'Autodistribution', 'Avon Beauty Products', 'Centrale Danone', 'La Voie Express',
+    'Active Tech (Segula)', 'Ordre des Notaires', 'Archivex', 'Mido Maroc',
+    'MEA Food', 'Detroit Industries', 'Prevas', 'Simec', 'Yves Rouger', 'Gilmarfer',
+] } = Astro.props;
+
+// Double names for seamless loop
+const allNames = [...names, ...names];
+---
+
+<section class="overflow-hidden py-10 border-y relative" style="border-color: var(--color-cloud);">
+    <!-- Fade edges -->
+    <div class="absolute top-0 bottom-0 left-0 w-[120px] z-[2] pointer-events-none"
+         style="background: linear-gradient(to right, white, transparent);"></div>
+    <div class="absolute top-0 bottom-0 right-0 w-[120px] z-[2] pointer-events-none"
+         style="background: linear-gradient(to left, white, transparent);"></div>
+    <div class="flex gap-12 hover:[animation-play-state:paused]"
+         style="animation: marqueeScroll 40s linear infinite; width: max-content;">
+        {allNames.map(name => (
+            <span class="font-heading font-semibold text-sm whitespace-nowrap tracking-wide shrink-0"
+                  style="color: var(--color-ink-muted);">{name}</span>
+        ))}
+    </div>
+</section>

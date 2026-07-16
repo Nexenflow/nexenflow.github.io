@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import FeatureTable from '../../../components/FeatureTable.astro';
+import CaseStudyCard from '../../../components/CaseStudyCard.astro';
+import FaqAccordion from '../../../components/FaqAccordion.astro';
+import UrgencyBanner from '../../../components/UrgencyBanner.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const services = [
+    { title: 'Audit de sécurité IT', desc: 'Évaluation complète : cartographie des risques, détection des vulnérabilités, mesure de l\'exposition, recommandations concrètes et priorisées. Un plan d\'action exploitable, pas un rapport de 200 pages.', ref: 'Conseil National de l\'Ordre des Notaires, Archivex' },
+    { title: 'Tests d\'intrusion (Pentest)', desc: 'Simulation d\'attaques réelles pour identifier les failles avant qu\'un attaquant ne les exploite. Validation de conformité API.', ref: 'Yakeey MEA SASU' },
+    { title: 'Conformité ISO/IEC 27002', desc: 'Accompagnement stratégique vers la certification. Nous mettons en place les contrôles techniques réels, pas seulement la documentation.', ref: 'Active Tech (Segula Technologies)' },
+    { title: 'Sécurisation d\'infrastructure', desc: 'Pare-feux matériels et virtuels, gestion des accès, politiques de sauvegarde et plans de reprise d\'activité (PRA).', ref: 'Broychim' },
+    { title: 'Gestion de crise & remédiation', desc: 'Reconstruction Active Directory, purge des comptes compromis, réinitialisation sécurisée, restauration des données.', ref: '' },
+];
+---
+
+<BaseLayout
+    title="Cybersécurité Entreprise au Maroc — Cactus"
+    description="Audit de sécurité, tests d'intrusion, conformité ISO 27002, plans de reprise d'activité. Protégez votre entreprise avec Cactus Informatique à Casablanca."
+>
+    <PageHero
+        label="Cybersécurité"
+        title="Protégez votre entreprise, "
+        titleHighlight="pas seulement votre réseau"
+        subtitle="Chaque entreprise marocaine est une cible potentielle. Nous appliquons une philosophie du « Zéro Faille » : contrôle qualité systématique à chaque étape."
+        breadcrumbs={[
+            { label: 'Expertises', href: p('/expertises/') },
+            { label: 'Cybersécurité' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Audit de sécurité"
+        ctaSecondaryHref={p('/urgence/')}
+        ctaSecondaryLabel="Incident en cours ?"
+    />
+
+    <!-- Services Grid -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Nos services"
+                title="Cybersécurité de bout en bout"
+                subtitle="De l'audit initial à la remédiation post-incident."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {services.map((svc, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 4) + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                             style="background: rgba(219,204,99,0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);">
+                                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg mb-2" style="color: var(--color-ink);">{svc.title}</h3>
+                        <p class="text-sm leading-relaxed mb-3" style="color: var(--color-ink-soft);">{svc.desc}</p>
+                        {svc.ref && (
+                            <p class="text-xs font-heading font-semibold" style="color: var(--color-cactus-green);">
+                                Réf. : {svc.ref}
+                            </p>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Approche Zéro Faille -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="Notre approche" title="La philosophie « Zéro Faille »" />
+            <FeatureTable rows={[
+                { label: 'Tests systématiques', value: 'Chaque étape de mission est validée par des tests de sécurisation.' },
+                { label: 'Validation des sauvegardes', value: 'Nous ne considérons pas qu\'une sauvegarde fonctionne tant qu\'elle n\'a pas été testée en restauration.' },
+                { label: 'Critères de succès explicites', value: 'Performance accrue, zéro interruption non planifiée, respect du budget.' },
+                { label: 'Indépendance', value: 'Aucune dépendance éditeur — la solution adaptée, pas la plus rentable pour nous.' },
+                { label: 'Transparence radicale', value: 'Si un risque ne peut pas être éliminé, nous vous le disons clairement.' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- Cas clients -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Cas clients" title="Ils nous font confiance pour leur sécurité" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                <CaseStudyCard badge="Ordre professionnel" client="Conseil National des Notaires"
+                    description="Audit de sécurité complet, tests de pénétration, reporting détaillé des vulnérabilités."
+                    tags={['Audit', 'Pentest', 'Conformité API']} href={p('/resultats/cas-clients/')} delay={1} />
+                <CaseStudyCard badge="ISO 27002" client="Active Tech (Segula Technologies)"
+                    description="Architecture infrastructure/sécurité, VPN et accompagnement vers la certification ISO 27002."
+                    tags={['ISO 27002', 'VPN', 'Architecture']} href={p('/resultats/cas-clients/')} delay={2} />
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="FAQ" title="FAQ — Cybersécurité" />
+            <FaqAccordion items={[
+                { question: 'Par où commencer pour sécuriser mon entreprise ?', answer: 'Par un audit de sécurité. Nous cartographions vos risques, identifions les vulnérabilités et priorisons les actions.' },
+                { question: 'Combien coûte un audit de sécurité ?', answer: 'Le coût dépend de la taille et de la complexité de votre infrastructure. Nous pratiquons la facturation au résultat.' },
+                { question: 'Mon entreprise a été victime d\'une cyberattaque. Que faire ?', answer: 'Appelez-nous immédiatement. Nous intervenons en urgence pour contenir l\'incident, évaluer les dégâts, reconstruire l\'environnement et restaurer vos données.' },
+                { question: 'La certification ISO 27002 est-elle adaptée aux PME ?', answer: 'Oui. Nous adaptons le périmètre de certification à votre taille. L\'objectif n\'est pas une usine à gaz bureaucratique, mais des contrôles concrets.' },
+                { question: 'Proposez-vous des contrats de surveillance continue ?', answer: 'Oui. Nous proposons des contrats de maintenance proactive incluant surveillance, mises à jour de sécurité et veille sur les menaces.' },
+            ]} />
+        </div>
+    </section>
+
+    <UrgencyBanner
+        title="Incident de sécurité en cours ?"
+        text="Nous intervenons en urgence pour contenir, reconstruire et restaurer."
+        ctaHref={p('/urgence/')}
+        ctaLabel="Demande d'urgence"
+    />
+
+    <FinalCta
+        title="La sécurité de votre SI ne peut plus attendre"
+        text="Chaque jour sans audit est un jour d'exposition. Diagnostic initial gratuit."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

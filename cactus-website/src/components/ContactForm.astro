@@ -1,0 +1,129 @@
+---
+interface Props {
+    variant?: 'standard' | 'urgency';
+    lang: string;
+}
+
+const { variant = 'standard', lang } = Astro.props;
+const isUrgency = variant === 'urgency';
+
+const standardOptions = [
+    'ERP & Gestion d\'entreprise',
+    'Migration de données',
+    'Cybersécurité',
+    'Infrastructure & Cloud',
+    'Développement sur mesure',
+    'Urgence IT',
+    'Autre',
+];
+
+const urgencyOptions = [
+    'ERP bloqué / inaccessible',
+    'Incident cybersécurité / intrusion',
+    'Panne serveur critique',
+    'Perte de données',
+    'Migration échouée',
+    'Autre urgence',
+];
+
+const options = isUrgency ? urgencyOptions : standardOptions;
+// Follow the website's form chart (use light classes for both standard and urgency)
+const inputClass = 'form-input';
+const labelClass = 'form-label';
+---
+
+<form id={isUrgency ? 'urgency-form' : 'contact-form'}
+      class="space-y-5"
+      action={isUrgency ? '/api/urgence.php' : '/api/contact.php'}
+      method="POST">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+            <label class={labelClass} for="nom">Nom complet *</label>
+            <input type="text" id="nom" name="nom" required placeholder="Ex: M. Karim Benjelloun"
+                   class={inputClass} />
+            {isUrgency && <span class="text-[10px] text-ink-muted mt-1 block">Votre nom pour la prise de contact direct</span>}
+        </div>
+        <div>
+            <label class={labelClass} for="entreprise">Entreprise *</label>
+            <input type="text" id="entreprise" name="entreprise" required placeholder="Ex: SOREC S.A."
+                   class={inputClass} />
+            {isUrgency && <span class="text-[10px] text-ink-muted mt-1 block">Raison sociale de la société impactée</span>}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {!isUrgency && (
+            <div>
+                <label class={labelClass} for="email">Email professionnel *</label>
+                <input type="email" id="email" name="email" required placeholder="email@entreprise.ma"
+                       class={inputClass} />
+            </div>
+        )}
+        <div>
+            <label class={labelClass} for="telephone">Téléphone direct *</label>
+            <input type="tel" id="telephone" name="telephone" required placeholder="Ex: +212 6 61 12 34 56"
+                   class={inputClass} />
+            {isUrgency && <span class="text-[10px] text-ink-muted mt-1 block">Rappel immédiat sous 2 heures ouvrées</span>}
+        </div>
+        {isUrgency && (
+            <div>
+                <label class={labelClass} for="email">Adresse Email *</label>
+                <input type="email" id="email" name="email" required placeholder="email@entreprise.ma"
+                       class={inputClass} />
+                <span class="text-[10px] text-ink-muted mt-1 block">Pour l'envoi du rapport d'intervention</span>
+            </div>
+        )}
+    </div>
+
+    <div>
+        <label class={labelClass} for="besoin">
+            {isUrgency ? 'Type d\'urgence technique *' : 'Besoin *'}
+        </label>
+        <select id="besoin" name="besoin" required
+                class={`${inputClass} cursor-pointer`}>
+            <option value="">— Sélectionnez le type d'incident —</option>
+            {options.map(opt => (
+                <option value={opt}>{opt}</option>
+            ))}
+        </select>
+        {isUrgency && <span class="text-[10px] text-ink-muted mt-1 block">Sélectionnez la catégorie qui décrit le mieux la panne</span>}
+    </div>
+
+    <div>
+        <label class={labelClass} for="message">
+            {isUrgency ? 'Description détaillée de la situation *' : 'Message *'}
+        </label>
+        <textarea id="message" name="message" required rows="4"
+                  placeholder={isUrgency ? 'Décrivez la panne ou l\'incident (Ex: Base de données SQL corrompue suite à panne de disque, ERP inaccessible depuis 8h...)' : 'Décrivez votre besoin en quelques lignes...'}
+                  class={inputClass}></textarea>
+        {isUrgency && <span class="text-[10px] text-ink-muted mt-1 block">Détaillez les messages d'erreur ou les symptômes visibles</span>}
+    </div>
+
+    <button type="submit"
+            class={`magnetic-btn w-full md:w-auto inline-flex items-center justify-center gap-2.5 font-heading font-bold text-sm rounded-full px-8 py-4.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-xl cursor-pointer`}
+            style={`background: var(--color-${isUrgency ? 'earth-brown' : 'cactus-green'});`}>
+        {isUrgency ? (
+            <>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/>
+                    <path d="M12 9v4"/><path d="M12 17h.01"/>
+                </svg>
+                Déclencher l'alerte d'urgence IT
+            </>
+        ) : (
+            <>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+                </svg>
+                Envoyer le message
+            </>
+        )}
+    </button>
+
+    <p class="text-xs mt-3" style={`color: var(--color-ink-muted);`}>
+        {isUrgency ? '✓ Un ingénieur senior prend contact avec vous sous 2h. Facturation au résultat.' : 'Nous vous répondons sous 24 heures ouvrées.'}
+    </p>
+</form>

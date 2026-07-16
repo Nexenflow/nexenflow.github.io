@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import CaseStudyCard from '../../../components/CaseStudyCard.astro';
+import LogoMarquee from '../../../components/LogoMarquee.astro';
+import UrgencyBanner from '../../../components/UrgencyBanner.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const caseStudies = [
+    { badge: 'Depuis 2007', client: 'Autodistribution', desc: 'Virtualisation VMware, sécurité réseau, VPN multisites et nomades, diagnostic Sage X3 / comptabilité. 17 ans de confiance ininterrompue.', tags: ['Infrastructure', 'Cybersécurité', 'ERP'] },
+    { badge: 'Données massives', client: 'Avon Beauty Products', desc: 'Interfaçage complexe entre AS400 et SQL Server pour le traitement de volumes massifs. Tableaux de bord décisionnels.', tags: ['Migration', 'BI'] },
+    { badge: 'Ordre professionnel', client: 'Conseil National des Notaires', desc: 'Audit de sécurité complet, tests de pénétration, conformité API dans un contexte réglementaire strict.', tags: ['Cybersécurité', 'API'] },
+    { badge: 'ISO 27002', client: 'Active Tech (Segula Technologies)', desc: 'Architecture infrastructure/sécurité, déploiement VPN, accompagnement vers la certification ISO 27002.', tags: ['Cybersécurité', 'Infrastructure'] },
+    { badge: 'Agroalimentaire', client: 'Centrale Danone', desc: 'Business Intelligence et data analytics dans un environnement de production industrielle.', tags: ['BI', 'ERP'] },
+    { badge: '20 ans', client: 'La Voie Express', desc: 'Conception et maintenance du système d\'information critique depuis plus de 20 ans.', tags: ['Infrastructure', 'Développement'] },
+    { badge: 'Remédiation', client: 'Broychim', desc: 'Remédiation complète : changement de pare-feu, nettoyage d\'accès FTP vulnérables, sécurisation du nom de domaine.', tags: ['Cybersécurité'] },
+    { badge: 'Audit risques', client: 'Archivex', desc: 'Détection et mesure des risques, audit d\'infrastructure, propositions d\'amélioration sécuritaire.', tags: ['Cybersécurité'] },
+];
+---
+
+<BaseLayout
+    title="Nos Cas Clients — 20 ans de missions critiques"
+    description="Autodistribution, Avon, Notaires du Maroc, Segula Technologies... Découvrez nos cas clients IT et les résultats concrets que nous avons obtenus."
+>
+    <PageHero
+        label="Cas Clients"
+        title="20 ans de missions critiques "
+        titleHighlight="réussies"
+        subtitle="Chaque mission que nous acceptons se termine par un résultat mesurable. Pas de rapports sans suite, pas de projets abandonnés."
+        breadcrumbs={[
+            { label: 'Résultats', href: p('/resultats/') },
+            { label: 'Cas Clients' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Un défi similaire ?"
+    />
+
+    <!-- Case Studies Grid -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Nos références"
+                title="Des résultats concrets, pas des promesses"
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {caseStudies.map((cs, i) => (
+                    <CaseStudyCard
+                        badge={cs.badge}
+                        client={cs.client}
+                        description={cs.desc}
+                        tags={cs.tags}
+                        delay={(i % 2) + 1}
+                    />
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Clients -->
+    <section class="py-12">
+        <div class="max-w-[1200px] mx-auto px-6 text-center mb-8">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest reveal" style="color: var(--color-cactus-green);">
+                Autres clients de confiance
+            </p>
+        </div>
+        <LogoMarquee names={[
+            'Mido Maroc', 'MEA Food', 'Detroit Industries', 'Prevas', 'Simec', 'Yves Rouger',
+            'Gilmarfer', 'Mievic', 'Sochid', 'Casinfo', 'Sintram', 'Isomed', 'Maimouna',
+            'Canal Informatique', 'Euromed', 'Yakeey MEA SASU', 'Ouromed',
+        ]} />
+    </section>
+
+    <UrgencyBanner
+        ctaHref={p('/urgence/')}
+        ctaLabel="Demande d'urgence"
+    />
+
+    <FinalCta
+        title="Un défi similaire au vôtre ?"
+        text="Quelle que soit la complexité de votre situation, nous l'avons probablement déjà rencontrée."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

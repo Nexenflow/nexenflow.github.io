@@ -1,0 +1,36 @@
+---
+interface StatItem {
+    count: string;
+    prefix?: string;
+    suffix?: string;
+    label: string;
+}
+
+interface Props {
+    stats: StatItem[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="relative py-16 dot-grid" style="background: var(--color-cactus-dark);">
+    <div class="max-w-[1200px] mx-auto px-6 relative z-[1]">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {stats.map((stat, i) => (
+                <div class={`relative reveal reveal-delay-${i + 1}`}>
+                    {i > 0 && <div class="hidden lg:block absolute left-0 top-[20%] h-[60%] w-px" style="background: rgba(238,238,238,0.12);"></div>}
+                    <div class="font-heading font-extrabold leading-none mb-2"
+                         style="font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--color-gold);"
+                         data-count={stat.count}
+                         data-prefix={stat.prefix || ''}
+                         data-suffix={stat.suffix || ''}>
+                        0
+                    </div>
+                    <div class="text-sm font-medium" style="color: rgba(238,238,238,0.6);">
+                        {stat.label}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

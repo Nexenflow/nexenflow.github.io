@@ -1,0 +1,32 @@
+---
+interface Props {
+    label: string;
+    title: string;
+    subtitle?: string;
+    variant?: 'light' | 'dark';
+    align?: 'left' | 'center';
+}
+
+const { label, title, subtitle, variant = 'light', align = 'left' } = Astro.props;
+const isLight = variant === 'light';
+const isCenter = align === 'center';
+---
+
+<div class={isCenter ? 'text-center' : ''}>
+    <p class={`font-heading font-semibold text-xs uppercase tracking-widest mb-3 reveal`}
+       style={`color: var(--color-${isLight ? 'cactus-green' : 'gold'});`}>
+        {label}
+    </p>
+    <div class={`w-12 h-[3px] rounded mb-6 reveal ${isCenter ? 'mx-auto' : ''}`}
+         style="background: var(--color-amber);"></div>
+    <h2 class="font-heading font-bold mb-4 reveal"
+        style={`font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--color-${isLight ? 'ink' : 'white'}); line-height: 1.15; letter-spacing: -0.025em;`}>
+        {title}
+    </h2>
+    {subtitle && (
+        <p class={`text-base ${isCenter ? 'mx-auto' : ''} max-w-[600px] mb-10 reveal`}
+           style={`color: ${isLight ? 'var(--color-ink-soft)' : 'rgba(238,238,238,0.7)'};`}>
+            {subtitle}
+        </p>
+    )}
+</div>

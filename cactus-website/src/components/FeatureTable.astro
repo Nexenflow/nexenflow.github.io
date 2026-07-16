@@ -1,0 +1,36 @@
+---
+interface Row {
+    label: string;
+    value: string;
+}
+
+interface Props {
+    rows: Row[];
+}
+
+const { rows } = Astro.props;
+---
+
+<div class="overflow-hidden rounded-2xl border reveal" style="border-color: var(--color-cloud-dark);">
+    {rows.map((row, i) => (
+        <div class={`flex items-start gap-4 p-5 px-6 transition-colors hover:bg-cloud/50 ${i < rows.length - 1 ? 'border-b' : ''}`}
+             style={i < rows.length - 1 ? 'border-color: var(--color-cloud-dark);' : ''}>
+            <div class="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                 style="background: rgba(71,106,51,0.08);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                     style="color: var(--color-cactus-green);">
+                    <path d="m9 12 2 2 4-4"/>
+                </svg>
+            </div>
+            <div>
+                <div class="font-heading font-semibold text-sm mb-0.5" style="color: var(--color-ink);">
+                    {row.label}
+                </div>
+                <div class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                    {row.value}
+                </div>
+            </div>
+        </div>
+    ))}
+</div>

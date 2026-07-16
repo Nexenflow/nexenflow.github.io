@@ -1,0 +1,281 @@
+---
+import { useTranslations, getLocalePath } from '../i18n/utils';
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const p = (path: string) => getLocalePath(lang, path);
+---
+
+<header
+    id="header"
+    class="fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center transition-all duration-250"
+    style="background: var(--color-cactus-dark);"
+>
+    <div class="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
+        <!-- Logo -->
+        <a href={p('/')} class="font-heading text-[1.6rem] font-extrabold tracking-tight" style="color: var(--color-gold);">
+            CACTUS
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-1" aria-label="Navigation principale">
+            <!-- Expertises -->
+            <div class="relative" data-mega-trigger="expertises">
+                <a href={p('/expertises/')}
+                   class="text-cloud text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-gold hover:bg-white/5 inline-flex items-center gap-1">
+                    {t('nav.expertises')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-50"><path d="m6 9 6 6 6-6"/></svg>
+                </a>
+            </div>
+            <!-- Secteurs -->
+            <div class="relative" data-mega-trigger="secteurs">
+                <a href={p('/secteurs/')}
+                   class="text-cloud text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-gold hover:bg-white/5 inline-flex items-center gap-1">
+                    {t('nav.secteurs')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-50"><path d="m6 9 6 6 6-6"/></svg>
+                </a>
+            </div>
+            <!-- Résultats -->
+            <div class="relative" data-mega-trigger="resultats">
+                <a href={p('/resultats/')}
+                   class="text-cloud text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-gold hover:bg-white/5 inline-flex items-center gap-1">
+                    {t('nav.resultats')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-50"><path d="m6 9 6 6 6-6"/></svg>
+                </a>
+            </div>
+            <!-- À Propos -->
+            <div class="relative" data-mega-trigger="apropos">
+                <a href={p('/a-propos/')}
+                   class="text-cloud text-sm font-medium px-3 py-2 rounded-md transition-colors hover:text-gold hover:bg-white/5 inline-flex items-center gap-1">
+                    {t('nav.about')}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-50"><path d="m6 9 6 6 6-6"/></svg>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Desktop CTAs -->
+        <div class="hidden lg:flex items-center gap-3 ml-6">
+            <a href={p('/urgence/')} class="inline-flex items-center gap-2 font-heading font-semibold text-xs rounded-full px-5 py-2.5 text-white transition-all hover:-translate-y-0.5" style="background: var(--color-earth-brown);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                {t('cta.urgence')}
+            </a>
+            <a href={p('/contact/')} class="inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-5 py-2.5 text-white transition-all hover:-translate-y-0.5" style="background: var(--color-cactus-green);">
+                {t('cta.contact')}
+            </a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button class="header__toggle block lg:hidden bg-transparent p-2" style="color: var(--color-cloud);" aria-label="Menu" aria-expanded="false">
+            <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <svg class="icon-close hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+    </div>
+</header>
+
+<!-- ═══ MEGA MENUS (Desktop) ═══ -->
+
+<!-- Expertises Mega Menu -->
+<div id="mega-expertises" class="mega-panel">
+    <div class="max-w-[1200px] mx-auto px-6 py-8">
+        <div class="grid grid-cols-3 gap-8">
+            <div>
+                <a href={p('/expertises/erp/')} class="mega-link-group">
+                    <span class="mega-link-title">ERP & Gestion d'Entreprise</span>
+                    <span class="mega-link-desc">ERP modulaire propriétaire, 20 ans de maturité produit</span>
+                </a>
+                <a href={p('/expertises/migration-donnees/')} class="mega-link-group">
+                    <span class="mega-link-title">Migration & Données</span>
+                    <span class="mega-link-desc">Migrations sécurisées avec garantie de résultat</span>
+                </a>
+            </div>
+            <div>
+                <a href={p('/expertises/cybersecurite/')} class="mega-link-group">
+                    <span class="mega-link-title">Cybersécurité</span>
+                    <span class="mega-link-desc">Audits, pentests, conformité ISO 27002</span>
+                </a>
+                <a href={p('/expertises/infrastructure/')} class="mega-link-group">
+                    <span class="mega-link-title">Infrastructure & Cloud</span>
+                    <span class="mega-link-desc">VMware, Hyper-V, Azure, VPN sécurisés</span>
+                </a>
+            </div>
+            <div>
+                <a href={p('/expertises/developpement/')} class="mega-link-group">
+                    <span class="mega-link-title">Développement Sur Mesure</span>
+                    <span class="mega-link-desc">Applications métier, web, mobile, API</span>
+                </a>
+                <a href={p('/urgence/')} class="mega-link-urgency">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    Vous avez une urgence IT ?
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Secteurs Mega Menu -->
+<div id="mega-secteurs" class="mega-panel">
+    <div class="max-w-[1200px] mx-auto px-6 py-8">
+        <div class="grid grid-cols-3 gap-8">
+            <a href={p('/secteurs/transport-logistique/')} class="mega-link-group">
+                <span class="mega-link-title">Transport & Logistique</span>
+                <span class="mega-link-desc">VPN multisites, traçabilité, gestion de flotte</span>
+            </a>
+            <a href={p('/secteurs/industrie-agroalimentaire/')} class="mega-link-group">
+                <span class="mega-link-title">Industrie & Agroalimentaire</span>
+                <span class="mega-link-desc">IoT industriel, ponts-bascules, production</span>
+            </a>
+            <a href={p('/secteurs/medical-sante/')} class="mega-link-group">
+                <span class="mega-link-title">Médical & Santé</span>
+                <span class="mega-link-desc">IoT médical, scanners OCR, monitoring</span>
+            </a>
+        </div>
+        <div class="mt-6 pt-5 border-t border-white/10">
+            <a href={p('/resultats/cas-clients/')} class="inline-flex items-center gap-2 font-heading font-semibold text-xs transition-colors hover:text-white" style="color: var(--color-gold);">
+                Découvrir nos cas clients
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Résultats Dropdown -->
+<div id="mega-resultats" class="mega-panel mega-panel--narrow">
+    <div class="max-w-[1200px] mx-auto px-6 py-6">
+        <div class="flex flex-col gap-1 max-w-[280px]">
+            <a href={p('/resultats/cas-clients/')} class="mega-link-simple">Cas Clients & Témoignages</a>
+            <a href={p('/resultats/methodologie/')} class="mega-link-simple">Méthodologie & Approche</a>
+        </div>
+    </div>
+</div>
+
+<!-- À Propos Dropdown -->
+<div id="mega-apropos" class="mega-panel mega-panel--narrow">
+    <div class="max-w-[1200px] mx-auto px-6 py-6">
+        <div class="flex flex-col gap-1 max-w-[280px]">
+            <a href={p('/a-propos/')} class="mega-link-simple">Notre Histoire</a>
+            <a href={p('/contact/')} class="mega-link-simple">Contactez-nous</a>
+        </div>
+    </div>
+</div>
+
+<!-- ═══ MOBILE MENU ═══ -->
+<div id="mobile-menu" class="hidden fixed inset-0 top-[72px] z-40 flex-col gap-2 p-8 overflow-y-auto" style="background: var(--color-cactus-dark);">
+    <!-- Expertises -->
+    <div class="py-3 border-b border-white/10">
+        <a href={p('/expertises/')} class="text-cloud text-lg font-medium hover:text-gold">{t('nav.expertises')}</a>
+        <div class="flex flex-col gap-1 mt-2 ml-4">
+            <a href={p('/expertises/erp/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">ERP & Gestion</a>
+            <a href={p('/expertises/migration-donnees/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Migration & Données</a>
+            <a href={p('/expertises/cybersecurite/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Cybersécurité</a>
+            <a href={p('/expertises/infrastructure/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Infrastructure & Cloud</a>
+            <a href={p('/expertises/developpement/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Développement</a>
+        </div>
+    </div>
+    <a href={p('/secteurs/')} class="text-cloud text-lg font-medium py-3 border-b border-white/10 hover:text-gold">{t('nav.secteurs')}</a>
+    <a href={p('/resultats/')} class="text-cloud text-lg font-medium py-3 border-b border-white/10 hover:text-gold">{t('nav.resultats')}</a>
+    <a href={p('/a-propos/')} class="text-cloud text-lg font-medium py-3 border-b border-white/10 hover:text-gold">{t('nav.about')}</a>
+    <div class="flex flex-col gap-3 mt-6">
+        <a href={p('/urgence/')} class="inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-5 py-3 text-white" style="background: var(--color-earth-brown);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            {t('cta.urgence')} IT
+        </a>
+        <a href={p('/contact/')} class="inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-5 py-3 text-white" style="background: var(--color-cactus-green);">
+            {t('cta.contact')}
+        </a>
+    </div>
+</div>
+
+<style>
+    .is-scrolled {
+        height: 56px !important;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+        background: rgba(54, 64, 34, 0.97) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    #mobile-menu.is-open {
+        display: flex;
+    }
+
+    /* ── Mega Menu Styles ── */
+    .mega-panel {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        z-index: 45;
+        background: rgba(54, 64, 34, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        display: none;
+    }
+    .mega-panel.is-active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        display: block;
+    }
+    .is-scrolled ~ .mega-panel {
+        top: 56px;
+    }
+    .mega-link-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 16px;
+        border-radius: 10px;
+        transition: background 0.2s ease;
+    }
+    a.mega-link-group:hover {
+        background: rgba(255,255,255,0.05);
+    }
+    .mega-link-title {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--color-cloud);
+    }
+    .mega-link-desc {
+        font-size: 0.78rem;
+        color: rgba(238,238,238,0.45);
+        line-height: 1.4;
+    }
+    .mega-link-urgency {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.82rem;
+        color: var(--color-gold);
+        margin-top: 12px;
+        transition: background 0.2s ease;
+    }
+    .mega-link-urgency:hover {
+        background: rgba(219,204,99,0.08);
+    }
+    .mega-link-simple {
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-family: var(--font-heading);
+        font-weight: 500;
+        font-size: 0.88rem;
+        color: var(--color-cloud);
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+    .mega-link-simple:hover {
+        background: rgba(255,255,255,0.05);
+        color: var(--color-gold);
+    }
+</style>

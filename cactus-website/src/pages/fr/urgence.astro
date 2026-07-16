@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getLocalePath } from '../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const emergencyTypes = [
+    { title: 'ERP bloqué / inaccessible', desc: 'Votre ERP (Sage, SAP, ERP Cactus ou autre) est en panne et paralyse votre activité. Nous intervenons au niveau de la base de données.' },
+    { title: 'Incident cybersécurité', desc: 'Votre réseau a été compromis. Nous évaluons les dégâts, contenons l\'incident, reconstruisons votre Active Directory.' },
+    { title: 'Panne serveur critique', desc: 'Votre serveur principal est en panne. Diagnostic (matériel, logiciel, réseau) et rétablissement du service.' },
+    { title: 'Perte de données', desc: 'Données supprimées, disque endommagé, base corrompue. Diagnostic de récupérabilité honnête.' },
+    { title: 'Migration échouée', desc: 'Votre intégrateur a échoué à finaliser une migration. Nous reprenons et terminons le travail.' },
+];
+---
+
+<BaseLayout
+    title="Intervention d'Urgence IT — Cactus"
+    description="ERP bloqué, panne serveur, perte de données ? Cactus Informatique intervient en urgence à Casablanca. Réponse sous 2h ouvrées."
+>
+    <PageHero
+        label="Urgence IT"
+        title="Intervention "
+        titleHighlight="immédiate"
+        subtitle="Les experts qu'on appelle quand tout le reste a échoué. Réponse sous 2 heures ouvrées."
+        breadcrumbs={[{ label: 'Urgence IT' }]}
+        lang={lang}
+        variant="urgency"
+    />
+
+    <!-- Phone number XXL -->
+    <section class="py-16 text-center" style="background: var(--color-earth-brown);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-3 reveal" style="color: var(--color-gold);">Appelez-nous maintenant</p>
+            <a href="tel:+212522343545" class="font-heading font-extrabold text-white block mb-3 reveal" style="font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -0.02em;">
+                +212 5 22 34 35 45
+            </a>
+            <p class="font-heading font-semibold text-sm reveal" style="color: rgba(255,255,255,0.7);">Réponse sous 2 heures ouvrées</p>
+        </div>
+    </section>
+
+    <!-- Emergency Types -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Types d'urgences"
+                title="Urgences que nous traitons"
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                {emergencyTypes.map((item, i) => (
+                    <div class={`group relative border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg reveal reveal-delay-${(i % 3) + 1}`}
+                         style="border-color: var(--color-cloud-dark); border-left: 4px solid var(--color-earth-brown);">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                             style="background: rgba(111,50,3,0.08);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-earth-brown);">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{item.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust section -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader label="Pourquoi nous" title="Pourquoi nous faire confiance dans l'urgence ?" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {[
+                    { title: '20 ans d\'interventions critiques', desc: 'Depuis 2006, nous sommes les « pompiers » du SI marocain.' },
+                    { title: 'Facturation au résultat', desc: 'Même en urgence, nous nous engageons sur la résolution.' },
+                    { title: 'Experts de dernier recours', desc: 'Diagnostics BDD, reconstructions Active Directory, remédiations post-incident.' },
+                    { title: 'Transparence totale', desc: 'Si nous ne pouvons pas résoudre, nous le disons immédiatement.' },
+                ].map((item, i) => (
+                    <div class={`bg-white rounded-2xl p-7 reveal reveal-delay-${i + 1}`}>
+                        <h3 class="font-heading font-semibold text-base mb-2" style="color: var(--color-ink);">{item.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Form -->
+    <section class="py-24 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[800px] mx-auto px-6 relative z-10">
+            <!-- White Emergency Form Card following website visual chart -->
+            <div class="bg-white border border-cloud-dark rounded-3xl p-8 sm:p-12 shadow-2xl relative transition-all duration-300"
+                 style="border-left: 6px solid var(--color-earth-brown); box-shadow: 0 20px 40px rgba(111, 50, 3, 0.08);">
+                
+                <!-- Pulsing Emergency Beacon Tag -->
+                <div class="absolute top-8 right-8 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cloud border border-cloud-dark shadow-sm">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--color-earth-brown);"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5" style="background-color: var(--color-earth-brown);"></span>
+                    </span>
+                    <span class="text-[10px] font-heading font-extrabold tracking-wider uppercase text-ink-soft">CELLULE DE CRISE IT</span>
+                </div>
+
+                <!-- Form Card Header -->
+                <div class="mb-10 max-w-xl">
+                    <span class="inline-block text-xs font-heading font-bold uppercase tracking-widest mb-1" style="color: var(--color-earth-brown);">
+                        Prise en charge prioritaire
+                    </span>
+                    <h2 class="font-heading font-bold text-2xl md:text-3xl tracking-tight leading-tight" style="color: var(--color-ink);">
+                        Signaler un incident critique
+                    </h2>
+                    <p class="text-xs md:text-sm mt-2 leading-relaxed" style="color: var(--color-ink-soft);">
+                        Remplissez ce formulaire pour déclencher l'alerte. Un ingénieur senior prend contact avec vous sous 2 heures ouvrées pour réaliser un diagnostic.
+                    </p>
+                </div>
+
+                <!-- The Form Component (Now rendered as light theme standard inputs) -->
+                <ContactForm variant="urgency" lang={lang} />
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Direct -->
+    <section class="py-16 text-center">
+        <div class="max-w-[600px] mx-auto px-6">
+            <p class="font-heading font-semibold text-sm mb-2 reveal" style="color: var(--color-ink-soft);">Contact direct</p>
+            <p class="text-sm reveal" style="color: var(--color-ink-muted);">
+                <strong>Téléphone :</strong> +212 5 22 34 35 45<br />
+                <strong>Email :</strong> contact@cactus.net.ma<br />
+                <strong>Adresse :</strong> 70 Allée des Phoenix, Casablanca 20250, Maroc
+            </p>
+            <p class="text-sm mt-6 reveal" style="color: var(--color-ink-muted);">
+                Si votre situation n'est pas urgente, utilisez notre <a href={p('/contact/')} class="font-semibold transition-colors hover:text-cactus-green" style="color: var(--color-cactus-green);">formulaire de contact standard</a>.
+            </p>
+        </div>
+    </section>
+</BaseLayout>
