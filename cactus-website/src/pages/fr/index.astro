@@ -42,13 +42,13 @@ const p = (path: string) => getLocalePath(lang, path);
         <!-- ═══════════════════════════════════════
              SECTION 1: HERO
              ═══════════════════════════════════════ -->
-        <section class="relative min-h-screen flex items-center justify-center" style="background: var(--color-cactus-dark); padding: calc(72px + 4rem) 1.5rem 4rem;">
-            <!-- Animated gradient bg -->
-            <div class="absolute -inset-1/2 w-[200%] h-[200%]" style="background: conic-gradient(from 0deg at 50% 50%, var(--color-cactus-dark) 0deg, var(--color-hero-mid) 90deg, var(--color-ink) 180deg, var(--color-hero-mid) 270deg, var(--color-cactus-dark) 360deg); animation: heroRotate 30s linear infinite;"></div>
+        <section class="relative min-h-screen flex items-center justify-center" style="background: #12150e; padding: calc(72px + 4rem) 1.5rem 4rem;">
+            <!-- Ambient floating glow orbs (smooth, no harsh diagonal slices) -->
+            <div class="absolute w-[500px] h-[500px] rounded-full z-[1] -top-[10%] -left-[10%] opacity-30 blur-[120px]" style="background: radial-gradient(circle, var(--color-cactus-green) 0%, transparent 70%); animation: glowFloatLeft 18s ease-in-out infinite alternate;"></div>
+            <div class="absolute w-[600px] h-[600px] rounded-full z-[1] -bottom-[10%] -right-[10%] opacity-25 blur-[140px]" style="background: radial-gradient(circle, var(--color-gold) 0%, transparent 70%); animation: glowFloatRight 22s ease-in-out infinite alternate;"></div>
+            <div class="absolute w-[450px] h-[450px] rounded-full z-[1] top-[25%] left-[25%] opacity-20 blur-[100px]" style="background: radial-gradient(circle, var(--color-cactus-green) 0%, transparent 70%); animation: glowPulse 8s ease-in-out infinite;"></div>
             <!-- Dot grid -->
             <div class="absolute inset-0 z-[1]" style="background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 32px 32px;"></div>
-            <!-- Glow -->
-            <div class="absolute w-[600px] h-[600px] rounded-full z-[1] top-[20%] left-[30%]" style="background: radial-gradient(circle, rgba(71,106,51,0.2) 0%, transparent 70%); animation: glowPulse 6s ease-in-out infinite;"></div>
 
         <div class="relative z-[2] text-center max-w-[780px]">
             <!-- Badge -->
