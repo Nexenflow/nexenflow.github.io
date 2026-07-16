@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
     site: 'https://nexenflow.github.io',
-    base: '/cactus',
+    base: '/',
 
     // i18n routing: /fr/... (default) and /en/...
     i18n: {
