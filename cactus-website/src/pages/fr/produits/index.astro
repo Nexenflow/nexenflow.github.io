@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHero from '../../../components/PageHero.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import StatsBar from '../../../components/StatsBar.astro';
+import FinalCta from '../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const erpModules = [
+    { title: 'Gestion Commerciale', desc: 'Automatisation complète du cycle de vente : clients, devis, commandes, bons de livraison, factures, avoirs, règlements.', icon: 'receipt' },
+    { title: 'Comptabilité & Télédéclaration', desc: 'Plan comptable, écritures automatiques, lettrage, états comptables et télédéclarations fiscales interfacées.', icon: 'calculator' },
+    { title: 'Gestion des Stocks', desc: 'Mouvements, transferts multi-dépôts, traçabilité des lots, alertes de seuil. Visibilité logistique complète.', icon: 'package' },
+    { title: 'Caisse & Point de Vente', desc: 'Interface tactile pour l\'encaissement en temps réel, connectée directement au module stocks et comptabilité.', icon: 'monitor' },
+    { title: 'Paie & RH', desc: 'Contrats, éléments variables, congés, télédéclarations sociales et fiscales. Conformité marocaine garantie.', icon: 'users' },
+    { title: 'Production', desc: 'Suivi des ordres de fabrication, gestion des matières premières, traçabilité complète du processus industriel.', icon: 'cog' },
+    { title: 'Pointage', desc: 'Gestion du temps de présence avec intégration directe aux pointeuses physiques d\'entreprise.', icon: 'clock' },
+    { title: 'Pesage & Ponts-Bascules', desc: 'Module natif s\'interfaçant avec les ponts-bascules : 1ère/2ème pesée, calcul automatique du poids net, anti-fraude.', icon: 'scale' },
+    { title: 'Business Intelligence', desc: 'Tableaux de bord dynamiques : chiffre d\'affaires, marges, créances, rotation des stocks, top ventes et clients.', icon: 'chart' },
+    { title: 'Serveurs de Communication', desc: 'Messagerie indépendante, serveurs SMS & Fax. Réduction des OPEX et souveraineté totale des données.', icon: 'mail' },
+];
+
+const iotProducts = [
+    { title: 'IoT Industriel', desc: 'Lecture, traitement et retransmission des données d\'automates de production vers votre ERP. Commande bidirectionnelle et historisation des flux.', tags: ['Modbus', 'OPC-UA', 'PLC'] },
+    { title: 'IoT Médical', desc: 'Solutions intégrées (hardware + software) captant les données des équipements hospitaliers : moniteurs ECG, scanners OCR pour ordonnances.', tags: ['OCR', 'ECG', 'HL7'] },
+    { title: 'Module Pesage Connecté', desc: 'Interfaçage bidirectionnel direct entre équipements de pesée physiques et le système central. Élimination de la saisie manuelle et de la fraude.', tags: ['Ponts-bascules', 'RS232', 'API'] },
+    { title: 'RH Connectée', desc: 'Intégration logicielle avec les pointeuses physiques d\'entreprise pour un suivi automatisé du temps de présence.', tags: ['Pointeuses', 'RFID', 'Biométrie'] },
+];
+
+const devProducts = [
+    { title: 'Applications Web & Mobile', desc: 'Applications sur mesure calées sur vos processus métier. Web responsive et Mobile Android avec architecture sécurisée.', href: p('/expertises/developpement/') },
+    { title: 'Modules Satellites', desc: 'Apps mobiles sécurisées pour vos équipes commerciales : gestion des factures, tableaux de bord, consultation à distance via API.', href: p('/expertises/developpement/') },
+    { title: 'Intégrations API', desc: 'Interfaçage de systèmes hétérogènes : AS400, SQL Server, SAP, Sage, plateformes réglementées. Agnostique en technologie.', href: p('/expertises/developpement/') },
+    { title: 'Tableaux de Bord BI', desc: 'Collecte, traitement et restitution de vos données brutes en KPI actionnables. Pilotage décisionnel en temps réel.', href: p('/expertises/erp/') },
+];
+
+const infraProducts = [
+    { title: 'Virtualisation & Haute Disponibilité', desc: 'Architectures serveurs physiques et virtualisées sous VMware et Hyper-V, environnements Linux et Windows redondés.', icon: 'server' },
+    { title: 'Cloud Azure', desc: 'Administration de services cloud Microsoft Azure. Migration, hébergement web haute disponibilité et gestion centralisée.', icon: 'cloud' },
+    { title: 'Messagerie & Souveraineté', desc: 'Serveurs de messagerie locaux indépendants et dédiés. Réduction de la dépendance au Cloud public et souveraineté des données.', icon: 'shield' },
+    { title: 'VPN Multisite & Nomade', desc: 'Interconnexion sécurisée de sites distants et connexions nomades chiffrées. Sécurisation complète des flux réseau.', icon: 'lock' },
+];
+
+const sectors = [
+    { title: 'Transport & Logistique', href: p('/secteurs/transport-logistique/') },
+    { title: 'Industrie & Agroalimentaire', href: p('/secteurs/industrie-agroalimentaire/') },
+    { title: 'Médical & Santé', href: p('/secteurs/medical-sante/') },
+    { title: 'Finance & Distribution', href: p('/secteurs/') },
+    { title: 'Services Professionnels', href: p('/secteurs/') },
+];
+---
+
+<BaseLayout
+    title="Nos Produits & Solutions IT — Cactus Informatique"
+    description="Découvrez les produits et solutions IT de Cactus Informatique : ERP modulaire propriétaire, IoT industriel et médical, développement sur mesure, infrastructure cloud et cybersécurité."
+>
+    <PageHero
+        label="Nos Produits"
+        title="Des solutions logicielles conçues pour "
+        titleHighlight="votre métier"
+        subtitle="ERP modulaire, IoT industriel, développement sur mesure — nos produits sont le fruit de plus de 20 ans d'ingénierie terrain. Chaque solution s'adapte à vos processus, pas l'inverse."
+        breadcrumbs={[{ label: 'Nos Produits' }]}
+        lang={lang}
+        ctaHref={p('/contact/')}
+        ctaLabel="Demandez une démonstration"
+        ctaSecondaryHref="#erp-cactus"
+        ctaSecondaryLabel="Voir le catalogue"
+    />
+
+    <!-- ═══════════════════════════════════════
+         SECTION 1: ERP CACTUS — FLAGSHIP PRODUCT
+         ═══════════════════════════════════════ -->
+    <section id="erp-cactus" class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-start gap-8 mb-12">
+                <div class="flex-1">
+                    <SectionHeader
+                        label="Produit phare"
+                        title="ERP Cactus — Modulaire & Sur Mesure"
+                        subtitle="Notre propre ERP, conçu, maintenu et fait évoluer depuis plus de 20 ans. Architecture hyper-modulaire : activez une suite intégrée ou sélectionnez des briques « à la carte » selon vos besoins."
+                    />
+                </div>
+                <div class="shrink-0 reveal">
+                    <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-heading font-semibold uppercase tracking-wide"
+                         style="background: rgba(219,204,99,0.12); border: 1px solid rgba(219,204,99,0.25); color: var(--color-gold);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        20+ ans de maturité produit
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {erpModules.map((mod, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 4) + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="flex items-start gap-4">
+                            <div class="shrink-0 w-11 h-11 rounded-[10px] flex items-center justify-center" style="background: rgba(71,106,51,0.1);">
+                                {mod.icon === 'receipt' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg>}
+                                {mod.icon === 'calculator' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>}
+                                {mod.icon === 'package' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>}
+                                {mod.icon === 'monitor' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>}
+                                {mod.icon === 'users' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
+                                {mod.icon === 'cog' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>}
+                                {mod.icon === 'clock' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>}
+                                {mod.icon === 'scale' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>}
+                                {mod.icon === 'chart' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>}
+                                {mod.icon === 'mail' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>}
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-semibold text-[0.95rem] mb-1" style="color: var(--color-ink);">{mod.title}</h3>
+                                <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{mod.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- ERP CTA -->
+            <div class="mt-12 text-center reveal">
+                <a href={p('/contact/')}
+                   class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                   style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    Demander une démo ERP personnalisée
+                </a>
+                <p class="text-xs mt-3 font-heading" style="color: var(--color-ink-muted);">Gratuit et sans engagement — nous adaptons la démo à votre secteur</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ERP TIERS — EXPERTISE DE DERNIER RECOURS
+         ═══════════════════════════════════════ -->
+    <section class="py-20 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <SectionHeader
+                        label="Expertise ERP tiers"
+                        title="Le « pompier » des installations ERP bloquées"
+                        subtitle="Votre intégrateur Sage, SAP ou autre a échoué ? Nous intervenons comme expert de dernier recours pour débloquer et finaliser vos installations ERP."
+                        variant="dark"
+                    />
+                    <div class="flex flex-wrap gap-2 mt-6 reveal">
+                        {['Sage 1000', 'Sage X3', 'SAP', 'Agir', 'Diagnostic BDD'].map(tag => (
+                            <span class="inline-flex px-3 py-1.5 rounded-full text-xs font-heading font-medium"
+                                  style="background: rgba(219,204,99,0.1); color: var(--color-gold); border: 1px solid rgba(219,204,99,0.2);">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <div class="reveal reveal-right">
+                    <div class="rounded-2xl p-8" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(111,50,3,0.2);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                            </div>
+                            <h3 class="font-heading font-semibold text-white text-lg">Intervention de dernier recours</h3>
+                        </div>
+                        <p class="text-sm leading-relaxed mb-5" style="color: rgba(238,238,238,0.6);">Diagnostic direct en base de données pour résoudre les anomalies de synchronisation que d'autres intégrateurs ne parviennent pas à corriger.</p>
+                        <a href={p('/contact/')}
+                           class="inline-flex items-center gap-1 font-heading font-semibold text-xs transition-all hover:gap-2" style="color: var(--color-gold);">
+                            Contactez-nous
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 2: IoT & CONNECTIVITÉ
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="IoT & Connectivité"
+                title="Connecter vos machines physiques à votre SI"
+                subtitle="Des solutions qui créent des ponts de communication entre vos équipements terrain et votre système d'information central."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {iotProducts.map((prod, i) => (
+                    <div class={`relative bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${i + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <h3 class="font-heading font-semibold text-lg mb-2" style="color: var(--color-ink);">{prod.title}</h3>
+                        <p class="text-sm leading-relaxed mb-4" style="color: var(--color-ink-soft);">{prod.desc}</p>
+                        <div class="flex flex-wrap gap-2">
+                            {prod.tags.map(tag => (
+                                <span class="inline-flex px-2.5 py-1 rounded-md text-[0.7rem] font-heading font-medium"
+                                      style="background: rgba(211,157,76,0.1); color: var(--color-amber);">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 3: DÉVELOPPEMENT SUR MESURE
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Développement sur mesure"
+                title="Des applications calées sur vos processus métier"
+                subtitle="Agnostique en technologie — nous nous adaptons sans limitation à l'environnement de chaque projet."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {devProducts.map((prod, i) => (
+                    <a href={prod.href}
+                       class={`group block bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${i + 1}`}
+                       style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <h3 class="font-heading font-semibold text-lg mb-2 group-hover:text-cactus-green transition-colors" style="color: var(--color-ink);">{prod.title}</h3>
+                        <p class="text-sm leading-relaxed mb-4" style="color: var(--color-ink-soft);">{prod.desc}</p>
+                        <span class="inline-flex items-center gap-1 font-heading font-semibold text-xs group-hover:gap-2 transition-all" style="color: var(--color-cactus-green);">
+                            En savoir plus
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </span>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 4: INFRASTRUCTURE & SÉCURITÉ
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Infrastructure & Sécurité"
+                title="Les fondations invisibles mais critiques"
+                subtitle="Architectures résilientes, cloud souverain et cybersécurité — la base technique indispensable à toute transformation."
+            />
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-2">
+                {infraProducts.map((prod, i) => (
+                    <div class={`bg-white border rounded-2xl p-6 text-center transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${i + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4" style="background: rgba(219,204,99,0.12);">
+                            {prod.icon === 'server' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>}
+                            {prod.icon === 'cloud' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>}
+                            {prod.icon === 'shield' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>}
+                            {prod.icon === 'lock' && <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>}
+                        </div>
+                        <h3 class="font-heading font-semibold text-[0.95rem] mb-2" style="color: var(--color-ink);">{prod.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{prod.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <StatsBar stats={[
+        { count: '20', suffix: '+ ans', label: 'de maturité produit' },
+        { count: '10', label: 'modules ERP disponibles' },
+        { count: '50', prefix: '+', label: 'clients équipés' },
+        { count: '0', suffix: '%', label: 'dépendance éditeur' },
+    ]} />
+
+    <!-- ═══════════════════════════════════════
+         SECTION 5: ADAPTABLE À VOTRE MÉTIER
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Transversalité sectorielle"
+                title="Adaptable à votre métier"
+                subtitle="Nos produits sont déployés avec succès dans 5 secteurs d'activité distincts. Chaque déploiement est calibré sur les contraintes spécifiques de votre industrie."
+                align="center"
+            />
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 mt-2">
+                {sectors.map((s, i) => (
+                    <a href={s.href}
+                       class={`text-center p-6 bg-white border rounded-2xl transition-all hover:-translate-y-1 hover:shadow-md hover:border-cactus-green reveal reveal-delay-${i + 1}`}
+                       style="border-color: var(--color-cloud-dark);">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3" style="background: rgba(219,204,99,0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-sm" style="color: var(--color-ink);">{s.title}</h3>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 6: CONTACT CTA
+         ═══════════════════════════════════════ -->
+    <section class="py-20" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <div class="bg-white rounded-3xl p-10 text-center shadow-lg reveal" style="border: 1px solid var(--color-cloud-dark);">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(71,106,51,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h2 class="font-heading font-bold text-xl mb-3" style="color: var(--color-ink);">Vous souhaitez en savoir plus ?</h2>
+                <p class="text-sm leading-relaxed mb-6 max-w-[520px] mx-auto" style="color: var(--color-ink-soft);">
+                    Nos produits sont conçus pour s'adapter à vos processus métier, pas l'inverse. Contactez-nous pour recevoir une fiche produit détaillée ou planifier une démonstration personnalisée.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href={p('/contact/')}
+                       class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                       style="background: var(--color-cactus-green);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                        Demander une fiche produit
+                    </a>
+                    <a href={`tel:+212522343545`}
+                       class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                       style="background: transparent; color: var(--color-cactus-green); border: 2px solid rgba(71,106,51,0.3);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        +212 5 22 34 35 45
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Prêt à moderniser votre SI ?"
+        text="Chaque entreprise a des défis IT uniques. Parlons des vôtres — nous vous proposerons la combinaison de produits idéale, sans engagement."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/')}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

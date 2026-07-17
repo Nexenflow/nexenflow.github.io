@@ -107,6 +107,10 @@ const p = (path: string) => getLocalePath(lang, path);
                     <span class="mega-link-title">Développement Sur Mesure</span>
                     <span class="mega-link-desc">Applications métier, web, mobile, API</span>
                 </a>
+                <a href={p('/produits/')} class="mega-link-group">
+                    <span class="mega-link-title">Nos Produits</span>
+                    <span class="mega-link-desc">Catalogue ERP, IoT, solutions sur mesure</span>
+                </a>
                 <a href={p('/urgence/')} class="mega-link-urgency">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
                     Vous avez une urgence IT ?
@@ -173,6 +177,7 @@ const p = (path: string) => getLocalePath(lang, path);
             <a href={p('/expertises/cybersecurite/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Cybersécurité</a>
             <a href={p('/expertises/infrastructure/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Infrastructure & Cloud</a>
             <a href={p('/expertises/developpement/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Développement</a>
+            <a href={p('/produits/')} class="text-sm py-1 hover:text-gold" style="color: rgba(238,238,238,0.6);">Nos Produits</a>
         </div>
     </div>
     <a href={p('/secteurs/')} class="text-cloud text-lg font-medium py-3 border-b border-white/10 hover:text-gold">{t('nav.secteurs')}</a>
