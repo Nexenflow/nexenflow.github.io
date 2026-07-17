@@ -37,7 +37,7 @@ const sectorIcons: Record<string, string> = {
         subtitle="Un ERP pour une usine ne ressemble pas à celui d'un cabinet de notaires. Nous construisons depuis 20 ans des ponts entre le monde physique et les systèmes d'information."
         breadcrumbs={[{ label: 'Secteurs' }]}
         lang={lang}
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=secteur'}
         ctaLabel="Discuter de vos défis"
     />
 
@@ -96,7 +96,7 @@ const sectorIcons: Record<string, string> = {
                 align="center"
             />
             <div class="reveal">
-                <a href={p('/contact/')}
+                <a href={p('/contact/') + '?besoin=secteur'}
                    class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white"
                    style="background: var(--color-cactus-green);">
                     Contactez-nous
@@ -110,7 +110,7 @@ const sectorIcons: Record<string, string> = {
         title="Discutons de vos défis sectoriels"
         text="Chaque secteur a ses contraintes. Parlons des vôtres — diagnostic gratuit, sans engagement."
         ctaLabel="Contactez-nous"
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=secteur'}
         phone="+212 5 22 34 35 45"
     />
 </BaseLayout>

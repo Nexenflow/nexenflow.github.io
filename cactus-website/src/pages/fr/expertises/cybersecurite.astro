@@ -35,7 +35,7 @@ const services = [
             { label: 'Cybersécurité' },
         ]}
         lang={lang}
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=cybersecurite'}
         ctaLabel="Audit de sécurité"
         ctaSecondaryHref={p('/urgence/')}
         ctaSecondaryLabel="Incident en cours ?"
@@ -127,7 +127,7 @@ const services = [
         title="La sécurité de votre SI ne peut plus attendre"
         text="Chaque jour sans audit est un jour d'exposition. Diagnostic initial gratuit."
         ctaLabel="Contactez-nous"
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=cybersecurite'}
         phone="+212 5 22 34 35 45"
     />
 </BaseLayout>

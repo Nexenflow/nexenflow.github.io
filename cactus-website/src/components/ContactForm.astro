@@ -13,6 +13,10 @@ const standardOptions = [
     'Cybersécurité',
     'Infrastructure & Cloud',
     'Développement sur mesure',
+    'Nos Produits — Catalogue',
+    'IoT & Connectivité',
+    'Audit & Diagnostic IT',
+    'Accompagnement sectoriel',
     'Urgence IT',
     'Autre',
 ];
@@ -36,6 +40,8 @@ const labelClass = 'form-label';
       class="space-y-5"
       action={isUrgency ? '/api/urgence.php' : '/api/contact.php'}
       method="POST">
+
+    <input type="hidden" name="source_url" id="contact-source-url" value="" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
@@ -82,7 +88,7 @@ const labelClass = 'form-label';
         </label>
         <select id="besoin" name="besoin" required
                 class={`${inputClass} cursor-pointer`}>
-            <option value="">— Sélectionnez le type d'incident —</option>
+            <option value="">{isUrgency ? "— Sélectionnez le type d'incident —" : "— Sélectionnez votre besoin —"}</option>
             {options.map(opt => (
                 <option value={opt}>{opt}</option>
             ))}
@@ -127,3 +133,43 @@ const labelClass = 'form-label';
         {isUrgency ? '✓ Un ingénieur senior prend contact avec vous sous 2h. Facturation au résultat.' : 'Nous vous répondons sous 24 heures ouvrées.'}
     </p>
 </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const select = document.getElementById('besoin') as HTMLSelectElement | null;
+        if (select) {
+            const params = new URLSearchParams(window.location.search);
+            const besoinParam = params.get('besoin');
+            
+            if (besoinParam) {
+                const mapping: Record<string, string> = {
+                    'erp': "ERP & Gestion d'entreprise",
+                    'migration': "Migration de données",
+                    'cybersecurite': "Cybersécurité",
+                    'infrastructure': "Infrastructure & Cloud",
+                    'developpement': "Développement sur mesure",
+                    'produits': "Nos Produits — Catalogue",
+                    'iot': "IoT & Connectivité",
+                    'audit': "Audit & Diagnostic IT",
+                    'secteur': "Accompagnement sectoriel",
+                    'urgence': "Urgence IT"
+                };
+                
+                const targetVal = mapping[besoinParam.toLowerCase()];
+                if (targetVal) {
+                    for (let i = 0; i < select.options.length; i++) {
+                        if (select.options[i].value === targetVal) {
+                            select.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        const sourceInput = document.getElementById('contact-source-url') as HTMLInputElement | null;
+        if (sourceInput) {
+            sourceInput.value = document.referrer || window.location.href;
+        }
+    });
+</script>

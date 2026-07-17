@@ -63,7 +63,7 @@ const sectors = [
         subtitle="ERP modulaire, IoT industriel, développement sur mesure — nos produits sont le fruit de plus de 20 ans d'ingénierie terrain. Chaque solution s'adapte à vos processus, pas l'inverse."
         breadcrumbs={[{ label: 'Nos Produits' }]}
         lang={lang}
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=produits'}
         ctaLabel="Demandez une démonstration"
         ctaSecondaryHref="#erp-cactus"
         ctaSecondaryLabel="Voir le catalogue"
@@ -120,7 +120,7 @@ const sectors = [
 
             <!-- ERP CTA -->
             <div class="mt-12 text-center reveal">
-                <a href={p('/contact/')}
+                <a href={p('/contact/') + '?besoin=erp'}
                    class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
                    style="background: var(--color-cactus-green);">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
@@ -162,7 +162,7 @@ const sectors = [
                             <h3 class="font-heading font-semibold text-white text-lg">Intervention de dernier recours</h3>
                         </div>
                         <p class="text-sm leading-relaxed mb-5" style="color: rgba(238,238,238,0.6);">Diagnostic direct en base de données pour résoudre les anomalies de synchronisation que d'autres intégrateurs ne parviennent pas à corriger.</p>
-                        <a href={p('/contact/')}
+                        <a href={p('/contact/') + '?besoin=erp'}
                            class="inline-flex items-center gap-1 font-heading font-semibold text-xs transition-all hover:gap-2" style="color: var(--color-gold);">
                             Contactez-nous
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -308,7 +308,7 @@ const sectors = [
                     Nos produits sont conçus pour s'adapter à vos processus métier, pas l'inverse. Contactez-nous pour recevoir une fiche produit détaillée ou planifier une démonstration personnalisée.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                    <a href={p('/contact/')}
+                    <a href={p('/contact/') + '?besoin=produits'}
                        class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
                        style="background: var(--color-cactus-green);">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
@@ -329,7 +329,7 @@ const sectors = [
         title="Prêt à moderniser votre SI ?"
         text="Chaque entreprise a des défis IT uniques. Parlons des vôtres — nous vous proposerons la combinaison de produits idéale, sans engagement."
         ctaLabel="Contactez-nous"
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=produits'}
         phone="+212 5 22 34 35 45"
     />
 </BaseLayout>

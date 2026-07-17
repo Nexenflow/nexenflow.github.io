@@ -24,7 +24,7 @@ const p = (path: string) => getLocalePath(lang, path);
         subtitle="Depuis 2006, Cactus Informatique déploie six domaines d'expertise complémentaires. Chaque expertise est soutenue par plus de vingt ans d'expérience terrain et une méthodologie centrée sur le résultat."
         breadcrumbs={[{ label: 'Expertises' }]}
         lang={lang}
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=audit'}
         ctaLabel="Diagnostic gratuit"
         ctaSecondaryHref={p('/urgence/')}
         ctaSecondaryLabel="Urgence IT"
@@ -122,7 +122,7 @@ const p = (path: string) => getLocalePath(lang, path);
         title="Discutons de votre projet"
         text="Chaque entreprise a des défis IT uniques. Parlons des vôtres — nous vous proposerons une approche sur mesure, sans engagement."
         ctaLabel="Contactez-nous"
-        ctaHref={p('/contact/')}
+        ctaHref={p('/contact/') + '?besoin=audit'}
         phone="+212 5 22 34 35 45"
     />
 </BaseLayout>
