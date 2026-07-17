@@ -169,6 +169,17 @@ const t = useTranslations(lang);
         });
 
         // ── Mega Menu (desktop) ──
+        const updateScrim = () => {
+            const scrim = document.getElementById('nav-scrim');
+            if (!scrim) return;
+            const hasActiveMenu = document.querySelector('.mega-panel.is-active') !== null;
+            if (hasActiveMenu) {
+                scrim.classList.add('is-active');
+            } else {
+                scrim.classList.remove('is-active');
+            }
+        };
+
         document.querySelectorAll('[data-mega-trigger]').forEach(trigger => {
             const menuId = (trigger as HTMLElement).dataset.megaTrigger;
             const megaMenu = document.getElementById('mega-' + menuId);
@@ -182,15 +193,50 @@ const t = useTranslations(lang);
                     if (p !== megaMenu) p.classList.remove('is-active');
                 });
                 megaMenu.classList.add('is-active');
+                updateScrim();
             };
             const hide = () => {
-                timeout = setTimeout(() => megaMenu.classList.remove('is-active'), 150);
+                timeout = setTimeout(() => {
+                    megaMenu.classList.remove('is-active');
+                    updateScrim();
+                }, 150);
             };
 
             trigger.addEventListener('mouseenter', show);
             trigger.addEventListener('mouseleave', hide);
             megaMenu.addEventListener('mouseenter', () => clearTimeout(timeout));
             megaMenu.addEventListener('mouseleave', hide);
+        });
+
+        // Close all active mega menus and remove scrim on click outside (on scrim)
+        document.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (target && target.id === 'nav-scrim') {
+                document.querySelectorAll('.mega-panel.is-active').forEach(p => {
+                    p.classList.remove('is-active');
+                });
+                updateScrim();
+            }
+        });
+
+        // Close on Escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.mega-panel.is-active').forEach(p => {
+                    p.classList.remove('is-active');
+                });
+                updateScrim();
+            }
+        });
+
+        // Close when clicking any link inside a mega panel
+        document.querySelectorAll('.mega-panel a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelectorAll('.mega-panel.is-active').forEach(p => {
+                    p.classList.remove('is-active');
+                });
+                updateScrim();
+            });
         });
 
         // ── Magnetic Button Effect ──
