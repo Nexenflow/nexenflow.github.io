@@ -19,9 +19,9 @@ const p = (path: string) => getLocalePath(lang, path);
 >
     <PageHero
         label="Nos expertises"
-        title="Cinq domaines d'expertise pour "
+        title="Six domaines d'expertise pour "
         titleHighlight="transformer votre SI"
-        subtitle="Depuis 2006, Cactus Informatique déploie cinq domaines d'expertise complémentaires. Chaque expertise est soutenue par plus de vingt ans d'expérience terrain et une méthodologie centrée sur le résultat."
+        subtitle="Depuis 2006, Cactus Informatique déploie six domaines d'expertise complémentaires. Chaque expertise est soutenue par plus de vingt ans d'expérience terrain et une méthodologie centrée sur le résultat."
         breadcrumbs={[{ label: 'Expertises' }]}
         lang={lang}
         ctaHref={p('/contact/')}
@@ -34,7 +34,7 @@ const p = (path: string) => getLocalePath(lang, path);
     <section class="py-24">
         <div class="max-w-[1200px] mx-auto px-6">
             <SectionHeader
-                label="Nos 5 domaines"
+                label="Nos 6 domaines"
                 title="Des expertises complémentaires, un seul partenaire"
                 subtitle="Nous ne vendons pas du temps — nous nous engageons sur des résultats mesurables."
             />
@@ -78,6 +78,14 @@ const p = (path: string) => getLocalePath(lang, path);
                     icon="code"
                     tags={['Web', 'Mobile', 'API']}
                     delay={2}
+                />
+                <ExpertiseCard
+                    title="IoT & Connectivité Machine"
+                    description="Interfaçage temps réel de vos équipements physiques (IoT, capteurs médicaux, pointeuses, ponts-bascules) avec vos systèmes de gestion."
+                    href={p('/expertises/developpement/')}
+                    icon="cpu"
+                    tags={['IoT', 'Capteurs', 'API']}
+                    delay={3}
                 />
             </div>
         </div>
