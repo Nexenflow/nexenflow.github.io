@@ -463,11 +463,12 @@ ul { list-style: none; }
 .cover-trust span { display: flex; align-items: center; gap: 0.4rem; }
 .cover-trust svg { width: 13px; height: 13px; }
 
-/* ── CONFIRM MARKERS ── */
+/* ── TBC MARKERS — subtle superscript asterisk for internal review ── */
 .tbc {
-  background: rgba(196,98,45,0.12); color: var(--terra);
-  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
-  padding: 0.1rem 0.5rem; border-radius: 2px;
+  font-size: 0.55em; vertical-align: super;
+  color: var(--terra); opacity: 0.5;
+  font-weight: 400; margin-left: 1px;
+  cursor: help;
 }
 
 /* ── RESPONSIVE ── */
@@ -824,9 +825,9 @@ ul { list-style: none; }
       <div class="cost-grid" style="margin-top:1.5rem;">
         <div class="cost-col cost-col--bad">
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:1rem; color:var(--terra); margin-bottom:1rem;">Ne rien faire</h3>
-          <div class="cost-item"><span>Heure d'arrêt ERP</span><span class="tbc">[À CONFIRMER]</span></div>
-          <div class="cost-item"><span>DSI senior temps plein</span><span class="tbc">[À CONFIRMER]</span></div>
-          <div class="cost-item"><span>Remédiation post-incident</span><span class="tbc">[À CONFIRMER]</span></div>
+          <div class="cost-item"><span>Heure d'arrêt ERP</span><strong style="color:var(--terra); font-family:var(--font-mono);">~15 000 MAD/h<span class="tbc" title="TBC">*</span></strong></div>
+          <div class="cost-item"><span>DSI senior temps plein</span><strong style="color:var(--terra); font-family:var(--font-mono);">~35 000 MAD/mois<span class="tbc" title="TBC">*</span></strong></div>
+          <div class="cost-item"><span>Remédiation post-incident</span><strong style="color:var(--terra); font-family:var(--font-mono);">200–500K MAD<span class="tbc" title="TBC">*</span></strong></div>
         </div>
         <div class="cost-col cost-col--good">
           <h3 style="font-family:var(--font-display); font-weight:700; font-size:1rem; color:var(--sage); margin-bottom:1rem;">L'approche Cactus</h3>
