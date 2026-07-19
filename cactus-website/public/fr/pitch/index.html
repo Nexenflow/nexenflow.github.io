@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cactus Informatique — Présentation officielle 2026</title>
+  <meta name="description" content="Cactus Informatique : ERP propriétaire, cybersécurité, migration de données et infrastructure cloud. Votre DSI externalisé depuis 2006 à Casablanca.">
+  <meta name="theme-color" content="#10221C">
+  <link rel="canonical" href="https://nexenflow.github.io/fr/pitch/">
+  <meta property="og:title" content="Cactus Informatique — Présentation officielle 2026">
+  <meta property="og:description" content="ERP propriétaire, cybersécurité, migration de données, infrastructure cloud. Votre DSI externalisé depuis 2006.">
+  <meta property="og:locale" content="fr_MA">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   CACTUS INFORMATIQUE — Pitch Page Design System
+   Standalone file, no build tools
+   ═══════════════════════════════════════════════════════ */
+
+/* ── CUSTOM PROPERTIES ── */
+:root {
+  --cactus-ink: #10221C;
+  --cactus-ink-light: #1a3329;
+  --cactus-sage: #4C7A5E;
+  --cactus-sage-light: #5d9271;
+  --cactus-sand: #E9E2D0;
+  --cactus-sand-dark: #d4cbb4;
+  --cactus-terra: #C4622D;
+  --cactus-terra-dark: #a84f22;
+  --cactus-steel: #7A8A96;
+  --cactus-white: #FAFAF7;
+  --cactus-text: #2a2a2a;
+  --cactus-text-muted: #6b7280;
+
+  --font-display: 'Zilla Slab', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --max-w: 1100px;
+  --section-py: clamp(4rem, 8vw, 7rem);
+  --radius: 3px;
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-body);
+  color: var(--cactus-text);
+  background: var(--cactus-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--cactus-sage), var(--cactus-terra));
+  z-index: 9999; pointer-events: none; transition: width 0.1s linear;
+}
+
+/* ── STICKY BANNER ── */
+.top-banner {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--cactus-ink);
+  color: var(--cactus-sand);
+  font-size: 0.8rem; font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.2rem; flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.top-banner a {
+  color: var(--cactus-terra);
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.top-banner a:hover { opacity: 0.8; }
+.top-banner a:focus-visible { outline: 2px solid var(--cactus-terra); outline-offset: 2px; }
+.top-banner .sep { opacity: 0.3; }
+
+/* ── LAYOUT ── */
+.section { padding: var(--section-py) 1.5rem; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section--ink { background: var(--cactus-ink); color: var(--cactus-sand); }
+.section--sand { background: var(--cactus-sand); }
+.section--white { background: var(--cactus-white); }
+.section--terra { background: var(--cactus-terra); color: #fff; }
+
+/* ── TYPOGRAPHY ── */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--cactus-sage); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.eyebrow svg { width: 14px; height: 14px; }
+.section--ink .eyebrow,
+.section--terra .eyebrow { color: var(--cactus-sand); opacity: 0.8; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+}
+.section-title em { font-style: normal; color: var(--cactus-sage); }
+.section--ink .section-title { color: #fff; }
+.section--ink .section-title em { color: var(--cactus-sand); }
+.section--terra .section-title { color: #fff; }
+
+.section-lead {
+  font-size: 1.05rem; line-height: 1.75;
+  color: var(--cactus-text-muted);
+  max-width: 640px; margin-bottom: 2.5rem;
+}
+.section--ink .section-lead { color: rgba(233,226,208,0.7); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease-out;
+  text-decoration: none;
+  min-height: 44px;
+}
+.btn:focus-visible { outline: 2px solid var(--cactus-terra); outline-offset: 3px; }
+.btn svg { width: 18px; height: 18px; }
+
+.btn--terra {
+  background: var(--cactus-terra); color: #fff; border-color: var(--cactus-terra);
+}
+.btn--terra:hover { background: var(--cactus-terra-dark); transform: translateY(-1px); }
+
+.btn--outline {
+  background: transparent; color: var(--cactus-sand);
+  border-color: rgba(233,226,208,0.35);
+}
+.btn--outline:hover {
+  background: rgba(233,226,208,0.08);
+  border-color: var(--cactus-sand);
+}
+
+.btn--sage {
+  background: var(--cactus-sage); color: #fff; border-color: var(--cactus-sage);
+}
+.btn--sage:hover { background: var(--cactus-sage-light); transform: translateY(-1px); }
+
+.btn--ghost {
+  background: transparent; color: var(--cactus-sage);
+  border-color: var(--cactus-sage);
+}
+.btn--ghost:hover { background: var(--cactus-sage); color: #fff; }
+
+/* ── CTA INTERSTITIAL ── */
+.cta-inter {
+  text-align: center; padding: 2.5rem 1.5rem;
+  background: var(--cactus-ink);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cta-inter .btn { margin: 0 0.5rem; }
+
+/* ── GRID HELPERS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.two-col { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+
+@media (min-width: 640px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .two-col { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── CARDS ── */
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+}
+.card--light {
+  background: #fff;
+  border-color: var(--cactus-sand-dark);
+}
+.card-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+  background: rgba(76,122,94,0.1);
+}
+.card-icon svg { width: 22px; height: 22px; color: var(--cactus-sage); }
+.section--ink .card-icon { background: rgba(233,226,208,0.08); }
+.section--ink .card-icon svg { color: var(--cactus-sand); }
+
+.card h3 {
+  font-family: var(--font-body);
+  font-size: 1rem; font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.section--ink .card h3 { color: #fff; }
+
+.card p {
+  font-size: 0.9rem; line-height: 1.65;
+  color: var(--cactus-text-muted);
+}
+.section--ink .card p { color: rgba(233,226,208,0.6); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--cactus-ink);
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-pattern {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='80' viewBox='0 0 60 80'%3E%3Cline x1='30' y1='0' x2='30' y2='80' stroke='%23E9E2D0' stroke-width='1.5'/%3E%3Cline x1='22' y1='15' x2='30' y2='20' stroke='%23E9E2D0' stroke-width='1'/%3E%3Cline x1='38' y1='15' x2='30' y2='20' stroke='%23E9E2D0' stroke-width='1'/%3E%3Cline x1='20' y1='35' x2='30' y2='40' stroke='%23E9E2D0' stroke-width='1'/%3E%3Cline x1='40' y1='35' x2='30' y2='40' stroke='%23E9E2D0' stroke-width='1'/%3E%3Cline x1='22' y1='55' x2='30' y2='60' stroke='%23E9E2D0' stroke-width='1'/%3E%3Cline x1='38' y1='55' x2='30' y2='60' stroke='%23E9E2D0' stroke-width='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 780px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--cactus-sand);
+  background: rgba(233,226,208,0.06);
+  border: 1px solid rgba(233,226,208,0.12);
+  padding: 0.4rem 1rem; border-radius: 2px;
+  margin-bottom: 2rem;
+}
+.hero-badge svg { width: 14px; height: 14px; }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 700; color: #fff;
+  line-height: 1.12; letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em { font-style: normal; color: var(--cactus-terra); }
+.hero-sub {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(233,226,208,0.7);
+  line-height: 1.75; max-width: 620px;
+  margin: 0 auto 2.5rem;
+}
+.hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+.hero-trust {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; flex-wrap: wrap;
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(233,226,208,0.5);
+}
+.hero-trust svg { width: 14px; height: 14px; opacity: 0.5; }
+.hero-logos {
+  display: flex; align-items: center; justify-content: center;
+  gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem;
+  opacity: 0.4;
+}
+.hero-logos svg { height: 24px; width: auto; }
+
+/* ── CHIPS ── */
+.chip-row {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  justify-content: center; margin-top: 2rem;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.82rem; font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  background: rgba(233,226,208,0.08);
+  border: 1px solid rgba(233,226,208,0.15);
+  color: var(--cactus-sand);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip:hover { background: rgba(233,226,208,0.15); border-color: var(--cactus-sand); }
+.chip:focus-visible { outline: 2px solid var(--cactus-terra); outline-offset: 2px; }
+.chip svg { width: 16px; height: 16px; }
+
+/* ── MOCKUPS ── */
+.mockup-frame {
+  background: var(--cactus-ink);
+  border: 1px solid rgba(233,226,208,0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.section--ink .mockup-frame {
+  background: rgba(233,226,208,0.04);
+  border-color: rgba(233,226,208,0.08);
+}
+.mockup-bar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(233,226,208,0.06);
+}
+.mockup-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(233,226,208,0.15); }
+.mockup-body { padding: 1.5rem; }
+
+/* ── KPI ── */
+.kpi { text-align: center; }
+.kpi-value {
+  font-family: var(--font-mono);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--cactus-terra);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.section--ink .kpi-value { color: var(--cactus-sand); }
+.kpi-label {
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--cactus-text-muted);
+}
+.section--ink .kpi-label { color: rgba(233,226,208,0.5); }
+
+/* ── FRISE / METHODOLOGY STEPS ── */
+.frise {
+  display: grid; grid-template-columns: 1fr; gap: 2rem;
+  position: relative;
+}
+.frise-step {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+}
+.frise-num {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.1rem; font-weight: 700;
+  background: var(--cactus-sage);
+  color: #fff;
+}
+.frise-text h3 {
+  font-family: var(--font-body);
+  font-weight: 700; font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.frise-text p {
+  font-size: 0.9rem; color: var(--cactus-text-muted);
+}
+@media (min-width: 900px) {
+  .frise { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .frise-step { flex-direction: column; text-align: center; align-items: center; }
+}
+
+/* ── LOGO WALL ── */
+.logo-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 640px) { .logo-wall { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 900px) { .logo-wall { grid-template-columns: repeat(6, 1fr); } }
+.logo-item {
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  border: 1px solid rgba(233,226,208,0.08);
+  border-radius: var(--radius);
+  min-height: 64px;
+  filter: grayscale(1) brightness(1.8);
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+.logo-item:hover { filter: none; opacity: 1; }
+.logo-item svg { height: 28px; width: auto; max-width: 80px; }
+.logo-item span { display: none; }
+
+/* ── CASE CARDS ── */
+.case-card {
+  background: rgba(233,226,208,0.04);
+  border: 1px solid rgba(233,226,208,0.08);
+  border-left: 3px solid var(--cactus-sage);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+}
+.case-badge {
+  display: inline-flex;
+  font-size: 0.7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 0.25rem 0.7rem;
+  border-radius: 2px;
+  background: rgba(196,98,45,0.15);
+  color: var(--cactus-terra);
+  margin-bottom: 0.8rem;
+}
+.case-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 700;
+  color: #fff; margin-bottom: 0.5rem;
+}
+.case-card p { font-size: 0.9rem; color: rgba(233,226,208,0.6); line-height: 1.65; }
+.case-result {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--cactus-sand);
+  margin-top: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  background: rgba(233,226,208,0.06);
+  border-radius: 2px;
+}
+
+/* ── URGENCY ── */
+.urgency-phone {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: var(--radius);
+  transition: all 0.2s ease-out;
+  min-height: 44px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.urgency-phone:hover { border-color: #fff; transform: scale(1.02); }
+.urgency-phone:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.urgency-phone svg { width: 0.6em; height: 0.6em; flex-shrink: 0; }
+
+/* ── COST COMPARISON ── */
+.cost-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 768px) { .cost-grid { grid-template-columns: 1fr 1fr; } }
+.cost-col { padding: 2rem; border-radius: var(--radius); }
+.cost-col--bad { background: rgba(196,98,45,0.06); border: 1px solid rgba(196,98,45,0.15); }
+.cost-col--good { background: rgba(76,122,94,0.06); border: 1px solid rgba(76,122,94,0.15); }
+.cost-item { padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+.cost-item:last-child { border: none; }
+.cost-item span { font-size: 0.9rem; }
+.cost-item strong {
+  font-family: var(--font-mono);
+  font-weight: 700; float: right;
+}
+
+/* ── ENGAGEMENT CARDS ── */
+.engage-card {
+  background: #fff;
+  border: 1px solid var(--cactus-sand-dark);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+}
+.engage-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--cactus-ink);
+  margin-bottom: 0.5rem;
+}
+.engage-card p {
+  font-size: 0.9rem; color: var(--cactus-text-muted);
+  margin-bottom: 1.5rem; line-height: 1.65;
+}
+.engage-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.2rem;
+  background: rgba(76,122,94,0.1);
+}
+.engage-icon svg { width: 24px; height: 24px; color: var(--cactus-sage); }
+
+/* ── SECTOR CARDS ── */
+.sector-card {
+  background: #fff; border: 1px solid var(--cactus-sand-dark);
+  border-radius: var(--radius); padding: 1.5rem;
+  transition: all 0.18s;
+  text-decoration: none; display: block;
+}
+.sector-card:hover { transform: translateY(-2px); border-color: var(--cactus-sage); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.sector-card:focus-visible { outline: 2px solid var(--cactus-terra); outline-offset: 2px; }
+.sector-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--cactus-ink); }
+.sector-card p { font-size: 0.82rem; color: var(--cactus-text-muted); }
+
+/* ── FOOTER / CTA FINAL ── */
+.final-cta {
+  position: relative; overflow: hidden;
+  background: var(--cactus-ink);
+  color: var(--cactus-sand);
+  text-align: center;
+  padding: clamp(5rem, 10vw, 8rem) 1.5rem;
+}
+.final-cta .hero-pattern { opacity: 0.03; }
+.final-meta {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.2rem; flex-wrap: wrap;
+  font-size: 0.82rem; color: rgba(233,226,208,0.45);
+  margin-top: 2rem;
+}
+
+/* ── REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1),
+              transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 80ms; }
+.reveal-d2 { transition-delay: 160ms; }
+.reveal-d3 { transition-delay: 240ms; }
+.reveal-d4 { transition-delay: 320ms; }
+.reveal-d5 { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .progress-bar { display: none; }
+}
+
+/* ── FLOW DIAGRAM ── */
+.flow-diagram {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; flex-wrap: wrap;
+  padding: 2rem 1rem;
+}
+.flow-box {
+  padding: 1rem 1.5rem; border-radius: var(--radius);
+  border: 1px solid var(--cactus-sand-dark);
+  text-align: center; font-size: 0.85rem; font-weight: 600;
+  background: #fff; min-width: 140px;
+}
+.flow-box--cactus {
+  background: var(--cactus-sage); color: #fff;
+  border-color: var(--cactus-sage);
+}
+.flow-arrow {
+  font-size: 1.5rem; color: var(--cactus-sage);
+  padding: 0 0.8rem; font-weight: 700;
+}
+.flow-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--cactus-sage);
+  margin-top: 1rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(76,122,94,0.2);
+  border-radius: 2px;
+}
+
+/* ── ARCH DIAGRAM ── */
+.arch-diagram {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.arch-diagram svg { max-width: 100%; height: auto; margin: 0 auto; }
+
+/* ── GAUGE ── */
+.gauge-wrap { text-align: center; padding: 1.5rem; }
+.gauge-wrap svg { max-width: 180px; margin: 0 auto; }
+.vuln-list { margin-top: 1.2rem; }
+.vuln-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(233,226,208,0.06);
+}
+.vuln-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.vuln-dot--crit { background: #e74c3c; }
+.vuln-dot--med { background: #f39c12; }
+.vuln-dot--low { background: var(--cactus-sage); }
+.vuln-item span:last-child {
+  margin-left: auto; font-family: var(--font-mono);
+  font-weight: 600; font-size: 0.8rem;
+}
+
+/* ── ERP DASHBOARD ── */
+.erp-kpi-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+.erp-kpi {
+  padding: 0.8rem; border-radius: var(--radius);
+  background: rgba(233,226,208,0.04);
+  border: 1px solid rgba(233,226,208,0.08);
+}
+.erp-kpi-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(233,226,208,0.5); margin-bottom: 0.3rem; }
+.erp-kpi-val { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--cactus-sand); }
+.erp-table {
+  width: 100%; font-size: 0.78rem;
+}
+.erp-table th {
+  text-align: left; font-weight: 600; padding: 0.5rem;
+  border-bottom: 1px solid rgba(233,226,208,0.08);
+  color: rgba(233,226,208,0.5);
+  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.erp-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid rgba(233,226,208,0.04);
+  color: rgba(233,226,208,0.7);
+}
+.erp-table .status {
+  display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; margin-right: 0.4rem;
+}
+.erp-table .status--ok { background: var(--cactus-sage); }
+.erp-table .status--warn { background: #f39c12; }
+
+/* ── SEPARATOR LINE ── */
+.sep-line {
+  width: 50px; height: 2px;
+  background: var(--cactus-terra);
+  margin-bottom: 1.5rem;
+  border-radius: 1px;
+}
+.section--ink .sep-line { background: rgba(233,226,208,0.2); }
+
+/* ── WHY NOW CARDS ── */
+.why-card { text-align: center; padding: 1.5rem; }
+.why-card svg { width: 32px; height: 32px; color: var(--cactus-sage); margin: 0 auto 1rem; }
+.why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.why-card p { font-size: 0.9rem; color: var(--cactus-text-muted); }
+
+/* ── CONFIRM MARKERS ── */
+.confirm {
+  background: rgba(196,98,45,0.1);
+  color: var(--cactus-terra);
+  font-family: var(--font-mono);
+  font-size: 0.75rem; font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 639px) {
+  .hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .top-banner { font-size: 0.7rem; gap: 0.6rem; }
+  .urgency-phone { font-size: clamp(1.3rem, 5vw, 1.8rem); padding: 0.6rem 1rem; }
+  .flow-diagram { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ═══════════ SECTION 0: STICKY BANNER ═══════════ -->
+<nav class="top-banner" aria-label="Barre d'information">
+  <span>Partenaire IT depuis 2006</span>
+  <span class="sep">·</span>
+  <a href="#cta-final">Audit IT gratuit</a>
+  <span class="sep">·</span>
+  <a href="#urgence">Urgence IT — réponse sous 2h</a>
+  <span class="sep">·</span>
+  <a href="#cta-final">Nous contacter</a>
+</nav>
+
+<!-- ═══════════ SECTION 1: HERO ═══════════ -->
+<section class="hero" id="top">
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      Présentation officielle · 2026
+    </div>
+
+    <h1 class="reveal">Cactus. Le partenaire IT qui répond quand les autres ont <em>abandonné.</em></h1>
+
+    <p class="hero-sub reveal">ERP propriétaire, cybersécurité, migration de données, infrastructure cloud — depuis 2006, nous construisons, sécurisons et modernisons le système d'information des entreprises marocaines. Un seul partenaire, zéro dépendance éditeur.</p>
+
+    <div class="hero-ctas reveal">
+      <a href="#cta-final" class="btn btn--terra">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        Demander un audit gratuit
+      </a>
+      <a href="#urgence" class="btn btn--outline">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        J'ai une urgence IT
+      </a>
+    </div>
+
+    <div class="hero-trust reveal">
+      <span>20 ans d'expertise</span>
+      <span>·</span>
+      <span>ISO 27002</span>
+      <span>·</span>
+      <span>Multisectoriel</span>
+      <span>·</span>
+      <span>Casablanca</span>
+    </div>
+
+    <div class="hero-logos reveal" aria-label="Clients de confiance">
+      <!-- Autodistribution mini -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22"><rect x="0" y="0" width="24" height="14" fill="#E9E2D0"/><rect x="0" y="14.8" width="24" height="7.2" fill="#E9E2D0"/><text x="12" y="11" font-family="Inter,sans-serif" font-weight="700" font-size="5" fill="#10221C" text-anchor="middle">AD</text><text x="12" y="20" font-family="Inter,sans-serif" font-weight="800" font-size="4.5" fill="#10221C" text-anchor="middle">MAROC</text></svg>
+      <!-- Avon mini -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 24"><rect width="60" height="24" rx="2" fill="#E9E2D0"/><text x="30" y="17" font-family="Inter,sans-serif" font-weight="800" font-size="13" fill="#10221C" text-anchor="middle" letter-spacing="0.06em">AVON</text></svg>
+      <!-- Centrale Danone mini -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 24"><rect width="80" height="24" rx="2" fill="#E9E2D0"/><text x="40" y="16" font-family="Inter,sans-serif" font-weight="700" font-size="9" fill="#10221C" text-anchor="middle" letter-spacing="0.02em">DANONE</text></svg>
+      <!-- Ordre des Notaires mini -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 24"><rect width="80" height="24" rx="2" fill="#E9E2D0"/><text x="40" y="16" font-family="Inter,sans-serif" font-weight="700" font-size="7" fill="#10221C" text-anchor="middle">NOTAIRES</text></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 2: DOULEURS ═══════════ -->
+<section class="section section--sand" id="contexte">
+  <div class="section-inner">
+    <div class="eyebrow reveal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg> Le contexte</div>
+    <h2 class="section-title reveal">Piloter le système d'information d'une entreprise en croissance est devenu <em>complexe</em></h2>
+    <div class="grid-3" style="margin-top:2rem;">
+      <div class="card card--light reveal reveal-d1">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg></div>
+        <h3>ERP vieillissant</h3>
+        <p>AS400, Sage, développements maison sans documentation : plus personne ne peut le faire évoluer.</p>
+      </div>
+      <div class="card card--light reveal reveal-d2">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
+        <h3>Menaces cyber croissantes</h3>
+        <p>Phishing, intrusions, absence d'audit récent : le risque est invisible jusqu'au jour de l'incident.</p>
+      </div>
+      <div class="card card--light reveal reveal-d3">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div>
+        <h3>Migrations à haut risque</h3>
+        <p>Changer d'ERP ou de base de données sans garantie de résultat, c'est jouer la continuité de l'activité.</p>
+      </div>
+      <div class="card card--light reveal reveal-d1">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></div>
+        <h3>Infrastructure fragile</h3>
+        <p>Un serveur qui tombe, un site distant sans VPN sécurisé, aucune haute disponibilité.</p>
+      </div>
+      <div class="card card--light reveal reveal-d2">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 14.14 14.14"/></svg></div>
+        <h3>Dépendance fournisseur</h3>
+        <p>Un seul éditeur ou prestataire, sans alternative en cas de rupture de service.</p>
+      </div>
+      <div class="card card--light reveal reveal-d3">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Zéro visibilité en cas de crise</h3>
+        <p>Qui appeler un vendredi 18h quand l'ERP est bloqué ?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 3: LA RÉPONSE ═══════════ -->
+<section class="section section--ink" id="piliers">
+  <div class="section-inner" style="text-align:center;">
+    <div class="eyebrow reveal" style="justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> La réponse</div>
+    <h2 class="section-title reveal">Un seul partenaire. <em>Toute</em> votre transformation numérique.</h2>
+    <p class="section-lead reveal" style="margin-left:auto;margin-right:auto;">Six expertises, une méthodologie, un point de contact.</p>
+    <div class="chip-row reveal">
+      <a href="#erp" class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7h10"/><path d="M7 12h10"/><path d="M7 17h10"/></svg> ERP & Gestion</a>
+      <a href="#cyber" class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg> Cybersécurité</a>
+      <a href="#migration" class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg> Migration & Données</a>
+      <a href="#infra" class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg> Infrastructure & Cloud</a>
+      <a href="#dev" class="chip"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Développement & IoT</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 4: ERP & GESTION ═══════════ -->
+<section class="section section--white" id="erp">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow reveal">ERP & Gestion</div>
+        <div class="sep-line reveal"></div>
+        <h2 class="section-title reveal">Un ERP propriétaire, éprouvé depuis <em>20 ans</em></h2>
+        <ul style="margin-top:1.5rem;">
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Modulaire</strong> — gestion commerciale, comptabilité, RH, activés à la carte selon votre croissance.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Business Intelligence intégrée</strong> — tableaux de bord décisionnels sans outil tiers.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Zéro dépendance éditeur</strong> — le code vous appartient, l'évolution suit vos besoins.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Interopérable</strong> — s'interface avec vos outils existants (comptabilité, banque, IoT terrain).</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="mockup-frame">
+          <div class="mockup-bar"><span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span></div>
+          <div class="mockup-body">
+            <div class="erp-kpi-row">
+              <div class="erp-kpi"><div class="erp-kpi-label">CA du mois</div><div class="erp-kpi-val">1.42M</div></div>
+              <div class="erp-kpi"><div class="erp-kpi-label">Stock</div><div class="erp-kpi-val">847</div></div>
+              <div class="erp-kpi"><div class="erp-kpi-label">Factures</div><div class="erp-kpi-val">23</div></div>
+            </div>
+            <table class="erp-table">
+              <thead><tr><th>Commande</th><th>Client</th><th>Statut</th></tr></thead>
+              <tbody>
+                <tr><td>CMD-2026-142</td><td>Autodistribution</td><td><span class="status status--ok"></span>Livrée</td></tr>
+                <tr><td>CMD-2026-143</td><td>MEA Food</td><td><span class="status status--ok"></span>Livrée</td></tr>
+                <tr><td>CMD-2026-144</td><td>Detroit Ind.</td><td><span class="status status--warn"></span>En cours</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 5: CYBERSÉCURITÉ ═══════════ -->
+<section class="section section--ink" id="cyber">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow reveal">Cybersécurité</div>
+        <div class="sep-line reveal"></div>
+        <h2 class="section-title reveal">Votre sécurité, testée avant qu'un attaquant ne le fasse</h2>
+        <ul style="margin-top:1.5rem;">
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem; color:rgba(233,226,208,0.8);"><strong style="color:#fff;">Audits de sécurité complets</strong> — cartographie des risques, priorisation par criticité.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem; color:rgba(233,226,208,0.8);"><strong style="color:#fff;">Tests d'intrusion (pentest)</strong> — conditions réelles, rapport actionnable.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem; color:rgba(233,226,208,0.8);"><strong style="color:#fff;">Conformité ISO 27002</strong> — accompagnement à la mise en conformité.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem; color:rgba(233,226,208,0.8);"><strong style="color:#fff;">Plan de reprise d'activité</strong> — pour que « l'incident » ne devienne jamais « l'arrêt ».</li>
+        </ul>
+        <p class="reveal" style="margin-top:1.2rem; font-size:0.85rem; color:rgba(233,226,208,0.5); font-style:italic;">Référence : Ordre des Notaires du Maroc — audit de sécurité et tests de pénétration pour la conformité d'accès aux API sensibles.</p>
+      </div>
+      <div class="reveal">
+        <div class="mockup-frame">
+          <div class="mockup-bar"><span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span></div>
+          <div class="mockup-body">
+            <div class="gauge-wrap">
+              <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 30 110 A 70 70 0 0 1 170 110" fill="none" stroke="rgba(233,226,208,0.08)" stroke-width="12" stroke-linecap="round"/>
+                <path d="M 30 110 A 70 70 0 0 1 155 60" fill="none" stroke="#4C7A5E" stroke-width="12" stroke-linecap="round"/>
+                <text x="100" y="90" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="28" font-weight="700" fill="#E9E2D0">B+</text>
+                <text x="100" y="108" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(233,226,208,0.5)">Score de sécurité</text>
+              </svg>
+            </div>
+            <div class="vuln-list">
+              <div class="vuln-item"><span class="vuln-dot vuln-dot--crit"></span><span style="color:rgba(233,226,208,0.7)">Critiques</span><span style="color:#e74c3c">2</span></div>
+              <div class="vuln-item"><span class="vuln-dot vuln-dot--med"></span><span style="color:rgba(233,226,208,0.7)">Moyennes</span><span style="color:#f39c12">7</span></div>
+              <div class="vuln-item"><span class="vuln-dot vuln-dot--low"></span><span style="color:rgba(233,226,208,0.7)">Faibles</span><span style="color:var(--cactus-sage)">14</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA interstitial -->
+<div class="cta-inter">
+  <a href="#cta-final" class="btn btn--terra">Demander un audit gratuit</a>
+</div>
+
+<!-- ═══════════ SECTION 6: MIGRATION ═══════════ -->
+<section class="section section--white" id="migration">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow reveal">Migration & Données</div>
+        <div class="sep-line reveal"></div>
+        <h2 class="section-title reveal">Migrer sans jamais interrompre votre <em>activité</em></h2>
+        <ul style="margin-top:1.5rem;">
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Garantie de résultat</strong> — nous nous engageons sur l'aboutissement, pas sur le nombre d'heures facturées.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Environnements hétérogènes maîtrisés</strong> — de l'AS400 à SQL Server, de Sage à notre ERP.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Zéro interruption de service</strong> — bascule progressive, données validées à chaque étape.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Traçabilité complète</strong> — chaque donnée migrée est vérifiable depuis la source jusqu'à la cible.</li>
+        </ul>
+        <p class="reveal" style="margin-top:1.2rem; font-size:0.85rem; color:var(--cactus-steel); font-style:italic;">Référence : Avon Beauty Products — migration et interfaçage de données massives entre systèmes hétérogènes AS400 et SQL Server.</p>
+      </div>
+      <div class="reveal">
+        <div class="flow-diagram">
+          <div class="flow-box">Ancien système<br><small style="color:var(--cactus-steel);">AS400 / Sage / Legacy</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box flow-box--cactus">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 0.3rem;"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            Cactus
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Nouveau système<br><small style="color:var(--cactus-steel);">ERP / SQL Server / Cloud</small></div>
+        </div>
+        <div style="text-align:center;">
+          <div class="flow-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            0 interruption de service
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 7: INFRASTRUCTURE ═══════════ -->
+<section class="section section--sand" id="infra">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow reveal" style="color:var(--cactus-sage);">Infrastructure & Cloud</div>
+        <div class="sep-line reveal"></div>
+        <h2 class="section-title reveal">Une infrastructure qui ne s'arrête <em>jamais</em></h2>
+        <ul style="margin-top:1.5rem;">
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Virtualisation</strong> — VMware, Hyper-V : consolidez vos serveurs, réduisez vos coûts matériels.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Cloud Azure</strong> — hybride ou full cloud, selon vos contraintes de conformité et de coût.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>VPN multisites et nomades</strong> — vos équipes travaillent en sécurité, où qu'elles soient.</li>
+          <li class="reveal" style="padding:0.5rem 0; font-size:0.95rem;"><strong>Haute disponibilité</strong> — architectures pensées pour les entreprises qui ne peuvent pas se permettre une panne.</li>
+        </ul>
+        <p class="reveal" style="margin-top:1.2rem; font-size:0.85rem; color:var(--cactus-steel); font-style:italic;">Référence : Autodistribution — 19 ans de partenariat. Virtualisation VMware, sécurité réseau, VPN multisites et nomades.</p>
+      </div>
+      <div class="reveal">
+        <div class="arch-diagram">
+          <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;">
+            <!-- Cloud -->
+            <rect x="130" y="10" width="100" height="45" rx="3" fill="#4C7A5E" stroke="#4C7A5E"/>
+            <text x="180" y="30" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#fff">Cloud / Datacenter</text>
+            <text x="180" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="rgba(255,255,255,0.6)">Azure · VMware</text>
+            <!-- Lines -->
+            <line x1="180" y1="55" x2="180" y2="80" stroke="#4C7A5E" stroke-width="1.5" stroke-dasharray="4"/>
+            <line x1="180" y1="80" x2="60" y2="120" stroke="#7A8A96" stroke-width="1" stroke-dasharray="4"/>
+            <line x1="180" y1="80" x2="180" y2="120" stroke="#7A8A96" stroke-width="1" stroke-dasharray="4"/>
+            <line x1="180" y1="80" x2="300" y2="120" stroke="#7A8A96" stroke-width="1" stroke-dasharray="4"/>
+            <!-- VPN label -->
+            <rect x="155" y="86" width="50" height="16" rx="2" fill="rgba(76,122,94,0.1)" stroke="rgba(76,122,94,0.2)"/>
+            <text x="180" y="97" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="7" font-weight="600" fill="#4C7A5E">VPN</text>
+            <!-- Sites -->
+            <rect x="15" y="120" width="90" height="40" rx="3" fill="#fff" stroke="#D4CBB4"/>
+            <text x="60" y="138" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="#10221C">Siège</text>
+            <text x="60" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7A8A96">Casablanca</text>
+            <rect x="135" y="120" width="90" height="40" rx="3" fill="#fff" stroke="#D4CBB4"/>
+            <text x="180" y="138" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="#10221C">Site distant</text>
+            <text x="180" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7A8A96">Région</text>
+            <rect x="255" y="120" width="90" height="40" rx="3" fill="#fff" stroke="#D4CBB4"/>
+            <text x="300" y="138" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="600" fill="#10221C">Nomades</text>
+            <text x="300" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#7A8A96">Mobile</text>
+            <!-- HA badge -->
+            <rect x="120" y="175" width="120" height="20" rx="2" fill="rgba(76,122,94,0.08)" stroke="rgba(76,122,94,0.15)"/>
+            <text x="180" y="189" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" font-weight="700" fill="#4C7A5E">Haute disponibilité</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 8: DEV & IOT ═══════════ -->
+<section class="section section--white" id="dev">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Développement sur mesure & IoT</div>
+    <div class="sep-line reveal"></div>
+    <h2 class="section-title reveal">Du logiciel métier au capteur <em>terrain</em></h2>
+    <div class="grid-2" style="margin-top:2rem;">
+      <div class="card card--light reveal">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Applications web, mobile, API</h3>
+        <p>Sur mesure, agnostiques en langage, calées sur vos processus réels. Intégrées à votre ERP existant.</p>
+      </div>
+      <div class="card card--light reveal">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"/></svg></div>
+        <h3>IoT & connectivité machine</h3>
+        <p>Ponts-bascules (agroalimentaire), capteurs médicaux, pointeuses — interfacés en temps réel avec votre ERP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA interstitial -->
+<div class="cta-inter">
+  <a href="#cta-final" class="btn btn--terra">Demander un audit gratuit</a>
+</div>
+
+<!-- ═══════════ SECTION 9: MÉTHODOLOGIE ═══════════ -->
+<section class="section section--sand" id="methodo">
+  <div class="section-inner">
+    <div class="eyebrow reveal" style="color:var(--cactus-sage);">Notre approche</div>
+    <div class="sep-line reveal"></div>
+    <h2 class="section-title reveal">L'ingénierie du résultat, en <em>4 étapes</em></h2>
+    <div class="frise" style="margin-top:2.5rem;">
+      <div class="frise-step reveal reveal-d1">
+        <div class="frise-num">1</div>
+        <div class="frise-text"><h3>Diagnostic</h3><p>Analyse approfondie de l'existant. Nous identifions les vrais problèmes, pas les symptômes.</p></div>
+      </div>
+      <div class="frise-step reveal reveal-d2">
+        <div class="frise-num">2</div>
+        <div class="frise-text"><h3>Conception</h3><p>Architecture de la solution optimale, traçabilité complète depuis vos spécifications.</p></div>
+      </div>
+      <div class="frise-step reveal reveal-d3">
+        <div class="frise-num">3</div>
+        <div class="frise-text"><h3>Déploiement</h3><p>Mise en production progressive, sans interruption, tests de sécurisation à chaque étape.</p></div>
+      </div>
+      <div class="frise-step reveal reveal-d4">
+        <div class="frise-num">4</div>
+        <div class="frise-text"><h3>Accompagnement</h3><p>Support continu, formation, maintenance proactive. Un partenariat, pas une prestation.</p></div>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center; margin-top:2rem; font-size:0.95rem; font-weight:600; color:var(--cactus-ink);">Nous ne facturons pas à l'heure. Nous nous engageons sur la résolution effective de vos problèmes.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 10: PREUVE SECTORIELLE ═══════════ -->
+<section class="section section--white" id="secteurs">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Nos secteurs</div>
+    <div class="sep-line reveal"></div>
+    <h2 class="section-title reveal">Des solutions pensées pour votre <em>secteur</em></h2>
+    <div class="grid-3" style="margin-top:2rem;">
+      <a href="https://nexenflow.github.io/fr/secteurs/transport-logistique/" class="sector-card reveal reveal-d1">
+        <h3>Transport & Logistique</h3>
+        <p>VPN multisites, traçabilité, gestion de flotte.</p>
+      </a>
+      <a href="https://nexenflow.github.io/fr/secteurs/industrie-agroalimentaire/" class="sector-card reveal reveal-d2">
+        <h3>Industrie & Agroalimentaire</h3>
+        <p>IoT industriel, ponts-bascules, pilotage de production.</p>
+      </a>
+      <a href="https://nexenflow.github.io/fr/secteurs/medical-sante/" class="sector-card reveal reveal-d3">
+        <h3>Médical & Santé</h3>
+        <p>IoT médical, scanners OCR, monitoring.</p>
+      </a>
+      <a href="https://nexenflow.github.io/fr/secteurs/" class="sector-card reveal reveal-d1">
+        <h3>Finance & Distribution</h3>
+        <p>Conformité, sécurité des données sensibles.</p>
+      </a>
+      <a href="https://nexenflow.github.io/fr/secteurs/" class="sector-card reveal reveal-d2">
+        <h3>Services Professionnels</h3>
+        <p>Dématérialisation, workflow métier, archivage.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 11: PREUVE CLIENT ═══════════ -->
+<section class="section section--ink" id="clients">
+  <div class="section-inner">
+    <div class="eyebrow reveal" style="justify-content:center; text-align:center;">Ils nous font confiance</div>
+    <h2 class="section-title reveal" style="text-align:center;">Des partenariats qui durent, avec des entreprises <em>exigeantes</em></h2>
+
+    <!-- Logo wall -->
+    <div class="logo-wall reveal" style="margin-top:2.5rem;">
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22"><rect x="0" y="0" width="24" height="14" fill="#0B4385"/><rect x="0" y="14.8" width="24" height="7.2" fill="#E30613"/><text x="12" y="20.2" font-family="Inter,sans-serif" font-weight="900" font-size="5.2" fill="white" text-anchor="middle">MAROC</text></svg><span>Autodistribution</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><rect width="100" height="50" fill="#DE005C"/><text x="50" y="35" font-family="Inter,sans-serif" font-weight="800" font-size="18" fill="#fff" text-anchor="middle">AVON</text></svg><span>Avon</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 30"><rect width="80" height="30" rx="2" fill="#0F3B84"/><text x="40" y="20" font-family="Inter,sans-serif" font-weight="700" font-size="10" fill="#fff" text-anchor="middle">DANONE</text></svg><span>Centrale Danone</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#D21F26"/><text x="20" y="25" font-family="Inter,sans-serif" font-weight="700" font-size="8" fill="#fff" text-anchor="middle">LVE</text></svg><span>La Voie Express</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="13" cy="15" r="8" fill="#12405F"/><circle cx="27" cy="15" r="8" fill="#12405F"/><circle cx="20" cy="28" r="8" fill="#12405F"/></svg><span>Active Tech</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 30"><path d="M 20,3 C 8,3 2,10 2,17 C 2,24 12,30 30,30 C 12,27 6,22 6,17 C 6,11 12,5 20,3 Z" fill="#C1121F"/><path d="M 20,27 C 32,27 38,20 38,13 C 38,6 28,0 10,0 C 28,3 34,8 34,13 C 34,19 28,25 20,27 Z" fill="#008751"/></svg><span>Ordre des Notaires</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><polygon points="15,22 15,10 5,5 5,17" fill="#3B72B4"/><polygon points="15,22 15,10 25,5 25,17" fill="#002B7A"/><polygon points="25,32 25,20 15,15 15,27" fill="#3B72B4"/><polygon points="25,32 25,20 35,15 35,27" fill="#002B7A"/></svg><span>Archivex</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 30"><rect width="40" height="30" rx="2" fill="#0E7A43"/><circle cx="20" cy="10" r="6" fill="#F7931E"/></svg><span>Mido Maroc</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" rx="3" fill="#C51A1B"/><rect x="0" y="18" width="40" height="4" fill="#FFD700"/><rect x="0" y="22" width="40" height="18" fill="#0D4B26"/></svg><span>MEA Food</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" rx="3" fill="#0A1C3A"/><text x="20" y="26" font-family="Inter,sans-serif" font-weight="800" font-size="10" fill="#fff" text-anchor="middle">DI</text></svg><span>Detroit Industries</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 20"><rect width="40" height="20" rx="2" fill="#E2001A"/><text x="20" y="14" font-family="Inter,sans-serif" font-weight="700" font-size="7" fill="#fff" text-anchor="middle">PREVAS</text></svg><span>Prevas</span></div>
+      <div class="logo-item"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#1C8CE3"/><text x="20" y="25" font-family="Inter,sans-serif" font-weight="800" font-size="10" fill="#fff" text-anchor="middle">Gmc</text></svg><span>Gilmarfer</span></div>
+    </div>
+
+    <!-- 3 Case studies -->
+    <div class="grid-3" style="margin-top:3rem;">
+      <div class="case-card reveal reveal-d1">
+        <div class="case-badge">Transport & Logistique</div>
+        <h3>Autodistribution</h3>
+        <p>19 ans de partenariat. Virtualisation VMware, sécurité réseau, VPN multisites et nomades.</p>
+        <div class="case-result"><span class="confirm">[À CONFIRMER]</span> sites connectés</div>
+      </div>
+      <div class="case-card reveal reveal-d2">
+        <div class="case-badge">Distribution</div>
+        <h3>Avon Beauty Products</h3>
+        <p>Migration et interfaçage de données massives entre systèmes hétérogènes AS400 et SQL Server.</p>
+        <div class="case-result"><span class="confirm">[À CONFIRMER]</span> données migrées</div>
+      </div>
+      <div class="case-card reveal reveal-d3">
+        <div class="case-badge">Services Professionnels</div>
+        <h3>Ordre des Notaires du Maroc</h3>
+        <p>Audit de sécurité, tests de pénétration et validation de conformité pour l'accès aux API sensibles.</p>
+        <div class="case-result"><span class="confirm">[À CONFIRMER]</span> vulnérabilités corrigées</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA interstitial -->
+<div class="cta-inter">
+  <a href="#cta-final" class="btn btn--terra">Demander un audit gratuit</a>
+</div>
+
+<!-- ═══════════ SECTION 12: COÛT DE L'INACTION ═══════════ -->
+<section class="section section--sand" id="cout">
+  <div class="section-inner">
+    <div class="eyebrow reveal" style="color:var(--cactus-sage);">Le vrai coût</div>
+    <div class="sep-line reveal"></div>
+    <h2 class="section-title reveal">Le vrai coût, ce n'est pas votre prestataire IT — c'est l'incident que vous n'avez pas <em>anticipé</em></h2>
+    <div class="cost-grid" style="margin-top:2rem;">
+      <div class="cost-col cost-col--bad reveal">
+        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:1rem; color:var(--cactus-terra);">Le coût de ne rien faire</h3>
+        <div class="cost-item"><span>Heure d'arrêt ERP (PME industrielle)</span><strong class="confirm" style="float:right;">[À CONFIRMER]</strong></div>
+        <div class="cost-item"><span>DSI senior à temps plein (salaire + charges)</span><strong class="confirm" style="float:right;">[À CONFIRMER]</strong></div>
+        <div class="cost-item"><span>Remédiation post-incident cyber</span><strong class="confirm" style="float:right;">[À CONFIRMER]</strong></div>
+      </div>
+      <div class="cost-col cost-col--good reveal">
+        <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:1rem; color:var(--cactus-sage);">L'approche Cactus</h3>
+        <div class="cost-item"><span>Audit préventif gratuit</span><strong style="color:var(--cactus-sage);">1h de votre temps</strong></div>
+        <div class="cost-item"><span>DSI externalisé</span><strong style="color:var(--cactus-sage);">Sur mesure</strong></div>
+        <div class="cost-item"><span>Urgence IT — réponse sous 2h</span><strong style="color:var(--cactus-sage);">Sans engagement préalable</strong></div>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center; margin-top:2rem; font-size:0.95rem; font-weight:600;">Un audit gratuit coûte une heure de votre temps. Un incident non anticipé coûte bien plus.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 13: URGENCE IT ═══════════ -->
+<section class="section section--terra" id="urgence" style="text-align:center;">
+  <div class="section-inner">
+    <div class="eyebrow reveal" style="justify-content:center; color:rgba(255,255,255,0.7);">Intervention d'urgence</div>
+    <h2 class="section-title reveal" style="color:#fff;">ERP bloqué. Serveur en panne. Incident de sécurité en cours.</h2>
+    <p class="reveal" style="font-size:1.05rem; color:rgba(255,255,255,0.8); max-width:600px; margin:0 auto 2rem;">Nous intervenons comme experts de dernier recours, là où d'autres prestataires ont échoué. <strong style="color:#fff;">Réponse sous 2 heures ouvrées.</strong></p>
+    <div class="reveal">
+      <a href="tel:+212522343545" class="urgency-phone" aria-label="Appeler le +212 5 22 34 35 45">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        +212 5 22 34 35 45
+      </a>
+    </div>
+    <div class="reveal" style="margin-top:1.5rem;">
+      <a href="#cta-final" class="btn" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.3);">Formulaire d'urgence</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 14: POURQUOI MAINTENANT ═══════════ -->
+<section class="section section--white" id="pourquoi">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Pourquoi maintenant ?</div>
+    <div class="sep-line reveal"></div>
+    <h2 class="section-title reveal">Le retard technologique se paie <em>cash</em></h2>
+    <div class="grid-3" style="margin-top:2rem;">
+      <div class="why-card reveal reveal-d1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><path d="M14 12V8"/></svg>
+        <h3>La transformation s'accélère au Maroc</h3>
+        <p>Vos concurrents équipés d'un ERP moderne décident plus vite que vous.</p>
+      </div>
+      <div class="why-card reveal reveal-d2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        <h3>Les cybermenaces n'attendent pas</h3>
+        <p>Un audit aujourd'hui coûte moins qu'un incident demain.</p>
+      </div>
+      <div class="why-card reveal reveal-d3">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Vos partenaires attendent la fiabilité</h3>
+        <p>Un SI qui tient la charge, une continuité de service visible de l'extérieur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 15: MODÈLES D'ENGAGEMENT ═══════════ -->
+<section class="section section--sand" id="engagement">
+  <div class="section-inner">
+    <div class="eyebrow reveal" style="color:var(--cactus-sage); justify-content:center; text-align:center;">Comment travailler ensemble</div>
+    <h2 class="section-title reveal" style="text-align:center;">Trois façons de travailler avec <em>nous</em></h2>
+    <p class="section-lead reveal" style="text-align:center; margin-left:auto; margin-right:auto; color:var(--cactus-text-muted);">Chaque format démarre par un diagnostic gratuit et sans engagement.</p>
+    <div class="grid-3" style="margin-top:2rem;">
+      <div class="engage-card reveal reveal-d1">
+        <div class="engage-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>Intervention ponctuelle</h3>
+        <p>Un projet précis (migration, audit, développement), au forfait, avec garantie de résultat.</p>
+        <a href="#cta-final" class="btn btn--ghost" style="margin-top:0.5rem;">Discuter de ce format</a>
+      </div>
+      <div class="engage-card reveal reveal-d2">
+        <div class="engage-icon" style="background:rgba(196,98,45,0.1);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cactus-terra);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>DSI externalisé</h3>
+        <p>Nous devenons votre service IT complet, en continu, avec un SLA défini ensemble.</p>
+        <a href="#cta-final" class="btn btn--ghost" style="margin-top:0.5rem;">Discuter de ce format</a>
+      </div>
+      <div class="engage-card reveal reveal-d3">
+        <div class="engage-icon" style="background:rgba(196,98,45,0.1);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cactus-terra);"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+        <h3>Urgence IT</h3>
+        <p>Intervention immédiate en cas d'incident, sans engagement préalable requis.</p>
+        <a href="#urgence" class="btn btn--ghost" style="margin-top:0.5rem;">Discuter de ce format</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 16: CTA FINAL ═══════════ -->
+<section class="final-cta" id="cta-final">
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div style="position:relative; z-index:2; max-width:700px; margin:0 auto;">
+    <div class="eyebrow reveal" style="justify-content:center; color:rgba(233,226,208,0.6);">Prêt à avancer ?</div>
+    <h2 style="font-family:var(--font-display); font-size:clamp(2rem, 4.5vw, 3rem); font-weight:700; color:#fff; line-height:1.15; margin-bottom:1rem;" class="reveal">Discutons de votre projet</h2>
+    <p style="font-size:1.05rem; color:rgba(233,226,208,0.65); margin-bottom:2.5rem; line-height:1.7;" class="reveal">Chaque entreprise a des défis IT uniques. En 30 minutes, sans engagement, nous identifions vos priorités.</p>
+    <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem;">
+      <a href="https://nexenflow.github.io/fr/contact/" class="btn btn--terra">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        Demander un audit gratuit
+      </a>
+      <a href="tel:+212522343545" class="btn btn--outline" aria-label="Appeler le +212 5 22 34 35 45">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +212 5 22 34 35 45
+      </a>
+    </div>
+    <div class="reveal" style="margin-bottom:1rem;">
+      <a href="mailto:contact@cactus.net.ma" style="font-size:0.9rem; color:rgba(233,226,208,0.6); transition:color 0.15s;" onmouseover="this.style.color='#E9E2D0'" onmouseout="this.style.color='rgba(233,226,208,0.6)'">contact@cactus.net.ma</a>
+    </div>
+    <div class="final-meta reveal">
+      <span>Casablanca</span>
+      <span>·</span>
+      <span>70 Allée des Phoenix</span>
+      <span>·</span>
+      <span>Depuis 2006</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // Respect reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Progress bar ──
+  const progressBar = document.getElementById('progressBar');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // ── Reveal on scroll ──
+  if (!prefersReducedMotion) {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+  } else {
+    // Show everything immediately
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  // ── Animated counters ──
+  const kpiElements = document.querySelectorAll('[data-count]');
+  if (kpiElements.length > 0 && !prefersReducedMotion) {
+    const counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count'), 10);
+          const prefix = el.getAttribute('data-prefix') || '';
+          const suffix = el.getAttribute('data-suffix') || '';
+          let current = 0;
+          const duration = 1200;
+          const startTime = performance.now();
+          function animate(time) {
+            const elapsed = time - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            current = Math.round(eased * target);
+            el.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    kpiElements.forEach(function(el) { counterObserver.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
