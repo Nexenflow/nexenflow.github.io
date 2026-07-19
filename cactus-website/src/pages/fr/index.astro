@@ -422,7 +422,17 @@ const p = (path: string) => getLocalePath(lang, path);
         <div class="max-w-[1200px] mx-auto px-6 relative z-[1]">
             <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4 reveal" style="color: var(--color-gold);">{t('urgency.label')}</p>
             <h2 class="font-heading font-bold text-white mb-4 reveal" style="font-size: clamp(1.4rem, 3vw, 2.2rem);">{t('urgency.title')}</h2>
-            <div class="font-heading font-extrabold mb-6 reveal" style="font-size: clamp(1.6rem, 4vw, 2.8rem); color: var(--color-gold);">{t('urgency.phone')}</div>
+            <div class="reveal mb-6">
+                <a href={`tel:${t('urgency.phone').replace(/\s+/g, '')}`}
+                   aria-label={`Appeler le ${t('urgency.phone')}`}
+                   class="inline-flex items-center justify-center gap-3 sm:gap-4 px-6 py-3 sm:px-8 sm:py-3.5 rounded-full border font-heading font-extrabold text-white whitespace-nowrap min-h-[44px] transition-all duration-200 ease-out hover:scale-[1.025] focus:scale-[1.025] hover:border-[var(--color-gold)] focus:border-[var(--color-gold)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-gold)]"
+                   style="font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: 0.015em; font-variant-numeric: tabular-nums; border-color: rgba(219, 204, 99, 0.35); color: var(--color-gold);">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="w-[0.6em] h-[0.6em] shrink-0" style="color: var(--color-gold);" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>{t('urgency.phone')}</span>
+                </a>
+            </div>
             <p class="text-base mb-8 reveal" style="color: rgba(255,255,255,0.7);">{t('urgency.text')}</p>
             <div class="reveal">
                 <a href={p('/urgence/')} class="inline-flex items-center gap-2 font-heading font-semibold text-base rounded-full px-8 py-4 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--color-gold); color: var(--color-cactus-dark);">
@@ -446,7 +456,15 @@ const p = (path: string) => getLocalePath(lang, path);
                     {t('cta.contact')}
                 </a>
             </div>
-            <p class="font-heading font-semibold text-sm mt-4 reveal" style="color: var(--color-gold);">{t('cta_final.phone')} {t('urgency.phone')}</p>
+            <p class="font-heading font-semibold text-sm mt-6 reveal" style="color: var(--color-gold);">
+                {t('cta_final.phone')}
+                <a href={`tel:${t('urgency.phone').replace(/\s+/g, '')}`} aria-label={`Appeler le ${t('urgency.phone')}`} class="inline-flex items-center gap-1.5 ml-1 transition-opacity hover:opacity-80 underline underline-offset-4 decoration-[var(--color-gold)]/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-gold)]" style="font-variant-numeric: tabular-nums;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="w-[0.9em] h-[0.9em] shrink-0 inline-block" style="color: var(--color-gold);" aria-hidden="true">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>{t('urgency.phone')}</span>
+                </a>
+            </p>
         </div>
     </section>
 
