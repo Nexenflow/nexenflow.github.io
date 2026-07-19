@@ -480,12 +480,85 @@ ul { list-style: none; }
   .flow-arr { transform: rotate(90deg); }
 }
 
-/* ── PRINT ── */
+.hud-btn-pdf {
+  width: auto;
+  padding: 0 0.8rem;
+  gap: 0.4rem;
+  background: rgba(196,98,45,0.15);
+  border-color: rgba(196,98,45,0.3);
+  color: #fff;
+}
+.hud-btn-pdf:hover {
+  background: var(--terra);
+  border-color: var(--terra);
+}
+.hud-btn-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .hud-btn-text { display: none; }
+}
+
+/* ── PRINT & PDF EXPORT SYSTEM ── */
+@page {
+  size: 16in 9in; /* Standard 16:9 widescreen presentation slide ratio */
+  margin: 0;
+}
+
 @media print {
-  .hud, .nav-arrow, .progress, .overview { display: none !important; }
-  body { overflow: visible; height: auto; }
-  .deck { position: static; overflow: visible; }
-  .slide { position: static !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; page-break-after: always; min-height: 100vh; }
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: var(--ink) !important;
+  }
+
+  .hud, .nav-arrow, .progress, .overview {
+    display: none !important;
+  }
+
+  .deck {
+    position: static !important;
+    overflow: visible !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .slide {
+    position: relative !important;
+    inset: auto !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 3rem 4rem !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .bg-ink { background: var(--ink) !important; color: var(--sand) !important; }
+  .bg-sand { background: var(--sand) !important; color: var(--ink) !important; }
+  .bg-terra { background: var(--terra) !important; color: #fff !important; }
+  .bg-dark { background: #0a1610 !important; color: var(--sand) !important; }
 }
 
 /* ── REDUCED MOTION ── */
@@ -513,8 +586,9 @@ ul { list-style: none; }
     <button class="hud-btn" id="btnFullscreen" title="Plein écran (F)">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
     </button>
-    <button class="hud-btn" id="btnPrint" title="Imprimer / PDF">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    <button class="hud-btn hud-btn-pdf" id="btnPrint" title="Exporter en PDF / Imprimer la présentation (P)">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><polyline points="9 15 12 18 15 15"/></svg>
+      <span class="hud-btn-text">PDF / Imprimer</span>
     </button>
     <span class="hud-counter"><span id="curIdx">1</span> / <span id="totIdx">16</span></span>
   </div>
@@ -1033,10 +1107,24 @@ ul { list-style: none; }
         toggleFullscreen(); e.preventDefault(); break;
       case 'o': case 'O':
         toggleOverview(); e.preventDefault(); break;
+      case 'p': case 'P':
+        window.print(); e.preventDefault(); break;
       case 'Escape':
         if (document.fullscreenElement) document.exitFullscreen();
         break;
     }
+  });
+
+  // Ensure all numeric data counters are fully populated when printing / exporting to PDF
+  window.addEventListener('beforeprint', function() {
+    slides.forEach(function(slide) {
+      slide.querySelectorAll('[data-count]').forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        el.textContent = prefix + target + suffix;
+      });
+    });
   });
 
   // Mouse wheel
