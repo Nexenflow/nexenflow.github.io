@@ -500,9 +500,23 @@ ul { list-style: none; }
   .hud-btn-text { display: none; }
 }
 
+.slide-num {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 5;
+}
+.bg-sand .slide-num { color: var(--ink); }
+.bg-ink .slide-num, .bg-dark .slide-num, .bg-terra .slide-num { color: var(--sand); }
+
 /* ── PRINT & PDF EXPORT SYSTEM ── */
 @page {
-  size: 16in 9in; /* Standard 16:9 widescreen presentation slide ratio */
+  size: landscape;
   margin: 0;
 }
 
@@ -515,11 +529,12 @@ ul { list-style: none; }
 
   html, body {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
+    min-height: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
-    background: var(--ink) !important;
+    background: #10221C !important;
   }
 
   .hud, .nav-arrow, .progress, .overview {
@@ -528,6 +543,7 @@ ul { list-style: none; }
 
   .deck {
     position: static !important;
+    display: block !important;
     overflow: visible !important;
     width: 100% !important;
     height: auto !important;
@@ -536,13 +552,17 @@ ul { list-style: none; }
   .slide {
     position: relative !important;
     inset: auto !important;
+    top: auto !important;
+    left: auto !important;
     width: 100vw !important;
     height: 100vh !important;
     min-height: 100vh !important;
     max-height: 100vh !important;
     opacity: 1 !important;
+    visibility: visible !important;
     transform: none !important;
     pointer-events: auto !important;
+    page-break-before: auto !important;
     page-break-after: always !important;
     break-after: page !important;
     page-break-inside: avoid !important;
@@ -553,12 +573,18 @@ ul { list-style: none; }
     padding: 3rem 4rem !important;
     margin: 0 !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
-  .bg-ink { background: var(--ink) !important; color: var(--sand) !important; }
-  .bg-sand { background: var(--sand) !important; color: var(--ink) !important; }
-  .bg-terra { background: var(--terra) !important; color: #fff !important; }
-  .bg-dark { background: #0a1610 !important; color: var(--sand) !important; }
+  .bg-ink { background-color: #10221C !important; color: #E9E2D0 !important; }
+  .bg-sand { background-color: #E9E2D0 !important; color: #10221C !important; }
+  .bg-terra { background-color: #C4622D !important; color: #FFFFFF !important; }
+  .bg-dark { background-color: #0a1610 !important; color: #E9E2D0 !important; }
+
+  .slide-num {
+    display: block !important;
+    opacity: 0.6 !important;
+  }
 }
 
 /* ── REDUCED MOTION ── */
@@ -1188,6 +1214,12 @@ ul { list-style: none; }
   document.getElementById('btnOverview').addEventListener('click', toggleOverview);
 
   // Init
+  slides.forEach(function(slide, idx) {
+    var num = document.createElement('div');
+    num.className = 'slide-num';
+    num.textContent = (idx + 1) + ' / ' + total;
+    slide.appendChild(num);
+  });
   updateUI();
 
 })();
