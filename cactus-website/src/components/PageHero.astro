@@ -19,6 +19,8 @@ interface Props {
     ctaSecondaryHref?: string;
     ctaSecondaryLabel?: string;
     variant?: 'default' | 'urgency';
+    imageSrc?: string;
+    imageAlt?: string;
 }
 
 const {
@@ -26,7 +28,9 @@ const {
     subtitle, breadcrumbs, lang,
     ctaHref, ctaLabel,
     ctaSecondaryHref, ctaSecondaryLabel,
-    variant = 'default'
+    variant = 'default',
+    imageSrc,
+    imageAlt
 } = Astro.props;
 
 const isUrgency = variant === 'urgency';
@@ -61,46 +65,114 @@ const bgGradient = isUrgency
             </nav>
         </div>
 
-        <!-- Label -->
-        <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4 opacity-0 translate-y-4"
-           style={`color: var(--color-gold); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;`}>
-            {label}
-        </p>
-        <div class="w-12 h-[3px] rounded mb-6 opacity-0 translate-y-4"
-             style="background: var(--color-amber); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.25s forwards;"></div>
+        {imageSrc ? (
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <div class="lg:col-span-7">
+                    <!-- Label -->
+                    <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4 opacity-0 translate-y-4"
+                       style={`color: var(--color-gold); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;`}>
+                        {label}
+                    </p>
+                    <div class="w-12 h-[3px] rounded mb-6 opacity-0 translate-y-4"
+                         style="background: var(--color-amber); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.25s forwards;"></div>
 
-        <!-- Title -->
-        <h1 class="font-heading font-extrabold text-white leading-[1.1] tracking-tight mb-5 max-w-[720px] opacity-0 translate-y-6"
-            style="font-size: clamp(2rem, 4.5vw, 3.2rem); letter-spacing: -0.03em; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;">
-            {title}{titleHighlight && <span style="color: var(--color-gold);">{titleHighlight}</span>}{titleEnd}
-        </h1>
+                    <!-- Title -->
+                    <h1 class="font-heading font-extrabold text-white leading-[1.1] tracking-tight mb-5 opacity-0 translate-y-6"
+                        style="font-size: clamp(2rem, 4.5vw, 3.2rem); letter-spacing: -0.03em; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;">
+                        {title}{titleHighlight && <span style="color: var(--color-gold);">{titleHighlight}</span>}{titleEnd}
+                    </h1>
 
-        <!-- Subtitle -->
-        <p class="max-w-[600px] mb-8 opacity-0 translate-y-6"
-           style="font-size: clamp(0.95rem, 1.6vw, 1.1rem); color: rgba(238,238,238,0.7); line-height: 1.75; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;">
-            {subtitle}
-        </p>
+                    <!-- Subtitle -->
+                    <p class="mb-8 opacity-0 translate-y-6 text-white/70"
+                       style="font-size: clamp(0.95rem, 1.6vw, 1.1rem); line-height: 1.75; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;">
+                        {subtitle}
+                    </p>
 
-        <!-- CTAs -->
-        {(ctaHref || ctaSecondaryHref) && (
-            <div class="flex gap-4 flex-wrap opacity-0 translate-y-6"
-                 style="animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.65s forwards;">
-                {ctaHref && ctaLabel && (
-                    <a href={ctaHref}
-                       class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
-                       style={`background: var(--color-${isUrgency ? 'gold' : 'cactus-green'});${isUrgency ? ' color: var(--color-cactus-dark);' : ''}`}>
-                        {ctaLabel}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </a>
-                )}
-                {ctaSecondaryHref && ctaSecondaryLabel && (
-                    <a href={ctaSecondaryHref}
-                       class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:bg-gold hover:text-cactus-dark"
-                       style="background: transparent; color: var(--color-gold); border: 2px solid rgba(219,204,99,0.4);">
-                        {ctaSecondaryLabel}
-                    </a>
-                )}
+                    <!-- CTAs -->
+                    {(ctaHref || ctaSecondaryHref) && (
+                        <div class="flex gap-4 flex-wrap opacity-0 translate-y-6"
+                             style="animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.65s forwards;">
+                            {ctaHref && ctaLabel && (
+                                <a href={ctaHref}
+                                   class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                                   style={`background: var(--color-${isUrgency ? 'gold' : 'cactus-green'});${isUrgency ? ' color: var(--color-cactus-dark);' : ''}`}>
+                                    {ctaLabel}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </a>
+                            )}
+                            {ctaSecondaryHref && ctaSecondaryLabel && (
+                                <a href={ctaSecondaryHref}
+                                   class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:bg-gold hover:text-cactus-dark"
+                                   style="background: transparent; color: var(--color-gold); border: 2px solid rgba(219,204,99,0.4);">
+                                    {ctaSecondaryLabel}
+                                </a>
+                            )}
+                        </div>
+                    )}
+                </div>
+                <div class="lg:col-span-5 flex justify-center lg:justify-end items-center opacity-0 -translate-y-2 lg:-translate-y-4 lg:-mt-6"
+                     style="animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;">
+                    <div class="relative w-full max-w-[460px] lg:max-w-[500px] aspect-[675/460] flex items-center justify-center">
+                        <!-- Ambient back glow for natural lighting integration -->
+                        <div class="absolute inset-0 pointer-events-none rounded-full blur-3xl opacity-30 z-0"
+                             style="background: radial-gradient(circle, var(--color-cactus-green) 0%, transparent 70%);"></div>
+                        <img 
+                            src={imageSrc} 
+                            alt={imageAlt || ""} 
+                            class="relative z-10 w-full h-auto object-contain pointer-events-none select-none"
+                            style="animation: subtleFloat 6s ease-in-out infinite;"
+                            width="675"
+                            height="460"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    </div>
+                </div>
             </div>
+        ) : (
+            <>
+                <!-- Label -->
+                <p class="font-heading font-semibold text-xs uppercase tracking-widest mb-4 opacity-0 translate-y-4"
+                   style={`color: var(--color-gold); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;`}>
+                    {label}
+                </p>
+                <div class="w-12 h-[3px] rounded mb-6 opacity-0 translate-y-4"
+                     style="background: var(--color-amber); animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.25s forwards;"></div>
+
+                <!-- Title -->
+                <h1 class="font-heading font-extrabold text-white leading-[1.1] tracking-tight mb-5 max-w-[720px] opacity-0 translate-y-6"
+                    style="font-size: clamp(2rem, 4.5vw, 3.2rem); letter-spacing: -0.03em; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;">
+                    {title}{titleHighlight && <span style="color: var(--color-gold);">{titleHighlight}</span>}{titleEnd}
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="max-w-[600px] mb-8 opacity-0 translate-y-6"
+                   style="font-size: clamp(0.95rem, 1.6vw, 1.1rem); color: rgba(238,238,238,0.7); line-height: 1.75; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;">
+                    {subtitle}
+                </p>
+
+                <!-- CTAs -->
+                {(ctaHref || ctaSecondaryHref) && (
+                    <div class="flex gap-4 flex-wrap opacity-0 translate-y-6"
+                         style="animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.65s forwards;">
+                        {ctaHref && ctaLabel && (
+                            <a href={ctaHref}
+                               class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                               style={`background: var(--color-${isUrgency ? 'gold' : 'cactus-green'});${isUrgency ? ' color: var(--color-cactus-dark);' : ''}`}>
+                                {ctaLabel}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                        )}
+                        {ctaSecondaryHref && ctaSecondaryLabel && (
+                            <a href={ctaSecondaryHref}
+                               class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:bg-gold hover:text-cactus-dark"
+                               style="background: transparent; color: var(--color-gold); border: 2px solid rgba(219,204,99,0.4);">
+                                {ctaSecondaryLabel}
+                            </a>
+                        )}
+                    </div>
+                )}
+            </>
         )}
     </div>
 </section>
