@@ -42,10 +42,6 @@ const bgGradient = isUrgency
 <section class="relative overflow-hidden" style={`${bgGradient} padding: calc(72px + 3rem) 1.5rem 3.5rem;`}>
     <!-- Dot grid -->
     <div class="absolute inset-0 z-[1]" style="background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 28px 28px;"></div>
-    <!-- Glow orb -->
-    <div class="hero-glow absolute w-[500px] h-[500px] rounded-full z-[1]"
-         style={`top: -100px; right: -100px; background: radial-gradient(circle, ${isUrgency ? 'rgba(219,204,99,0.1)' : 'rgba(71,106,51,0.15)'} 0%, transparent 70%); animation: glowPulse 6s ease-in-out infinite;`}>
-    </div>
 
     <div class="max-w-[1200px] mx-auto relative z-[2]">
         <!-- Breadcrumbs -->
@@ -117,17 +113,9 @@ const bgGradient = isUrgency
                          style="animation: subtleFloat 6s ease-in-out infinite;">
                         
                         <!-- Layer 2: Interactive 3D Parallax Tilt Card on Mouseover -->
-                        <div class="hero-tilt-card relative w-full h-full flex items-center justify-center cursor-pointer group"
+                        <div class="hero-tilt-card relative w-full h-full flex items-center justify-center group"
                              style="perspective: 1000px; transform-style: preserve-3d;">
                             
-                            <!-- Ambient back glow orb -->
-                            <div class="hero-tilt-glow absolute inset-0 pointer-events-none rounded-full blur-3xl opacity-35 z-0 transition-all duration-500 ease-out"
-                                 style="background: radial-gradient(circle, var(--color-cactus-green) 0%, transparent 70%);"></div>
-
-                            <!-- Dynamic Glare Highlight Overlay -->
-                            <div class="hero-tilt-glare absolute inset-0 pointer-events-none z-20 rounded-3xl opacity-0 transition-opacity duration-300 pointer-events-none mix-blend-overlay"
-                                 style="background: radial-gradient(circle at 50% 50%, rgba(219,204,99,0.35) 0%, transparent 65%);"></div>
-
                             <!-- Main Illustration Graphic -->
                             <img 
                                 src={imageSrc} 
@@ -197,8 +185,6 @@ const bgGradient = isUrgency
         
         tiltCards.forEach((card) => {
             const img = card.querySelector('.hero-tilt-img') as HTMLImageElement | null;
-            const glare = card.querySelector('.hero-tilt-glare') as HTMLElement | null;
-            const glow = card.querySelector('.hero-tilt-glow') as HTMLElement | null;
             const parentHero = card.closest('section');
             
             if (!img || !parentHero) return;
@@ -219,30 +205,20 @@ const bgGradient = isUrgency
                 const centerX = bounds.width / 2;
                 const centerY = bounds.height / 2;
 
-                // Calculate tilt angles (-10deg to +10deg)
+                // Calculate tilt angles (-8deg to +8deg)
                 const percentX = (mouseX - centerX) / centerX;
                 const percentY = (mouseY - centerY) / centerY;
 
-                const maxTilt = 10;
+                const maxTilt = 8;
                 const rotateX = -percentY * maxTilt;
                 const rotateY = percentX * maxTilt;
 
                 if (animationFrameId) cancelAnimationFrame(animationFrameId);
 
                 animationFrameId = requestAnimationFrame(() => {
-                    // 3D Parallax Tilt + Scale on Hover
+                    // Smooth 3D Parallax Movement
                     img!.style.transition = 'transform 0.12s ease-out';
-                    img!.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.05, 1.05, 1.05)`;
-
-                    if (glare) {
-                        glare.style.opacity = '0.65';
-                        glare.style.background = `radial-gradient(circle at ${mouseX.toFixed(0)}px ${mouseY.toFixed(0)}px, rgba(219,204,99,0.3) 0%, transparent 65%)`;
-                    }
-
-                    if (glow) {
-                        glow.style.opacity = '0.6';
-                        glow.style.transform = `translate3d(${(percentX * 12).toFixed(1)}px, ${(percentY * 12).toFixed(1)}px, 0)`;
-                    }
+                    img!.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.04, 1.04, 1.04)`;
                 });
             }
 
@@ -256,14 +232,6 @@ const bgGradient = isUrgency
                 // Smooth spring return on mouse leave
                 img!.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
                 img!.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-
-                if (glare) {
-                    glare.style.opacity = '0';
-                }
-                if (glow) {
-                    glow.style.opacity = '0.35';
-                    glow.style.transform = 'translate3d(0, 0, 0)';
-                }
             }
 
             window.addEventListener('resize', updateBounds, { passive: true });
