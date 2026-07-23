@@ -112,20 +112,34 @@ const bgGradient = isUrgency
                 </div>
                 <div class="lg:col-span-5 flex justify-center lg:justify-end items-center opacity-0 -translate-y-2 lg:-translate-y-4 lg:-mt-6"
                      style="animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;">
-                    <div class="relative w-full max-w-[460px] lg:max-w-[500px] aspect-[675/460] flex items-center justify-center">
-                        <!-- Ambient back glow for natural lighting integration -->
-                        <div class="absolute inset-0 pointer-events-none rounded-full blur-3xl opacity-30 z-0"
-                             style="background: radial-gradient(circle, var(--color-cactus-green) 0%, transparent 70%);"></div>
-                        <img 
-                            src={imageSrc} 
-                            alt={imageAlt || ""} 
-                            class="relative z-10 w-full h-auto object-contain pointer-events-none select-none"
-                            style="animation: subtleFloat 6s ease-in-out infinite;"
-                            width="675"
-                            height="460"
-                            loading="eager"
-                            decoding="async"
-                        />
+                    <!-- Layer 1: Regular continuous floating animation wrapper -->
+                    <div class="w-full max-w-[460px] lg:max-w-[500px] aspect-[675/460]"
+                         style="animation: subtleFloat 6s ease-in-out infinite;">
+                        
+                        <!-- Layer 2: Interactive 3D Parallax Tilt Card on Mouseover -->
+                        <div class="hero-tilt-card relative w-full h-full flex items-center justify-center cursor-pointer group"
+                             style="perspective: 1000px; transform-style: preserve-3d;">
+                            
+                            <!-- Ambient back glow orb -->
+                            <div class="hero-tilt-glow absolute inset-0 pointer-events-none rounded-full blur-3xl opacity-35 z-0 transition-all duration-500 ease-out"
+                                 style="background: radial-gradient(circle, var(--color-cactus-green) 0%, transparent 70%);"></div>
+
+                            <!-- Dynamic Glare Highlight Overlay -->
+                            <div class="hero-tilt-glare absolute inset-0 pointer-events-none z-20 rounded-3xl opacity-0 transition-opacity duration-300 pointer-events-none mix-blend-overlay"
+                                 style="background: radial-gradient(circle at 50% 50%, rgba(219,204,99,0.35) 0%, transparent 65%);"></div>
+
+                            <!-- Main Illustration Graphic -->
+                            <img 
+                                src={imageSrc} 
+                                alt={imageAlt || ""} 
+                                class="hero-tilt-img relative z-10 w-full h-auto object-contain pointer-events-none select-none"
+                                style="will-change: transform; transition: transform 0.15s ease-out;"
+                                width="675"
+                                height="460"
+                                loading="eager"
+                                decoding="async"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -176,3 +190,93 @@ const bgGradient = isUrgency
         )}
     </div>
 </section>
+
+<script>
+    function setupHeroParallaxTilt() {
+        const tiltCards = document.querySelectorAll('.hero-tilt-card');
+        
+        tiltCards.forEach((card) => {
+            const img = card.querySelector('.hero-tilt-img') as HTMLImageElement | null;
+            const glare = card.querySelector('.hero-tilt-glare') as HTMLElement | null;
+            const glow = card.querySelector('.hero-tilt-glow') as HTMLElement | null;
+            const parentHero = card.closest('section');
+            
+            if (!img || !parentHero) return;
+
+            let bounds: DOMRect;
+            let animationFrameId: number;
+
+            function updateBounds() {
+                bounds = card.getBoundingClientRect();
+            }
+
+            function handleMouseMove(e: MouseEvent) {
+                if (!bounds) updateBounds();
+
+                const mouseX = e.clientX - bounds.left;
+                const mouseY = e.clientY - bounds.top;
+
+                const centerX = bounds.width / 2;
+                const centerY = bounds.height / 2;
+
+                // Calculate tilt angles (-10deg to +10deg)
+                const percentX = (mouseX - centerX) / centerX;
+                const percentY = (mouseY - centerY) / centerY;
+
+                const maxTilt = 10;
+                const rotateX = -percentY * maxTilt;
+                const rotateY = percentX * maxTilt;
+
+                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+                animationFrameId = requestAnimationFrame(() => {
+                    // 3D Parallax Tilt + Scale on Hover
+                    img!.style.transition = 'transform 0.12s ease-out';
+                    img!.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.05, 1.05, 1.05)`;
+
+                    if (glare) {
+                        glare.style.opacity = '0.65';
+                        glare.style.background = `radial-gradient(circle at ${mouseX.toFixed(0)}px ${mouseY.toFixed(0)}px, rgba(219,204,99,0.3) 0%, transparent 65%)`;
+                    }
+
+                    if (glow) {
+                        glow.style.opacity = '0.6';
+                        glow.style.transform = `translate3d(${(percentX * 12).toFixed(1)}px, ${(percentY * 12).toFixed(1)}px, 0)`;
+                    }
+                });
+            }
+
+            function handleMouseEnter() {
+                updateBounds();
+            }
+
+            function handleMouseLeave() {
+                if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
+                // Smooth spring return on mouse leave
+                img!.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                img!.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+
+                if (glare) {
+                    glare.style.opacity = '0';
+                }
+                if (glow) {
+                    glow.style.opacity = '0.35';
+                    glow.style.transform = 'translate3d(0, 0, 0)';
+                }
+            }
+
+            window.addEventListener('resize', updateBounds, { passive: true });
+            parentHero.addEventListener('mousemove', handleMouseMove, { passive: true });
+            parentHero.addEventListener('mouseenter', handleMouseEnter, { passive: true });
+            parentHero.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupHeroParallaxTilt);
+    } else {
+        setupHeroParallaxTilt();
+    }
+    document.addEventListener('astro:page-load', setupHeroParallaxTilt);
+</script>
