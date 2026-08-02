@@ -126,10 +126,17 @@ const t = useTranslations(lang);
       <!-- Dynamic Fields (Personal vs Business) -->
       <div id="personal-fields" class="space-y-4">
         <h4 class="text-lg font-bold text-ink border-b border-cloud pb-2">Informations d'Identité (Particulier)</h4>
-        <div>
-          <label for="cin" class="block text-sm font-medium text-ink mb-1">Numéro de CIN *</label>
-          <input type="text" id="cin" name="cin" class="w-full rounded-lg border border-cloud px-4 py-3 focus:border-cactus-green focus:ring-1 focus:ring-cactus-green outline-none transition-colors">
-          <p class="text-xs text-ink/60 mt-1">Requis par l'ANRT pour valider le titulaire du domaine.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="cin" class="block text-sm font-medium text-ink mb-1">Numéro de CIN *</label>
+            <input type="text" id="cin" name="cin" class="w-full rounded-lg border border-cloud px-4 py-3 focus:border-cactus-green focus:ring-1 focus:ring-cactus-green outline-none transition-colors">
+            <p class="text-xs text-ink/60 mt-1">Requis par l'ANRT pour valider le titulaire du domaine.</p>
+          </div>
+          <div>
+            <label for="cin_doc" class="block text-sm font-medium text-ink mb-1">Copie de la CIN (Recto-Verso PDF / Image)</label>
+            <input type="file" id="cin_doc" name="cin_doc" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs text-ink/70 file:mr-3 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-cactus-green/10 file:text-cactus-green hover:file:bg-cactus-green/20 cursor-pointer border border-cloud rounded-lg p-1.5 bg-white">
+            <p class="text-xs text-ink/60 mt-1">Justificatif d'identité exigé par la décision ANRT 02-2024.</p>
+          </div>
         </div>
       </div>
 
@@ -144,6 +151,11 @@ const t = useTranslations(lang);
             <label for="ice" class="block text-sm font-medium text-ink mb-1">ICE (Identifiant Commun de l'Entreprise) *</label>
             <input type="text" id="ice" name="ice" class="w-full rounded-lg border border-cloud px-4 py-3 focus:border-cactus-green focus:ring-1 focus:ring-cactus-green outline-none transition-colors">
           </div>
+        </div>
+        <div>
+          <label for="business_doc" class="block text-sm font-medium text-ink mb-1">Justificatif d'Entreprise (Registre de Commerce / Attestation ICE PDF ou Image)</label>
+          <input type="file" id="business_doc" name="business_doc" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs text-ink/70 file:mr-3 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-cactus-green/10 file:text-cactus-green hover:file:bg-cactus-green/20 cursor-pointer border border-cloud rounded-lg p-1.5 bg-white">
+          <p class="text-xs text-ink/60 mt-1">Document légal officiel pour la validation de la personne morale.</p>
         </div>
       </div>
 
@@ -408,8 +420,10 @@ const t = useTranslations(lang);
         // Extract domain name with fallback to result text or input
         const domainName = (formData.get('domain_name') as string || formData.get('domain') as string || resultDomainName?.textContent || hiddenDomainName?.value || '').trim();
         const cin = (formData.get('cin') as string || '').trim();
+        const cinDoc = (formData.get('cin_doc') as File)?.name ? `Fichier CIN sélectionné: ${(formData.get('cin_doc') as File).name}` : 'Aucun fichier CIN sélectionné';
         const companyName = (formData.get('company_name') as string || '').trim();
         const ice = (formData.get('ice') as string || '').trim();
+        const businessDoc = (formData.get('business_doc') as File)?.name ? `Fichier RC/ICE sélectionné: ${(formData.get('business_doc') as File).name}` : 'Aucun fichier d\'entreprise sélectionné';
         const protectionId = formData.get('protection_id') ? 'Oui (+35 Dhs/an)' : 'Non';
         const nsType = formData.get('nameservers_type') as string;
         const ns1 = (formData.get('ns1') as string || '').trim();
@@ -429,8 +443,8 @@ const t = useTranslations(lang);
           `Email : ${email}`,
           `Téléphone : ${phone}`,
           applicantType === 'personal' 
-            ? `Numéro CIN : ${cin}` 
-            : `Raison Sociale : ${companyName}\nICE : ${ice}`,
+            ? `Numéro CIN : ${cin}\nPièce d'identité : ${cinDoc}` 
+            : `Raison Sociale : ${companyName}\nICE : ${ice}\nJustificatif d'entreprise : ${businessDoc}`,
           `Protection ID (Anonymat WHOIS) : ${protectionId}`,
           `Configuration DNS : ${nsType === 'custom' ? `Serveurs Personnalisés\n  - NS1: ${ns1}\n  - NS2: ${ns2}${ns3 ? `\n  - NS3: ${ns3}` : ''}${ns4 ? `\n  - NS4: ${ns4}` : ''}` : 'DNS Cactus Informatique (Par défaut)'}`,
           `Engagements ANRT & Loi 09-08 : Validés par le client.`
@@ -442,7 +456,7 @@ const t = useTranslations(lang);
           email,
           phone,
           subject: `Commande Nom de Domaine .MA : ${domainName}`,
-          service: "Infrastructure & Cloud",
+          service: "WEBSITE-COM",
           message: messageLines.join('\n'),
           sourceWebsite: window.location.href,
           fax: ''
