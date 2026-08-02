@@ -106,6 +106,42 @@ const labelClass = 'form-label';
         {isUrgency && <span class="text-[10px] text-ink-muted mt-1 block">Détaillez les messages d'erreur ou les symptômes visibles</span>}
     </div>
 
+    <div>
+        <label class={labelClass} for="attachment">
+            Pièce jointe (optionnel)
+        </label>
+        <div id="attachment-dropzone"
+             class="relative flex items-center gap-3 p-3.5 border border-ink/10 rounded-xl bg-cloud/40 hover:bg-cloud/70 transition-all cursor-pointer group">
+            <input type="file" id="attachment" name="attachment"
+                   accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.zip,.rar,.txt,.csv,.xlsx"
+                   class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+            <div id="attachment-icon-container"
+                 class="p-2.5 rounded-lg bg-cactus-green/10 text-cactus-green group-hover:scale-105 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+                </svg>
+            </div>
+            <div class="flex-1 text-sm overflow-hidden">
+                <div id="attachment-label" class="font-medium text-ink truncate">Joindre un fichier (PDF, image, document, archive...)</div>
+                <div id="attachment-sublabel" class="text-xs text-ink-muted">Taille maximale : 10 Mo</div>
+            </div>
+            <button type="button" id="attachment-remove-btn"
+                    class="hidden z-20 p-1.5 rounded-lg text-earth-brown hover:bg-earth-brown/10 transition-colors"
+                    title="Supprimer la pièce jointe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+        {isUrgency ? (
+            <span class="text-[10px] text-ink-muted mt-1 block">Joignez une capture d'erreur, un fichier de log ou une pièce justificative (max 10 Mo)</span>
+        ) : (
+            <span class="text-[10px] text-ink-muted mt-1 block">Formats acceptés : PDF, images, Word, ZIP, TXT (max 10 Mo)</span>
+        )}
+    </div>
+
     <!-- Honeypot field (hidden from human users, visible to bots) -->
     <div class="hidden" aria-hidden="true">
         <label class="form-label" for="fax">Fax</label>
@@ -139,7 +175,7 @@ const labelClass = 'form-label';
     </button>
 
     <p class="text-xs mt-3" style={`color: var(--color-ink-muted);`}>
-        {isUrgency ? '✓ Un ingénieur senior prend contact avec vous sous 2h. Facturation au résultat.' : 'Nous vous répondons sous 24 heures ouvrées.'}
+        {isUrgency ? 'Un ingénieur senior prend contact avec vous sous 2h. Facturation au résultat.' : 'Nous vous répondons sous 24 heures ouvrées.'}
     </p>
 </form>
 
@@ -183,6 +219,70 @@ const labelClass = 'form-label';
 
         const form = (document.getElementById('contact-form') || document.getElementById('urgency-form')) as HTMLFormElement | null;
         if (form) {
+            const attachmentInput = form.querySelector('#attachment') as HTMLInputElement | null;
+            const attachmentLabel = form.querySelector('#attachment-label') as HTMLDivElement | null;
+            const attachmentSublabel = form.querySelector('#attachment-sublabel') as HTMLDivElement | null;
+            const attachmentRemoveBtn = form.querySelector('#attachment-remove-btn') as HTMLButtonElement | null;
+            const attachmentDropzone = form.querySelector('#attachment-dropzone') as HTMLDivElement | null;
+            const attachmentIconContainer = form.querySelector('#attachment-icon-container') as HTMLDivElement | null;
+
+            const resetAttachmentUI = () => {
+                if (attachmentInput) attachmentInput.value = '';
+                if (attachmentLabel) attachmentLabel.innerText = "Joindre un fichier (PDF, image, document, archive...)";
+                if (attachmentSublabel) attachmentSublabel.innerText = "Taille maximale : 10 Mo";
+                if (attachmentRemoveBtn) attachmentRemoveBtn.classList.add('hidden');
+                if (attachmentDropzone) {
+                    attachmentDropzone.classList.remove('border-cactus-green', 'bg-cactus-green/5');
+                    attachmentDropzone.classList.add('border-ink/10', 'bg-cloud/40');
+                }
+                if (attachmentIconContainer) {
+                    attachmentIconContainer.classList.remove('bg-cactus-green', 'text-white');
+                    attachmentIconContainer.classList.add('bg-cactus-green/10', 'text-cactus-green');
+                }
+            };
+
+            if (attachmentInput) {
+                attachmentInput.addEventListener('change', () => {
+                    const file = attachmentInput.files?.[0];
+                    if (!file) {
+                        resetAttachmentUI();
+                        return;
+                    }
+
+                    const maxBytes = 10 * 1024 * 1024; // 10MB
+                    if (file.size > maxBytes) {
+                        alert("Le fichier sélectionné dépasse la taille maximale de 10 Mo.");
+                        resetAttachmentUI();
+                        return;
+                    }
+
+                    const sizeFormatted = file.size > 1024 * 1024
+                        ? (file.size / (1024 * 1024)).toFixed(2) + ' Mo'
+                        : Math.round(file.size / 1024) + ' Ko';
+
+                    if (attachmentLabel) attachmentLabel.innerText = file.name;
+                    if (attachmentSublabel) attachmentSublabel.innerText = `Fichier prêt (${sizeFormatted})`;
+                    if (attachmentRemoveBtn) attachmentRemoveBtn.classList.remove('hidden');
+
+                    if (attachmentDropzone) {
+                        attachmentDropzone.classList.remove('border-ink/10', 'bg-cloud/40');
+                        attachmentDropzone.classList.add('border-cactus-green', 'bg-cactus-green/5');
+                    }
+                    if (attachmentIconContainer) {
+                        attachmentIconContainer.classList.remove('bg-cactus-green/10', 'text-cactus-green');
+                        attachmentIconContainer.classList.add('bg-cactus-green', 'text-white');
+                    }
+                });
+            }
+
+            if (attachmentRemoveBtn) {
+                attachmentRemoveBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    resetAttachmentUI();
+                });
+            }
+
             form.addEventListener('submit', async (e: Event) => {
                 e.preventDefault();
 
@@ -230,6 +330,7 @@ const labelClass = 'form-label';
                     console.warn('Bot submission blocked.');
                     showFeedback("Votre message a été envoyé avec succès. Merci !", 'success');
                     form.reset();
+                    resetAttachmentUI();
                     const sourceInput = form.querySelector('#contact-source-url') as HTMLInputElement | null;
                     if (sourceInput) {
                         sourceInput.value = document.referrer || window.location.href;
@@ -289,21 +390,84 @@ const labelClass = 'form-label';
                     return;
                 }
 
+                // Attachment processing
+                let attachmentInfo: { name: string; type: string; base64: string; sizeFormatted: string } | null = null;
+                const file = attachmentInput?.files?.[0];
+
+                if (file) {
+                    const maxBytes = 10 * 1024 * 1024; // 10MB
+                    if (file.size > maxBytes) {
+                        showFeedback("Le fichier joint dépasse la taille maximale autorisée (10 Mo).", 'error');
+                        return;
+                    }
+
+                    const sizeFormatted = file.size > 1024 * 1024
+                        ? (file.size / (1024 * 1024)).toFixed(2) + ' Mo'
+                        : Math.round(file.size / 1024) + ' Ko';
+
+                    try {
+                        const base64Data = await new Promise<string>((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = () => resolve(reader.result as string);
+                            reader.onerror = () => reject(new Error("Erreur de lecture du fichier"));
+                            reader.readAsDataURL(file);
+                        });
+
+                        attachmentInfo = {
+                            name: file.name,
+                            type: file.type || 'application/octet-stream',
+                            base64: base64Data,
+                            sizeFormatted
+                        };
+                    } catch (err) {
+                        showFeedback("Impossible de lire le fichier joint. Veuillez réessayer.", 'error');
+                        return;
+                    }
+                }
+
                 // API request payload preparation
                 const isUrgencyForm = form.id === 'urgency-form';
                 const subject = isUrgencyForm ? "Signalement d'urgence" : "Demande de contact";
 
-                const payload = {
+                let fullMessage = message;
+                if (attachmentInfo) {
+                    fullMessage += `\n\n[Pièce jointe : ${attachmentInfo.name} (${attachmentInfo.sizeFormatted})]`;
+                }
+
+                const payload: Record<string, any> = {
                     name,
                     company,
                     email,
                     phone,
                     subject,
                     service,
-                    message,
+                    message: fullMessage,
                     sourceWebsite: window.location.href,
                     fax
                 };
+
+                if (attachmentInfo && file) {
+                    const rawBase64 = attachmentInfo.base64.includes(',')
+                        ? attachmentInfo.base64.split(',')[1]
+                        : attachmentInfo.base64;
+
+                    payload.attachmentName = attachmentInfo.name;
+                    payload.attachmentType = attachmentInfo.type;
+                    payload.attachmentBase64 = attachmentInfo.base64;
+
+                    payload.attachments = [
+                        {
+                            name: attachmentInfo.name,
+                            fileName: attachmentInfo.name,
+                            type: attachmentInfo.type,
+                            contentType: attachmentInfo.type,
+                            data: attachmentInfo.base64,
+                            content: rawBase64,
+                            base64: attachmentInfo.base64,
+                            size: file.size
+                        }
+                    ];
+                }
 
                 // Disable inputs
                 const inputs = Array.from(form.elements) as (HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | HTMLButtonElement)[];
@@ -357,6 +521,7 @@ const labelClass = 'form-label';
                             showFeedback("Votre message a été envoyé avec succès. Merci !", 'success');
                         }
                         form.reset();
+                        resetAttachmentUI();
                         // Restore referral URL input value
                         const sourceInput = form.querySelector('#contact-source-url') as HTMLInputElement | null;
                         if (sourceInput) {

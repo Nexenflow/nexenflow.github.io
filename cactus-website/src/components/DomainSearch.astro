@@ -433,9 +433,9 @@ const t = useTranslations(lang);
           });
         };
 
-        const cinFile = (form.querySelector('#cin_doc') as HTMLInputElement)?.files?.[0];
-        const businessFile = (form.querySelector('#business_doc') as HTMLInputElement)?.files?.[0];
-        const selectedFile = applicantType === 'personal' ? cinFile : businessFile;
+        const cinFile = (form.querySelector('#cin_doc') as HTMLInputElement)?.files?.[0] || (document.getElementById('cin_doc') as HTMLInputElement)?.files?.[0];
+        const businessFile = (form.querySelector('#business_doc') as HTMLInputElement)?.files?.[0] || (document.getElementById('business_doc') as HTMLInputElement)?.files?.[0];
+        const selectedFile = cinFile || businessFile;
 
         // Best Practice File Size Limit: 5 MB
         const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
@@ -461,8 +461,8 @@ const t = useTranslations(lang);
           }
         }
 
-        const cinDoc = cinFile?.name ? `Fichier CIN joint: ${cinFile.name}` : 'Aucun fichier CIN joint';
-        const businessDoc = businessFile?.name ? `Fichier RC/ICE joint: ${businessFile.name}` : 'Aucun fichier d\'entreprise joint';
+        const cinDoc = cinFile?.name ? `Fichier CIN joint: ${cinFile.name}` : (selectedFile ? `Fichier joint: ${selectedFile.name}` : 'Aucun fichier CIN joint');
+        const businessDoc = businessFile?.name ? `Fichier RC/ICE joint: ${businessFile.name}` : (selectedFile ? `Fichier joint: ${selectedFile.name}` : 'Aucun fichier d\'entreprise joint');
         const protectionId = formData.get('protection_id') ? 'Oui (+35 Dhs/an)' : 'Non';
         const nsType = formData.get('nameservers_type') as string;
         const ns1 = (formData.get('ns1') as string || '').trim();
@@ -489,7 +489,14 @@ const t = useTranslations(lang);
           `Engagements ANRT & Loi 09-08 : Validés par le client.`
         ];
 
-        const payload = {
+        if (selectedFile && attachmentBase64) {
+          const sizeFormatted = selectedFile.size > 1024 * 1024
+            ? (selectedFile.size / (1024 * 1024)).toFixed(2) + ' Mo'
+            : Math.round(selectedFile.size / 1024) + ' Ko';
+          messageLines.push(`\n[Pièce jointe : ${attachmentName} (${sizeFormatted})]`);
+        }
+
+        const payload: Record<string, any> = {
           name,
           company,
           email,
@@ -500,6 +507,37 @@ const t = useTranslations(lang);
           sourceWebsite: window.location.href,
           fax: ''
         };
+
+        if (selectedFile && attachmentBase64) {
+          const rawBase64 = attachmentBase64.includes(',') ? attachmentBase64.split(',')[1] : attachmentBase64;
+          const fileType = selectedFile.type || 'application/octet-stream';
+
+          payload.attachmentName = attachmentName;
+          payload.attachmentType = fileType;
+          payload.attachmentBase64 = attachmentBase64;
+
+          payload.attachments = [
+            {
+              name: attachmentName,
+              fileName: attachmentName,
+              type: fileType,
+              contentType: fileType,
+              data: attachmentBase64,
+              content: rawBase64,
+              base64: attachmentBase64,
+              size: selectedFile.size
+            }
+          ];
+
+          payload.additionalFields = {
+            piece_jointe: attachmentBase64,
+            filename: attachmentName
+          };
+
+          payload.customFields = {
+            "Justificatif d'identité ANRT (CIN / RC)": attachmentBase64
+          };
+        }
 
         const res = await fetch('https://nerobel.nexenflow.com/api/public/contact', {
           method: 'POST',
