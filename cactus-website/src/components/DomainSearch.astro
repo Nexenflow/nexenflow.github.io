@@ -135,7 +135,7 @@ const t = useTranslations(lang);
           <div>
             <label for="cin_doc" class="block text-sm font-medium text-ink mb-1">Copie de la CIN (Recto-Verso PDF / Image)</label>
             <input type="file" id="cin_doc" name="cin_doc" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs text-ink/70 file:mr-3 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-cactus-green/10 file:text-cactus-green hover:file:bg-cactus-green/20 cursor-pointer border border-cloud rounded-lg p-1.5 bg-white">
-            <p class="text-xs text-ink/60 mt-1">Justificatif d'identité exigé par la décision ANRT 02-2024.</p>
+            <p class="text-xs text-ink/60 mt-1">Justificatif d'identité ANRT (Max 5 Mo — PDF, JPG, PNG).</p>
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@ const t = useTranslations(lang);
         <div>
           <label for="business_doc" class="block text-sm font-medium text-ink mb-1">Justificatif d'Entreprise (Registre de Commerce / Attestation ICE PDF ou Image)</label>
           <input type="file" id="business_doc" name="business_doc" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs text-ink/70 file:mr-3 file:py-2 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-cactus-green/10 file:text-cactus-green hover:file:bg-cactus-green/20 cursor-pointer border border-cloud rounded-lg p-1.5 bg-white">
-          <p class="text-xs text-ink/60 mt-1">Document légal officiel pour la validation de la personne morale.</p>
+          <p class="text-xs text-ink/60 mt-1">Document officiel pour validation ANRT (Max 5 Mo — PDF, JPG, PNG).</p>
         </div>
       </div>
 
@@ -433,6 +433,18 @@ const t = useTranslations(lang);
         const businessFile = (form.querySelector('#business_doc') as HTMLInputElement)?.files?.[0];
         const selectedFile = applicantType === 'personal' ? cinFile : businessFile;
 
+        // Best Practice File Size Limit: 5 MB
+        const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
+        if (selectedFile && selectedFile.size > MAX_FILE_SIZE) {
+          const fileSizeMB = (selectedFile.size / (1024 * 1024)).toFixed(1);
+          formMessage.classList.remove('hidden');
+          formMessage.classList.add('bg-amber/10', 'text-earth-brown', 'border', 'border-amber/20');
+          formMessage.textContent = `La pièce jointe (${fileSizeMB} Mo) dépasse la limite autorisée de 5 Mo. Veuillez sélectionner un fichier plus léger (PDF ou image compressée).`;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+          return;
+        }
+
         let attachmentBase64 = '';
         let attachmentName = '';
 
@@ -473,30 +485,17 @@ const t = useTranslations(lang);
           `Engagements ANRT & Loi 09-08 : Validés par le client.`
         ];
 
-        const payload: Record<string, any> = {
+        const payload = {
           name,
           company,
           email,
           phone,
-          subject: `Commande Nom de Domaine .MA : ${domainName}`,
-          service: "WEBSITE-COM",
+          subject: "Demande de contact",
+          service: "Infrastructure & Cloud",
           message: messageLines.join('\n'),
           sourceWebsite: window.location.href,
           fax: ''
         };
-
-        if (attachmentBase64 && attachmentName) {
-          payload.attachment = attachmentBase64;
-          payload.attachmentName = attachmentName;
-          payload.attachments = [
-            {
-              name: attachmentName,
-              filename: attachmentName,
-              content: attachmentBase64,
-              type: selectedFile?.type || 'application/octet-stream'
-            }
-          ];
-        }
 
         const response = await fetch('https://nerobel.nexenflow.com/api/public/contact', {
           method: 'POST',
