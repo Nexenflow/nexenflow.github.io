@@ -1,0 +1,450 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageHero from '../../../../components/PageHero.astro';
+import SectionHeader from '../../../../components/SectionHeader.astro';
+import FeatureTable from '../../../../components/FeatureTable.astro';
+import FaqAccordion from '../../../../components/FaqAccordion.astro';
+import StatsBar from '../../../../components/StatsBar.astro';
+import FinalCta from '../../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+---
+
+<BaseLayout
+    title="Feuille de Réanimation Informatisée — Fiche Technique Détaillée | Cactus HealthTech"
+    description="Fiche technique complète : surveillance continue 24/7, scores de gravité (SOFA, APACHE II, Glasgow), suivi multi-organes, prescriptions continues, architecture haute disponibilité."
+>
+    <PageHero
+        label="Cactus HealthTech — Fiche Détaillée"
+        title="Feuille de Réanimation "
+        titleHighlight="Informatisée"
+        titleEnd=" — Documentation complète"
+        subtitle="Surveillance continue 24h/24 des patients en soins intensifs. Scores de gravité automatiques, suivi multi-organes, prescriptions continues et transmissions structurées — dans un système haute disponibilité."
+        breadcrumbs={[
+            { label: 'Produits', href: p('/produits/') },
+            { label: 'HealthTech', href: p('/produits/healthtech/') },
+            { label: 'Réanimation — Détail' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/') + '?besoin=healthtech-reanimation'}
+        ctaLabel="Demander une démo"
+        ctaSecondaryHref={p('/produits/healthtech/reanimation/')}
+        ctaSecondaryLabel="Version résumée"
+        imageSrc="/imgs/resized_30pct_webp/medical-sante.webp"
+        imageAlt="Illustration solution médicale Cactus HealthTech réanimation"
+    />
+
+    <!-- PDF DOWNLOAD BAR -->
+    <div class="no-print bg-white border-b py-4 px-6 sticky top-[64px] z-30 shadow-sm" style="border-color: var(--color-cloud-dark);">
+        <div class="max-w-[1200px] mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(71,106,51,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </div>
+                <div>
+                    <p class="font-heading font-bold text-xs uppercase tracking-wider" style="color: var(--color-cactus-green);">Document Officiel PDF</p>
+                    <p class="text-xs" style="color: var(--color-ink-soft);">Fiche Technique Réanimation (Version Détaillée v2.0 — Spécifications Complètes)</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <a href="/pdfs/HealthTech_Feuille_Reanimation_Fiche_Technique_v2.pdf" download class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-2.5 text-white transition-all shadow-sm hover:shadow-md cursor-pointer" style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    PDF Officiel Détaillé
+                </a>
+                <a href="/pdfs/HealthTech_Feuille_Reanimation_Fiche_Technique_v2_visuelle.pdf" download class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer" style="background: var(--color-cloud); color: var(--color-ink); border: 1px solid var(--color-cloud-dark);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    PDF Édition Visuelle Illustrée
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PRÉSENTATION
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[900px] mx-auto px-6">
+            <SectionHeader
+                label="Présentation"
+                title="Numériser la surveillance en réanimation"
+            />
+            <div class="prose-legal reveal">
+                <p>La <strong>Feuille de Réanimation Informatisée Cactus</strong> est une solution logicielle conçue pour les services de réanimation et de soins intensifs. Elle capture en continu les données des équipements de chevet, assure le suivi longitudinal du patient sur des séjours prolongés et centralise l'ensemble des informations cliniques nécessaires à la prise de décision en situation critique.</p>
+                <h3>Usage prévu</h3>
+                <ul>
+                    <li>Surveillance continue 24h/24, 7j/7 des patients en réanimation</li>
+                    <li>Environnements : réanimation médicale/chirurgicale, soins intensifs, surveillance continue</li>
+                    <li>Utilisateurs : médecins réanimateurs, infirmiers (IDE), cadres de santé</li>
+                </ul>
+                <h3>Problème résolu</h3>
+                <p>En réanimation, le volume de données par patient est considérable : constantes vitales toutes les quelques minutes, bilans biologiques pluriquotidiens, prescriptions évolutives, scores de gravité à réévaluer. La gestion papier engendre des retards dans la détection de tendances, des erreurs de transcription potentiellement fatales et une impossibilité de corrélation automatique entre les données.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         BÉNÉFICES
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader
+                label="Bénéfices"
+                title="L'impact direct sur vos soins critiques"
+            />
+            <FeatureTable rows={[
+                { label: 'Surveillance 24/7 sans rupture', value: 'Acquisition automatique continue — aucun trou dans le relevé, même lors des changements d\'équipe.' },
+                { label: 'Détection précoce de dégradation', value: 'Alertes sur tendances anormales et calcul automatique des scores SOFA, APACHE II, Glasgow, RASS.' },
+                { label: 'Vision longitudinale', value: 'Historique complet sur jours ou semaines — évolution des paramètres visible en un coup d\'oeil.' },
+                { label: 'Prescriptions continues sécurisées', value: 'Perfusions, nutrition, sédation avec contrôle des doses cumulées sur 24h.' },
+                { label: 'Transmissions structurées', value: 'Passation de garde facilitée entre équipes de jour et de nuit, dossier toujours à jour.' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FONCTIONNALITÉS DÉTAILLÉES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Fonctionnalités"
+                title="Couverture fonctionnelle complète"
+                subtitle="Chaque module répond à un besoin spécifique de la réanimation."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {[
+                    { title: 'Surveillance temps réel', items: [
+                        'Acquisition automatique et continue des signes vitaux (de 1s à 15min)',
+                        'Graphiques de tendance sur fenêtres configurables (1h, 6h, 12h, 24h, séjour complet)',
+                        'Suivi simultané : FC, PA invasive/non invasive, SpO2, température, PVC, PIC',
+                        'Alertes paramétrables par seuil et par tendance (dégradation progressive)',
+                        'Marquage des événements significatifs (intubation, extubation, arrêt, transit)',
+                    ], icon: 'activity' },
+                    { title: 'Scores de gravité', items: [
+                        'SOFA (Sequential Organ Failure Assessment)',
+                        'APACHE II (Acute Physiology and Chronic Health Evaluation)',
+                        'Glasgow Coma Scale (GCS)',
+                        'RASS (Richmond Agitation-Sedation Scale)',
+                        'Courbes d\'évolution des scores dans le temps',
+                        'Aide à la décision pour le pronostic et l\'ajustement thérapeutique',
+                    ], icon: 'chart' },
+                    { title: 'Prescriptions et protocoles', items: [
+                        'Prescriptions continues avec gestion des débits (sédation, catécholamines, insuline)',
+                        'Protocole de nutrition entérale et parentérale',
+                        'Protocole de sevrage ventilatoire',
+                        'Protocole de sédation-analgésie',
+                        'Protocole d\'insulinothérapie',
+                        'Bilan hydrique automatisé (entrées / sorties)',
+                        'Contrôle des doses cumulées sur 24h',
+                    ], icon: 'file' },
+                    { title: 'Suivi multi-organes', items: [
+                        'Neurologique : GCS, RASS, pupilles, PIC',
+                        'Respiratoire : mode ventilatoire, paramètres, gazométrie',
+                        'Hémodynamique : PA, FC, catécholamines, remplissage',
+                        'Rénal : diurèse, créatinine, EER',
+                        'Digestif : transit, nutrition, résidus gastriques',
+                        'Infectieux : température, CRP, PCT, antibiothérapie',
+                    ], icon: 'heart' },
+                    { title: 'Gestion du dossier patient', items: [
+                        'Dossier de réanimation complet : motif d\'admission, antécédents, allergies',
+                        'Archivage pérenne et long terme de l\'ensemble des données',
+                        'Recherche multicritères dans les dossiers archivés',
+                        'Intégration des rapports : radiologie, laboratoire, comptes-rendus opératoires',
+                    ], icon: 'folder' },
+                    { title: 'Administration et reporting', items: [
+                        'Tableaux de bord d\'activité du service de réanimation',
+                        'DMS, taux d\'occupation, mortalité, taux de réadmission',
+                        'Indicateurs qualité : infections nosocomiales, durée de ventilation',
+                        'Rapports exportables pour la direction et les instances qualité',
+                        'Gestion des profils et droits d\'accès granulaires',
+                    ], icon: 'bar-chart' },
+                ].map((group, gi) => (
+                    <div class={`bg-white border rounded-2xl p-7 reveal reveal-delay-${(gi % 4) + 1}`} style="border-color: var(--color-cloud-dark);">
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(219,204,99,0.15);">
+                                {group.icon === 'activity' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>}
+                                {group.icon === 'chart' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>}
+                                {group.icon === 'file' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>}
+                                {group.icon === 'heart' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>}
+                                {group.icon === 'folder' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg>}
+                                {group.icon === 'bar-chart' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>}
+                            </div>
+                            <h3 class="font-heading font-semibold text-lg" style="color: var(--color-ink);">{group.title}</h3>
+                        </div>
+                        <ul class="space-y-2.5">
+                            {group.items.map(item => (
+                                <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONNECTIVITÉ BIOMÉDICALE
+         ═══════════════════════════════════════ -->
+    <section class="py-20 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <SectionHeader
+                        label="Connectivité"
+                        title="Communication avec les équipements de chevet"
+                        subtitle="Acquisition continue, automatique et sans intervention humaine."
+                        variant="dark"
+                    />
+                    <div class="flex flex-wrap gap-2 mt-6 reveal">
+                        {['Protocoles médicaux standards', 'Interfaçage SIH', 'Résultats labo', 'API pharmacie', 'API imagerie', 'Import/Export'].map(tag => (
+                            <span class="inline-flex px-3 py-1.5 rounded-full text-xs font-heading font-medium"
+                                  style="background: rgba(219,204,99,0.1); color: var(--color-gold); border: 1px solid rgba(219,204,99,0.2);">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <div class="reveal reveal-right">
+                    <div class="space-y-4">
+                        {[
+                            { equip: 'Moniteur de chevet', data: 'FC, SpO2, PA invasive/non invasive, PVC, température, EtCO2' },
+                            { equip: 'Ventilateur', data: 'Mode, volumes, pressions, FiO2, fréquence, courbes ventilatoires' },
+                            { equip: 'Pousse-seringues / pompes', data: 'Débit, volume cumulé, identification produit' },
+                            { equip: 'Système d\'EER (dialyse)', data: 'Paramètres de dialyse, ultrafiltration' },
+                        ].map(row => (
+                            <div class="py-4 px-5 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                                <p class="font-heading font-semibold text-sm mb-1" style="color: var(--color-gold);">{row.equip}</p>
+                                <p class="text-sm" style="color: rgba(238,238,238,0.6);">{row.data}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ARCHITECTURE
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[900px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Architecture"
+                title="Architecture technique haute disponibilité"
+                subtitle="Conçue pour la criticité d'un service de réanimation — aucune tolérance à l'indisponibilité."
+                align="center"
+            />
+            <div class="reveal mt-8 rounded-2xl p-8 font-mono text-sm leading-loose text-left overflow-x-auto"
+                 style="background: var(--color-ink); color: var(--color-cloud);">
+                <pre style="color: var(--color-cloud);"><span style="color: var(--color-gold);">POSTES DE TRAVAIL RÉANIMATION</span>
+  (Navigateur web — Écrans de chevet & central)
+        |
+        | HTTPS
+        v
+<span style="color: var(--color-gold);">SERVEUR APPLICATIF</span> (+ serveur secondaire failover)
+  Application web sécurisée
+  Moteur d'alertes & calcul des scores
+  Gestion des prescriptions continues
+  Bilan hydrique automatisé
+        |
+   +---------+----------+
+   v                     v
+<span style="color: var(--color-cactus-green);">BASE DE DONNÉES</span>       <span style="color: var(--color-amber);">PASSERELLE IoT BIOMÉDICALE</span>
+(SQL Server)           Moniteurs de chevet,
+Archivage long terme   ventilateurs, pompes, EER</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SÉCURITÉ & CONFORMITÉ
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Sécurité"
+                title="Sécurité et conformité réglementaire"
+                subtitle="Niveau de sécurité adapté à la criticité des soins intensifs."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2">
+                <div class="bg-white rounded-2xl p-8 border reveal" style="border-color: var(--color-cloud-dark);">
+                    <h3 class="font-heading font-semibold text-lg mb-5" style="color: var(--color-ink);">Protection des données</h3>
+                    <ul class="space-y-3">
+                        {[
+                            'Authentification forte : OAuth 2.0, Active Directory, LDAP',
+                            'Chiffrement des données en transit et au repos',
+                            'Audit trail complet et inaltérable',
+                            'Droits granulaires (réanimateur, IDE, cadre, interne)',
+                            'Sauvegarde automatique continue et PRA',
+                            'Haute disponibilité critique — zéro tolérance à l\'indisponibilité',
+                        ].map(item => (
+                            <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-8 border reveal reveal-delay-1" style="border-color: var(--color-cloud-dark);">
+                    <h3 class="font-heading font-semibold text-lg mb-5" style="color: var(--color-ink);">Conformité réglementaire</h3>
+                    <ul class="space-y-3">
+                        {[
+                            'Conforme ISO/IEC 27002 (sécurité de l\'information)',
+                            'Respect de la Loi 09-08 (protection des données, Maroc)',
+                            'Traçabilité intégrale médico-légale',
+                            'Archivage réglementaire (20 ans minimum)',
+                            'Audit trail conforme aux instances qualité et accréditation',
+                        ].map(item => (
+                            <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <StatsBar stats={[
+        { count: '24', suffix: '/7', label: 'surveillance continue' },
+        { count: '4', label: 'scores de gravité automatiques' },
+        { count: '6', label: 'systèmes d\'organes suivis' },
+        { count: '20', suffix: '+ ans', label: 'archivage réglementaire' },
+    ]} />
+
+    <!-- ═══════════════════════════════════════
+         SPECS TECHNIQUES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader
+                label="Spécifications"
+                title="Caractéristiques techniques détaillées"
+            />
+            <FeatureTable rows={[
+                { label: 'Type d\'application', value: 'Application web — accessible depuis tout navigateur moderne' },
+                { label: 'Architecture', value: 'Client-serveur, multi-postes (chevet + poste central)' },
+                { label: 'Base de données', value: 'Microsoft SQL Server (volumétrie optimisée séjours prolongés)' },
+                { label: 'Authentification', value: 'OAuth 2.0, Active Directory, LDAP' },
+                { label: 'Navigateurs', value: 'Chrome, Edge, Firefox (dernières versions)' },
+                { label: 'Déploiement', value: 'On-premise recommandé (criticité du service)' },
+                { label: 'Haute disponibilité', value: 'Architecture redondante (serveur secondaire en failover)' },
+                { label: 'Personnalisation', value: 'Interface, seuils d\'alerte, protocoles et scores configurables' },
+                { label: 'Export', value: 'PDF (feuille de réanimation complète), Excel, CSV' },
+                { label: 'Import', value: 'Excel, CSV, résultats de laboratoire' },
+                { label: 'Réseau', value: 'Ethernet dédié obligatoire (fiabilité de l\'acquisition)' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DÉPLOIEMENT
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Déploiement"
+                title="Accompagnement adapté aux soins critiques"
+                subtitle="SLA renforcé pour la criticité d'un service de réanimation."
+            />
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
+                {[
+                    { title: 'Audit préalable', desc: 'Cartographie des équipements de chevet, étude de connectivité et dimensionnement réseau.', step: '01' },
+                    { title: 'Installation', desc: 'Déploiement serveur redondant, configuration des protocoles et scores, connexion de chaque équipement.', step: '02' },
+                    { title: 'Formation', desc: 'Formation des réanimateurs, IDE et du service biomédical. Sessions pratiques sur poste.', step: '03' },
+                    { title: 'Migration', desc: 'Reprise des données historiques depuis les systèmes existants.', step: '04' },
+                    { title: 'Support critique', desc: 'Assistance à distance et sur site avec SLA adapté à la criticité 24/7.', step: '05' },
+                    { title: 'Évolutions', desc: 'Ajout de nouveaux scores, protocoles et mises à jour de sécurité.', step: '06' },
+                ].map((svc, i) => (
+                    <div class={`bg-white rounded-2xl p-6 border reveal reveal-delay-${(i % 4) + 1}`} style="border-color: var(--color-cloud-dark);">
+                        <span class="font-heading font-bold text-2xl" style="color: rgba(71,106,51,0.15);">{svc.step}</span>
+                        <h3 class="font-heading font-semibold text-[0.95rem] mb-2 mt-1" style="color: var(--color-ink);">{svc.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{svc.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         RÉFÉRENCES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Références"
+                title="Déploiements réalisés"
+                align="center"
+            />
+            <div class="reveal">
+                <div class="rounded-2xl p-8 border" style="border-color: var(--color-cloud-dark);">
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-ink-soft);">
+                        Cactus Informatique conçoit et déploie des solutions intégrées captant la donnée des équipements hospitaliers depuis plus de 15 ans. L'expertise couvre l'intégration IoT médical, la connectivité des équipements de chevet et la numérisation des processus de suivi patient en environnement critique.
+                    </p>
+                    <p class="font-heading font-semibold text-sm" style="color: var(--color-ink);">
+                        Établissements de santé à Marrakech et Rabat
+                    </p>
+                    <p class="text-xs mt-2" style="color: var(--color-ink-muted);">Références clients nominatives disponibles sur demande.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FAQ
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="FAQ" title="Questions fréquentes — Réanimation informatisée" />
+            <FaqAccordion items={[
+                { question: 'Comment le système gère-t-il les changements d\'équipe ?', answer: 'Le dossier patient est mis à jour en continu et accessible instantanément. Lors de la passation de garde, l\'équipe entrante dispose d\'un résumé structuré avec les tendances, les scores et les événements récents. Aucune information n\'est perdue entre les équipes.' },
+                { question: 'Le système supporte-t-il des séjours de plusieurs semaines ?', answer: 'Oui. La base de données est optimisée pour la volumétrie des séjours prolongés. Les graphiques de tendance permettent de visualiser l\'évolution sur des fenêtres allant de 1 heure au séjour complet, quel que soit sa durée.' },
+                { question: 'Que se passe-t-il en cas de panne serveur ?', answer: 'L\'architecture recommandée inclut un serveur secondaire en failover automatique. En cas de panne du serveur principal, le basculement est transparent pour les utilisateurs. La continuité de la surveillance est garantie.' },
+                { question: 'Les résultats de laboratoire sont-ils intégrés automatiquement ?', answer: 'Oui, via l\'API d\'intégration avec votre système de laboratoire. Les résultats de biologie et de gazométrie sont reçus et intégrés directement dans le dossier patient, sans ressaisie.' },
+                { question: 'Peut-on personnaliser les scores et protocoles ?', answer: 'Absolument. Tous les scores de gravité, protocoles de soins et seuils d\'alerte sont entièrement configurables par le chef de service. Vous pouvez également créer vos propres protocoles.' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════ -->
+    <section class="py-16">
+        <div class="max-w-[800px] mx-auto px-6">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
+                <a href="/pdfs/HealthTech_Feuille_Reanimation_Fiche_Technique_v2.pdf" download
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 shadow-md cursor-pointer"
+                   style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    Télécharger la Fiche Détaillée PDF
+                </a>
+                <a href={p('/produits/healthtech/reanimation/')}
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                   style="background: transparent; color: var(--color-ink-soft); border: 2px solid var(--color-cloud-dark);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                    Version résumée
+                </a>
+                <a href={p('/produits/healthtech/anesthesie/')}
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                   style="background: transparent; color: var(--color-amber); border: 2px solid rgba(211,157,76,0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                    Fiche Anesthésie
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Optimisez la surveillance de vos patients critiques"
+        text="Diagnostic initial gratuit. Nous cartographions vos équipements de chevet et proposons un plan de déploiement adapté."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/') + '?besoin=healthtech-reanimation'}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

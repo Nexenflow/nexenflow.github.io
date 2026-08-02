@@ -393,3 +393,117 @@
     color: var(--color-ink);
     font-weight: 600;
 }
+
+/* ═══════════════════════════════════════════════════════
+   PRINT & PDF DOWNLOAD STYLESHEET
+   Clean, corporate, white background executive datasheet
+   ═══════════════════════════════════════════════════════ */
+@media print {
+    /* Hide unneeded web UI elements */
+    header,
+    footer,
+    #scroll-progress,
+    #nav-scrim,
+    .no-print,
+    .magnetic-btn,
+    .urgency-banner,
+    .dot-grid::before {
+        display: none !important;
+    }
+
+    /* Force white background & dark text */
+    body,
+    main,
+    section {
+        background: #ffffff !important;
+        color: #181818 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* Page container setup */
+    @page {
+        size: A4 portrait;
+        margin: 1.5cm 1.2cm 1.5cm 1.2cm;
+    }
+
+    /* Section spacing */
+    section {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+        border-bottom: 1px solid #EEEEEE !important;
+        break-inside: avoid;
+    }
+
+    /* Cards & Boxes */
+    .bg-white,
+    .border,
+    div[style*="background"] {
+        background: #ffffff !important;
+        color: #181818 !important;
+        border-color: #D5D5D5 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+    }
+
+    /* Text Colors for Print */
+    h1, h2, h3, h4, strong {
+        color: #181818 !important;
+    }
+
+    p, span, li, td, th {
+        color: #333333 !important;
+    }
+
+    /* Brand Accent Colors retained */
+    .font-heading.font-semibold.text-xs.uppercase,
+    span[style*="color: var(--color-cactus-green)"],
+    div[style*="color: var(--color-cactus-green)"] {
+        color: #476A33 !important;
+        font-weight: 700 !important;
+    }
+
+    /* Code & Architecture Block */
+    pre {
+        background: #f8f9fa !important;
+        color: #181818 !important;
+        border: 1px solid #cccccc !important;
+        white-space: pre-wrap !important;
+        font-size: 0.8rem !important;
+    }
+
+    pre span {
+        color: #181818 !important;
+        font-weight: 600 !important;
+    }
+
+    /* Force animations visible immediately */
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* Tables */
+    table, .overflow-hidden.rounded-2xl.border {
+        border: 1.5px solid #476A33 !important;
+        break-inside: avoid;
+    }
+
+    /* Clean Footer Watermark on PDF */
+    body::after {
+        content: "CACTUS® INFORMATIQUE — Document Fiche Technique Produit — Confidentialité : Distribution autorisée — www.cactus.ma";
+        display: block;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #777777;
+        margin-top: 2rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #dddddd;
+    }
+}
+

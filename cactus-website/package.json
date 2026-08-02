@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/generate-pdfs.js && astro build",
+    "pdfs": "node scripts/generate-pdfs.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -16,5 +17,9 @@
     "@tailwindcss/vite": "^4.3.2",
     "astro": "^7.0.9",
     "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "marked": "^18.0.7",
+    "puppeteer": "^25.3.0"
   }
 }

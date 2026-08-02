@@ -4,66 +4,166 @@ import PageHero from '../../components/PageHero.astro';
 import { getLocalePath } from '../../i18n/utils';
 
 const lang = 'fr';
-const p = (path: string) => getLocalePath(lang, path);
 ---
 
 <BaseLayout
-    title="Mentions Légales — Cactus Informatique"
-    description="Mentions légales du site Cactus Informatique. Informations sur l'éditeur, l'hébergeur et les conditions d'utilisation."
+    title="Mentions Légales & Conditions d'Utilisation | Cactus Informatique"
+    description="Mentions légales, informations éditeur et politique de protection des données de Cactus Informatique, en conformité avec la loi marocaine 09-08."
 >
+    <!-- Hero Section -->
     <PageHero
-        label="Mentions légales"
+        label="Transparence & Sécurité"
         title="Mentions "
-        titleHighlight="légales"
-        subtitle=""
+        titleHighlight="Légales"
+        subtitle="Informations juridiques, conditions d'utilisation et politique de confidentialité applicables aux services et au site web de Cactus Informatique."
         breadcrumbs={[{ label: 'Mentions Légales' }]}
         lang={lang}
     />
 
-    <section class="py-24">
-        <div class="max-w-[800px] mx-auto px-6 prose-legal">
-            <h2>Éditeur du site</h2>
-            <p>
-                <strong>Cactus Informatique</strong><br />
-                Société à responsabilité limitée (SARL)<br />
-                Capital social : 300 000 MAD
-            </p>
-            <p>
-                <strong>Siège social :</strong><br />
-                70 Allée des Phoenix<br />
-                Casablanca 20250, Maroc
-            </p>
-            <p>
-                <strong>Directeur de la publication :</strong> Omar
-            </p>
-            <p>
-                <strong>Téléphone :</strong> +212 5 22 34 35 45<br />
-                <strong>Email :</strong> contact@cactus.net.ma<br />
-                <strong>Site web :</strong> www.cactus.ma
-            </p>
+    <section class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-[1000px] mx-auto px-6 relative z-10">
+            
+            <!-- Quick Summary Alert -->
+            <div class="bg-cloud/40 border border-cloud rounded-2xl p-6 mb-12 flex items-start gap-4 reveal">
+                <div class="w-12 h-12 rounded-xl bg-cactus-green/10 text-cactus-green flex items-center justify-center shrink-0 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-ink mb-2">Notre engagement de conformité</h2>
+                    <p class="text-ink/70 text-sm leading-relaxed">
+                        Cactus Informatique s'engage à respecter scrupuleusement la législation marocaine, notamment la loi 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel. Votre sécurité et la confidentialité de vos informations sont au cœur de nos priorités.
+                    </p>
+                </div>
+            </div>
 
-            <h2>Hébergeur</h2>
-            <p>À compléter avec les informations de l'hébergeur choisi.</p>
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                
+                <!-- Sidebar / Navigation (Sticky) -->
+                <div class="md:col-span-4 hidden md:block">
+                    <div class="sticky top-32 space-y-2">
+                        <a href="#editeur" class="block px-4 py-3 text-sm font-medium rounded-xl text-ink bg-cloud/50 border border-cloud hover:border-cactus-green transition-colors">1. Éditeur du site</a>
+                        <a href="#hebergement" class="block px-4 py-3 text-sm font-medium rounded-xl text-ink/70 hover:bg-cloud/30 transition-colors">2. Hébergement</a>
+                        <a href="#donnees" class="block px-4 py-3 text-sm font-medium rounded-xl text-ink/70 hover:bg-cloud/30 transition-colors">3. Données Personnelles (CNDP)</a>
+                        <a href="#propriete" class="block px-4 py-3 text-sm font-medium rounded-xl text-ink/70 hover:bg-cloud/30 transition-colors">4. Propriété Intellectuelle</a>
+                        <a href="#responsabilite" class="block px-4 py-3 text-sm font-medium rounded-xl text-ink/70 hover:bg-cloud/30 transition-colors">5. Limitation de Responsabilité</a>
+                    </div>
+                </div>
 
-            <h2>Propriété intellectuelle</h2>
-            <p>L'ensemble du contenu de ce site (textes, images, logos, icônes, éléments graphiques, vidéos) est la propriété exclusive de Cactus Informatique ou de ses partenaires. Toute reproduction, distribution, modification ou utilisation de ce contenu sans autorisation préalable écrite est interdite.</p>
-            <p>Le logo et la marque « Cactus Informatique » sont des marques déposées. Leur utilisation sans autorisation est interdite.</p>
+                <!-- Main Legal Prose -->
+                <div class="md:col-span-8 prose-legal">
+                    
+                    <div id="editeur" class="mb-16 scroll-mt-32 reveal">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-lg bg-gold/20 text-gold flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </div>
+                            <h2 class="!mt-0 !mb-0">1. Éditeur du site</h2>
+                        </div>
+                        <div class="bg-white border border-cloud rounded-xl p-6 shadow-sm">
+                            <p class="!mb-4">Le présent site web (www.cactus.ma) est édité et exploité par :</p>
+                            <ul class="space-y-2">
+                                <li><strong>Raison sociale :</strong> Cactus Informatique SARL</li>
+                                <li><strong>Capital social :</strong> 300 000 MAD</li>
+                                <li><strong>Siège social :</strong> 70 Allée des Phoenix, Casablanca 20250, Maroc</li>
+                                <li><strong>Directeur de publication :</strong> M. Omar Mask</li>
+                            </ul>
+                            <div class="mt-4 pt-4 border-t border-cloud">
+                                <p class="!mb-0 text-sm">
+                                    <strong>Contact :</strong> contact@cactus.net.ma | +212 5 22 34 35 45
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-            <h2>Limitation de responsabilité</h2>
-            <p>Cactus Informatique s'efforce de fournir sur ce site des informations aussi précises que possible. Toutefois, Cactus Informatique ne pourra être tenu responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.</p>
+                    <div id="hebergement" class="mb-16 scroll-mt-32 reveal">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-lg bg-cactus-green/10 text-cactus-green flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                            </div>
+                            <h2 class="!mt-0 !mb-0">2. Hébergement & Sécurité</h2>
+                        </div>
+                        <p>
+                            Afin de garantir la sécurité, la disponibilité et l'intégrité de nos services, l'infrastructure d'hébergement de Cactus Informatique est confiée à des partenaires certifiés répondant aux normes internationales de sécurité. 
+                        </p>
+                        <p>
+                            Nous mettons en œuvre des protocoles rigoureux (chiffrement SSL/TLS, pare-feu applicatifs) pour prévenir tout incident de sécurité ou compromission de système.
+                        </p>
+                    </div>
 
-            <h2>Liens hypertextes</h2>
-            <p>Ce site peut contenir des liens hypertextes vers d'autres sites internet. Cactus Informatique ne dispose d'aucun contrôle sur le contenu de ces sites tiers et décline toute responsabilité quant à leur contenu.</p>
+                    <div id="donnees" class="mb-16 scroll-mt-32 reveal">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-lg bg-amber/20 text-amber flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            </div>
+                            <h2 class="!mt-0 !mb-0">3. Protection des Données (Loi 09-08)</h2>
+                        </div>
+                        <p>
+                            Conformément à la <strong>Loi n° 09-08</strong> relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, les informations collectées via nos formulaires sont strictement confidentielles.
+                        </p>
+                        <ul>
+                            <li><strong>Finalité :</strong> Les données sont collectées exclusivement à des fins de gestion de la relation client, de traitement des commandes (ex: noms de domaine .ma) et de support technique.</li>
+                            <li><strong>Droits d'accès :</strong> Vous disposez d'un droit d'accès, de rectification et d'opposition au traitement de vos données personnelles.</li>
+                            <li><strong>Exercice des droits :</strong> Pour exercer ces droits, veuillez adresser votre requête par email à l'adresse <code>dpo@cactus.net.ma</code>.</li>
+                        </ul>
+                        <p class="text-sm text-ink/60 italic mt-4">
+                            Ce traitement a fait l'objet d'une déclaration préalable auprès de la CNDP (Commission Nationale de contrôle de la protection des Données à caractère Personnel).
+                        </p>
+                    </div>
 
-            <h2>Droit applicable</h2>
-            <p>Les présentes mentions légales sont soumises au droit marocain. En cas de litige, les tribunaux de Casablanca seront seuls compétents.</p>
+                    <div id="propriete" class="mb-16 scroll-mt-32 reveal">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-lg bg-earth-brown/10 text-earth-brown flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M14.83 14.83a4 4 0 1 1 0-5.66"></path></svg>
+                            </div>
+                            <h2 class="!mt-0 !mb-0">4. Propriété Intellectuelle</h2>
+                        </div>
+                        <p>
+                            L'architecture du site, les marques, les logos, ainsi que l'ensemble des contenus (textes, images, illustrations, vidéos) présentés sur ce site sont la propriété exclusive de <strong>Cactus Informatique</strong> ou de ses concédants.
+                        </p>
+                        <p>
+                            Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est strictement interdite sans autorisation écrite préalable.
+                        </p>
+                    </div>
 
-            <h2>Contact</h2>
-            <p>
-                Pour toute question relative aux présentes mentions légales, contactez-nous :<br />
-                <strong>Email :</strong> contact@cactus.net.ma<br />
-                <strong>Téléphone :</strong> +212 5 22 34 35 45
-            </p>
+                    <div id="responsabilite" class="mb-16 scroll-mt-32 reveal">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-8 h-8 rounded-lg bg-ink/5 text-ink/70 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                            </div>
+                            <h2 class="!mt-0 !mb-0">5. Juridiction & Droit Applicable</h2>
+                        </div>
+                        <p>
+                            Les présentes mentions légales sont régies et interprétées conformément au droit marocain. En cas de litige relatif à l'utilisation du site, et à défaut d'accord amiable, compétence exclusive est attribuée aux tribunaux compétents de Casablanca.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 </BaseLayout>
+
+<script>
+    // Simple script to highlight active section in sidebar
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                document.querySelectorAll('.sticky a').forEach(link => {
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.remove('text-ink/70', 'hover:bg-cloud/30');
+                        link.classList.add('bg-cloud/50', 'border', 'border-cloud', 'text-ink');
+                    } else {
+                        link.classList.add('text-ink/70', 'hover:bg-cloud/30');
+                        link.classList.remove('bg-cloud/50', 'border', 'border-cloud', 'text-ink');
+                    }
+                });
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    document.querySelectorAll('.prose-legal > div[id]').forEach((section) => {
+        observer.observe(section);
+    });
+</script>

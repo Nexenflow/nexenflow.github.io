@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageHero from '../../../../components/PageHero.astro';
+import SectionHeader from '../../../../components/SectionHeader.astro';
+import FinalCta from '../../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+
+const healthTechProducts = [
+    {
+        title: "Feuille d'Anesthésie Informatisée",
+        subtitle: "Bloc opératoire, suivi peropératoire & SSPI",
+        desc: "Numérisation complète du suivi anesthésique : acquisition automatique des constantes vitales, chronologie de l'intervention, prescription informatisée et score d'Aldrete.",
+        badge: "Bloc Opératoire",
+        icon: "activity",
+        summaryLink: p('/produits/healthtech/anesthesie/'),
+        detailLink: p('/produits/healthtech/anesthesie-detail/'),
+        pdfStandard: "/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2.pdf",
+        pdfVisual: "/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2_visuelle.pdf",
+        tags: ["Bloc opératoire", "SSPI", "Aldrete", "Interfaçage moniteurs"]
+    },
+    {
+        title: "Feuille de Réanimation Informatisée",
+        subtitle: "Soins intensifs, réanimation & surveillance 24/7",
+        desc: "Surveillance continue 24h/24 sans rupture : calcul automatique des scores de gravité (SOFA, APACHE II, Glasgow), suivi multi-organes et bilans hydriques.",
+        badge: "Soins Intensifs 24/7",
+        icon: "pulse",
+        summaryLink: p('/produits/healthtech/reanimation/'),
+        detailLink: p('/produits/healthtech/reanimation-detail/'),
+        pdfStandard: "/pdfs/HealthTech_Feuille_Reanimation_Fiche_Technique_v2.pdf",
+        pdfVisual: "/pdfs/HealthTech_Feuille_Reanimation_Fiche_Technique_v2_visuelle.pdf",
+        tags: ["Réanimation", "Scores SOFA/APACHE", "Multi-organes", "Haute disponibilité"]
+    }
+];
+---
+
+<BaseLayout
+    title="Cactus HealthTech — Solutions d'Informatisation Médicale au Maroc"
+    description="Découvrez la gamme Cactus HealthTech : Feuille d'Anesthésie Informatisée et Feuille de Réanimation Informatisée. Fiches techniques résumées et détaillées."
+>
+    <PageHero
+        label="Cactus HealthTech"
+        title="Solutions d'Informatisation "
+        titleHighlight="Biomédicale & Clinique"
+        subtitle="Connecter les équipements biomédicaux au système d'information hospitalier. Zéro re-saisie manuelle, traçabilité médico-légale à 100% et continuité des soins."
+        breadcrumbs={[
+            { label: 'Produits', href: p('/produits/') },
+            { label: 'HealthTech' },
+        ]}
+        lang={lang}
+        ctaHref="#solutions-healthtech"
+        ctaLabel="Découvrir les solutions"
+        ctaSecondaryHref={p('/contact/') + '?besoin=healthtech'}
+        ctaSecondaryLabel="Demander une démo"
+        imageSrc="/imgs/resized_30pct_webp/medical-sante.webp"
+        imageAlt="Illustration Cactus HealthTech"
+    />
+
+    <!-- ═══════════════════════════════════════
+         SOLUTIONS PORTAL (GRID)
+         ═══════════════════════════════════════ -->
+    <section id="solutions-healthtech" class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Gamme Spécialisée"
+                title="Des Fiches Techniques Adaptées à Vos Besoins"
+                subtitle="Consultez nos fiches techniques au format résumé (synthèse commerciale) ou détaillé (spécifications techniques complètes)."
+            />
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
+                {healthTechProducts.map((prod, i) => (
+                    <div class={`group relative bg-white border rounded-3xl p-8 transition-all hover:-translate-y-1.5 hover:shadow-xl reveal reveal-delay-${i + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="inline-flex px-3.5 py-1.5 rounded-full text-xs font-heading font-semibold uppercase tracking-wider"
+                                  style="background: rgba(71,106,51,0.1); color: var(--color-cactus-green);">
+                                {prod.badge}
+                            </span>
+                            <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background: rgba(219,204,99,0.15);">
+                                {prod.icon === 'activity' ? (
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+                                ) : (
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                                )}
+                            </div>
+                        </div>
+
+                        <h3 class="font-heading font-bold text-2xl mb-1" style="color: var(--color-ink);">{prod.title}</h3>
+                        <p class="text-xs font-heading font-semibold mb-4" style="color: var(--color-cactus-green);">{prod.subtitle}</p>
+                        
+                        <p class="text-sm leading-relaxed mb-6" style="color: var(--color-ink-soft);">{prod.desc}</p>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            {prod.tags.map(tag => (
+                                <span class="inline-flex px-2.5 py-1 rounded-md text-[0.7rem] font-heading font-medium"
+                                      style="background: rgba(238,238,238,0.8); color: var(--color-ink-soft);">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+
+                        <div class="pt-6 border-t flex flex-col sm:flex-row gap-3" style="border-color: var(--color-cloud-dark);">
+                            <a href={prod.summaryLink}
+                               class="magnetic-btn flex-1 inline-flex items-center justify-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-3 transition-all hover:-translate-y-0.5 text-center"
+                               style="background: var(--color-cloud); color: var(--color-ink);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                                Version Résumée (1 p.)
+                            </a>
+                            <a href={prod.detailLink}
+                               class="magnetic-btn flex-1 inline-flex items-center justify-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-3 text-white transition-all hover:-translate-y-0.5 text-center"
+                               style="background: var(--color-cactus-green);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                                Version Détaillée (Spéc.)
+                            </a>
+                        </div>
+                        <div class="mt-4 pt-3 border-t flex flex-wrap items-center justify-between gap-2" style="border-color: rgba(238,238,238,0.7);">
+                            <span class="text-[0.72rem] font-heading font-semibold" style="color: var(--color-ink-muted);">Télécharger PDF :</span>
+                            <div class="flex gap-3">
+                                <a href={prod.pdfStandard} download class="inline-flex items-center gap-1 text-[0.75rem] font-heading font-semibold transition-colors hover:underline" style="color: var(--color-cactus-green);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                                    Fiche Officielle Standard
+                                </a>
+                                <a href={prod.pdfVisual} download class="inline-flex items-center gap-1 text-[0.75rem] font-heading font-semibold transition-colors hover:underline" style="color: var(--color-amber);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                    Édition Visuelle Illustrée
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         THEME TOGGLE & DEMO SECTION
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Personnalisation de Thème"
+                title="Visualisation Adaptée à Vos Préférences"
+                subtitle="Nos fiches s'intègrent nativement au Design System Cactus avec ses 7 couleurs signature, ses micro-animations et sa typographie soignée."
+            />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2">
+                <!-- Theme Card 1: Official Cactus Theme -->
+                <div class="bg-white rounded-3xl p-8 border shadow-sm reveal" style="border-color: var(--color-cloud-dark);">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background: var(--color-cactus-green);">
+                            1
+                        </div>
+                        <h3 class="font-heading font-bold text-lg" style="color: var(--color-ink);">Thème Officiel Cactus (Recommandé)</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6" style="color: var(--color-ink-soft);">
+                        Palette officielle B2B à 7 couleurs (Vert Cactus `#476A33`, Dark Olive `#364022`, Or `#DBCC63`, Amber `#D39D4C`, Earth Brown `#6F3203`, Ink `#181818`, Cloud `#EEEEEE`).
+                    </p>
+                    <div class="flex gap-2">
+                        <div class="w-8 h-8 rounded-lg shadow-inner" style="background: #476A33;" title="Cactus Green"></div>
+                        <div class="w-8 h-8 rounded-lg shadow-inner" style="background: #364022;" title="Dark Olive"></div>
+                        <div class="w-8 h-8 rounded-lg shadow-inner" style="background: #DBCC63;" title="Gold"></div>
+                        <div class="w-8 h-8 rounded-lg shadow-inner" style="background: #D39D4C;" title="Amber"></div>
+                        <div class="w-8 h-8 rounded-lg shadow-inner" style="background: #6F3203;" title="Earth Brown"></div>
+                        <div class="w-8 h-8 rounded-lg shadow-inner border" style="background: #EEEEEE;" title="Cloud"></div>
+                    </div>
+                </div>
+
+                <!-- Theme Card 2: Minimalist Clean Theme -->
+                <div class="bg-white rounded-3xl p-8 border shadow-sm reveal reveal-delay-1" style="border-color: var(--color-cloud-dark);">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background: var(--color-ink);">
+                            2
+                        </div>
+                        <h3 class="font-heading font-bold text-lg" style="color: var(--color-ink);">Mode Fiche Technique Épurée</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6" style="color: var(--color-ink-soft);">
+                        Design ultra-minimaliste pour impression PDF ou consultation rapide en environnement clinique avec fort contraste.
+                    </p>
+                    <div class="inline-flex items-center gap-2 text-xs font-heading font-semibold text-cactus-green">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/></svg>
+                        Optimisé pour l'export PDF & impression
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Besoin d'un accompagnement sur mesure ?"
+        text="Nos experts IT & IoT médical analysent vos blocs opératoires et services de réanimation pour vous proposer une solution adaptée."
+        ctaLabel="Contactez un expert HealthTech"
+        ctaHref={p('/contact/') + '?besoin=healthtech'}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import DomainSearch from '../../components/DomainSearch.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+const breadcrumbs = [
+    { label: 'Produits & Services', href: '/fr/produits' },
+    { label: 'Noms de Domaine .ma' }
+];
+
+const faqItems = [
+    {
+        question: "Qui peut enregistrer un nom de domaine .ma ?",
+        answer: "L'enregistrement d'un nom de domaine .ma est ouvert à toute personne physique (particulier) ou morale (entreprise, association, etc.) disposant d'un lien avec le Maroc, ou justifiant de l'utilisation du nom de domaine sur le territoire marocain."
+    },
+    {
+        question: "Qu'est-ce qu'un terme réservé selon l'ANRT ?",
+        answer: "La Décision 02-2024 de l'ANRT définit une liste de termes dont l'enregistrement est réservé (ex: noms de ministères, villes marocaines, termes liés à la religion ou aux institutions). Vous ne pouvez pas enregistrer ces termes sans autorisation explicite."
+    },
+    {
+        question: "Qu'est-ce que l'option Protection ID (ONOFF) ?",
+        answer: "Par défaut, les informations du titulaire (nom, email, téléphone) sont publiques dans la base de données WHOIS. L'option Protection ID masque ces informations personnelles pour réduire le spam et protéger votre vie privée, tout en restant en conformité avec l'ANRT."
+    },
+    {
+        question: "Puis-je utiliser mes propres serveurs DNS ?",
+        answer: "Oui, absolument. Si vous disposez déjà d'un hébergement web ou de votre propre infrastructure, vous pouvez sélectionner 'Serveurs DNS personnalisés' lors de la commande et saisir les adresses (ex: ns1.votre-serveur.com)."
+    }
+];
+---
+
+<BaseLayout
+    title="Enregistrement Noms de Domaine .ma | Cactus Informatique"
+    description="Vérifiez la disponibilité et enregistrez votre nom de domaine .ma au Maroc avec Cactus Informatique. Accompagnement complet, gestion DNS, conformité ANRT."
+>
+    <!-- Hero Section -->
+    <PageHero 
+        label="Identité Numérique"
+        title="Votre domaine "
+        titleHighlight=".ma"
+        subtitle="Réservez l'extension officielle du Maroc en quelques clics. Protégez votre marque, affirmez votre présence locale et gérez vos DNS en toute simplicité."
+        breadcrumbs={breadcrumbs}
+        lang="fr"
+    />
+
+    <!-- Main Content -->
+    <div class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <!-- Search & Form Component -->
+            <div class="-mt-32 md:-mt-40 relative z-20 mb-20">
+                <DomainSearch />
+            </div>
+
+            <!-- DNS & Management Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center mb-24 reveal-scale">
+                <div>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-ink mb-6">
+                        Gestion DNS et <span class="text-cactus-green">Nameservers</span>
+                    </h2>
+                    <p class="text-ink/80 text-lg mb-6 leading-relaxed">
+                        Les serveurs de noms (DNS) sont l'aiguillage de votre domaine sur Internet. Ils indiquent où se trouvent votre site web et vos emails.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 p-4 rounded-xl bg-cloud/30 border border-cloud">
+                            <div class="w-10 h-10 rounded-full bg-cactus-green/10 text-cactus-green flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-ink mb-1">Gestion 100% Automatique</h4>
+                                <p class="text-sm text-ink/70">Si vous choisissez nos DNS par défaut, Cactus Informatique s'occupe de relier votre domaine à vos services (hébergement, messagerie) sans intervention de votre part.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 rounded-xl border border-cloud">
+                            <div class="w-10 h-10 rounded-full bg-cloud text-ink/60 flex items-center justify-center shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-ink mb-1">Serveurs Personnalisés</h4>
+                                <p class="text-sm text-ink/70">Vous possédez votre propre serveur ? Indiquez simplement vos adresses (ns1, ns2...) lors de la commande ou modifiez-les plus tard via le support technique.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <!-- Decorative Graphic -->
+                    <div class="absolute inset-0 bg-gold/10 rounded-3xl -rotate-3 transform-gpu"></div>
+                    <div class="relative bg-cactus-dark p-8 rounded-3xl border border-white/10 shadow-2xl">
+                        <div class="flex items-center justify-between mb-6 border-b border-white/10 pb-4">
+                            <div class="flex items-center gap-3 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                <h3 class="font-bold text-xl">DNS Anycast</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-cactus-green/20 text-cactus-green rounded-full text-xs font-bold uppercase tracking-wider">Inclus</span>
+                        </div>
+                        <div class="space-y-4 font-mono text-sm">
+                            <div class="bg-black/40 p-4 rounded-xl text-white/80 flex items-center justify-between">
+                                <span>Type: A</span>
+                                <span>203.0.113.1</span>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl text-white/80 flex items-center justify-between">
+                                <span>Type: MX</span>
+                                <span>mail.cactus.ma</span>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl text-white/80 flex items-center justify-between">
+                                <span>Type: TXT</span>
+                                <span>v=spf1 include:_spf...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legal Section (ANRT) -->
+            <div class="bg-cloud/40 rounded-3xl p-8 md:p-12 mb-24 reveal">
+                <div class="flex flex-col md:flex-row gap-8 items-start">
+                    <div class="w-16 h-16 rounded-2xl bg-amber/20 text-amber flex items-center justify-center shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M12 18v-6"></path><path d="M9 15l3 3 3-3"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="font-heading text-2xl font-bold text-ink mb-4">Cadre Légal & Réglementation ANRT</h2>
+                        <p class="text-ink/80 mb-6 leading-relaxed">
+                            En tant que partenaire de confiance, Cactus Informatique veille au respect de la réglementation marocaine concernant les noms de domaine. L'enregistrement d'un nom de domaine `.ma` est soumis à l'acceptation de la Décision de l'Agence Nationale de Réglementation des Télécommunications (ANRT).
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://www.anrt.ma/sites/default/files/2024-06/decision_02-2024_-_ndd_fr_.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-cactus-green hover:text-cactus-dark font-medium transition-colors bg-white px-5 py-3 rounded-xl shadow-sm border border-cloud">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Décision ANRT 02-2024 (PDF)
+                            </a>
+                            <a href="https://www.registre.ma/wp-content/themes/domaine/pdf/Liste_terme_reserves.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-ink/70 hover:text-ink font-medium transition-colors bg-white px-5 py-3 rounded-xl shadow-sm border border-cloud">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Liste des termes réservés (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="max-w-3xl mx-auto mb-16 reveal">
+                <div class="text-center mb-12">
+                    <h2 class="font-heading text-3xl font-bold text-ink mb-4">Questions Fréquentes</h2>
+                    <p class="text-ink/70">Tout ce que vous devez savoir sur l'enregistrement et la gestion de votre nom de domaine .ma</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <FaqAccordion items={faqItems} />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final CTA -->
+    <FinalCta 
+        title="Prêt à lancer votre projet web ?"
+        description="Associez votre nom de domaine .ma à nos solutions d'hébergement performantes et sécurisées pour propulser votre activité."
+        ctaLabel="Contactez-nous"
+        ctaHref="/fr/contact"
+        lang="fr"
+    />
+</BaseLayout>

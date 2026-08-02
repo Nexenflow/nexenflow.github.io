@@ -1,0 +1,431 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageHero from '../../../../components/PageHero.astro';
+import SectionHeader from '../../../../components/SectionHeader.astro';
+import FeatureTable from '../../../../components/FeatureTable.astro';
+import FaqAccordion from '../../../../components/FaqAccordion.astro';
+import StatsBar from '../../../../components/StatsBar.astro';
+import FinalCta from '../../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+---
+
+<BaseLayout
+    title="Feuille d'Anesthésie Informatisée — Fiche Technique Détaillée | Cactus HealthTech"
+    description="Fiche technique complète de la Feuille d'Anesthésie Informatisée Cactus : architecture, connectivité biomédicale, prescription informatisée, suivi SSPI, sécurité et conformité réglementaire."
+>
+    <PageHero
+        label="Cactus HealthTech — Fiche Détaillée"
+        title="Feuille d'Anesthésie "
+        titleHighlight="Informatisée"
+        titleEnd=" — Documentation complète"
+        subtitle="Solution numérique intégrée pour le bloc opératoire. Capture automatique des données biomédicales, traçabilité complète du parcours péri-opératoire et prescription sécurisée."
+        breadcrumbs={[
+            { label: 'Produits', href: p('/produits/') },
+            { label: 'HealthTech', href: p('/produits/healthtech/') },
+            { label: 'Anesthésie — Détail' },
+        ]}
+        lang={lang}
+        ctaHref={p('/contact/') + '?besoin=healthtech-anesthesie'}
+        ctaLabel="Demander une démo"
+        ctaSecondaryHref={p('/produits/healthtech/anesthesie/')}
+        ctaSecondaryLabel="Version résumée"
+        imageSrc="/imgs/resized_30pct_webp/medical-sante.webp"
+        imageAlt="Illustration solution médicale Cactus HealthTech anesthésie"
+    />
+
+    <!-- PDF DOWNLOAD BAR -->
+    <div class="no-print bg-white border-b py-4 px-6 sticky top-[64px] z-30 shadow-sm" style="border-color: var(--color-cloud-dark);">
+        <div class="max-w-[1200px] mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(71,106,51,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </div>
+                <div>
+                    <p class="font-heading font-bold text-xs uppercase tracking-wider" style="color: var(--color-cactus-green);">Document Officiel PDF</p>
+                    <p class="text-xs" style="color: var(--color-ink-soft);">Fiche Technique Anesthésie (Version Détaillée v2.0 — Spécifications Complètes)</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <a href="/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2.pdf" download class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-2.5 text-white transition-all shadow-sm hover:shadow-md cursor-pointer" style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    PDF Officiel Détaillé
+                </a>
+                <a href="/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2_visuelle.pdf" download class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer" style="background: var(--color-cloud); color: var(--color-ink); border: 1px solid var(--color-cloud-dark);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    PDF Édition Visuelle Illustrée
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PRÉSENTATION
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[900px] mx-auto px-6">
+            <SectionHeader
+                label="Présentation"
+                title="Remplacer la feuille papier du bloc opératoire"
+            />
+            <div class="prose-legal reveal">
+                <p>La <strong>Feuille d'Anesthésie Informatisée Cactus</strong> est une solution logicielle conçue pour le bloc opératoire et le service d'anesthésie. Elle capture automatiquement les données des équipements biomédicaux, trace l'ensemble du parcours péri-opératoire du patient et sécurise la prescription médicamenteuse.</p>
+                <h3>Usage prévu</h3>
+                <ul>
+                    <li>Suivi péri-opératoire complet : pré-opératoire, peropératoire, SSPI, post-opératoire</li>
+                    <li>Environnements cibles : blocs opératoires, salles d'intervention, SSPI</li>
+                    <li>Utilisateurs : médecins anesthésistes-réanimateurs, IADE, infirmiers SSPI</li>
+                </ul>
+                <h3>Problème résolu</h3>
+                <p>La saisie manuelle des constantes vitales en peropératoire est chronophage, source d'erreurs de transcription et crée des lacunes dans la traçabilité médico-légale. Les fiches papier sont impossibles à croiser avec d'autres données patient et ne permettent aucune alerte automatisée.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         BÉNÉFICES
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader
+                label="Bénéfices"
+                title="L'impact concret sur votre bloc"
+            />
+            <FeatureTable rows={[
+                { label: 'Zéro saisie manuelle', value: 'Les données des moniteurs sont capturées automatiquement — l\'anesthésiste se concentre sur le patient.' },
+                { label: 'Traçabilité médico-légale', value: 'Chaque acte, dose et alarme est horodaté et archivé de manière inaltérable.' },
+                { label: 'Réduction des erreurs', value: 'Contrôle automatique des doses, interactions et protocoles de prescription.' },
+                { label: 'Continuité du parcours', value: 'Du bilan pré-opératoire à la sortie de SSPI, toutes les données dans un dossier unique.' },
+                { label: 'Pilotage du service', value: 'Statistiques d\'activité, durées d\'intervention, taux d\'occupation et rotation du bloc.' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FONCTIONNALITÉS DÉTAILLÉES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Fonctionnalités"
+                title="Couverture fonctionnelle complète"
+                subtitle="Chaque module est conçu pour un domaine précis du parcours anesthésique."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                {[
+                    { title: 'Suivi clinique peropératoire', items: [
+                        'Acquisition automatique des signes vitaux en temps réel (fréquence paramétrable de 1s à 15min)',
+                        'Graphiques dynamiques et tableaux horodatés synchronisés',
+                        'Suivi des injections, doses administrées et débits (pousse-seringues)',
+                        'Chronologie complète de l\'intervention (incision, clampage, déclampage, fermeture)',
+                        'Enregistrement des données de ventilation (volumes, pressions, FiO2, EtCO2)',
+                        'Gestion des événements critiques avec horodatage automatique',
+                    ], icon: 'activity' },
+                    { title: 'Prescription informatisée', items: [
+                        'Prescription pré-opératoire : bilan biologique, prémédication, consignes de jeûne',
+                        'Prescription peropératoire : agents anesthésiques, curares, antalgiques, solutés',
+                        'Prescription post-opératoire : analgésie, antibiothérapie, thromboprophylaxie',
+                        'Contrôle des doses et des interactions médicamenteuses',
+                        'Protocoles d\'anesthésie prédéfinis et personnalisables',
+                    ], icon: 'file' },
+                    { title: 'Suivi SSPI', items: [
+                        'Feuille de surveillance SSPI informatisée (score d\'Aldrete)',
+                        'Critères de sortie paramétrables',
+                        'Suivi des complications post-anesthésiques immédiates',
+                        'Transmission structurée vers le service d\'hospitalisation',
+                    ], icon: 'clipboard' },
+                    { title: 'Gestion du dossier patient', items: [
+                        'Dossier d\'anesthésie complet : antécédents, allergies, voies aériennes, score ASA',
+                        'Historique de toutes les interventions antérieures du patient',
+                        'Sauvegarde pérenne et archivage long terme',
+                        'Recherche et consultation rapide des dossiers archivés',
+                    ], icon: 'folder' },
+                    { title: 'Administration et reporting', items: [
+                        'Tableaux de bord d\'activité du bloc opératoire',
+                        'Statistiques : nombre d\'interventions, durées moyennes, taux de rotation',
+                        'Rapports exportables pour la direction médicale',
+                        'Gestion des profils utilisateurs et droits d\'accès granulaires',
+                    ], icon: 'chart' },
+                ].map((group, gi) => (
+                    <div class={`bg-white border rounded-2xl p-7 reveal reveal-delay-${(gi % 4) + 1}`} style="border-color: var(--color-cloud-dark);">
+                        <div class="flex items-center gap-3 mb-5">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(219,204,99,0.15);">
+                                {group.icon === 'activity' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>}
+                                {group.icon === 'file' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>}
+                                {group.icon === 'clipboard' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>}
+                                {group.icon === 'folder' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg>}
+                                {group.icon === 'chart' && <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>}
+                            </div>
+                            <h3 class="font-heading font-semibold text-lg" style="color: var(--color-ink);">{group.title}</h3>
+                        </div>
+                        <ul class="space-y-2.5">
+                            {group.items.map(item => (
+                                <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONNECTIVITÉ BIOMÉDICALE
+         ═══════════════════════════════════════ -->
+    <section class="py-20 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <SectionHeader
+                        label="Connectivité"
+                        title="Communication avec les équipements biomédicaux"
+                        subtitle="Acquisition bidirectionnelle et automatique des données depuis vos appareils de bloc opératoire."
+                        variant="dark"
+                    />
+                    <div class="flex flex-wrap gap-2 mt-6 reveal">
+                        {['Protocoles médicaux standards', 'Interfaçage SIH', 'API pharmacie', 'API laboratoire', 'Import/Export'].map(tag => (
+                            <span class="inline-flex px-3 py-1.5 rounded-full text-xs font-heading font-medium"
+                                  style="background: rgba(219,204,99,0.1); color: var(--color-gold); border: 1px solid rgba(219,204,99,0.2);">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <div class="reveal reveal-right">
+                    <div class="space-y-4">
+                        {[
+                            { equip: 'Moniteur multiparamétrique', data: 'FC, SpO2, PNI, PI, température, EtCO2' },
+                            { equip: 'Respirateur / ventilateur', data: 'Volumes, pressions, FiO2, fréquence' },
+                            { equip: 'Pousse-seringues', data: 'Débit, volume administré, identification produit' },
+                            { equip: 'Analyseur de gaz', data: 'Agents halogénés (sevoflurane, desflurane), O2, N2O' },
+                        ].map(row => (
+                            <div class="py-4 px-5 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+                                <p class="font-heading font-semibold text-sm mb-1" style="color: var(--color-gold);">{row.equip}</p>
+                                <p class="text-sm" style="color: rgba(238,238,238,0.6);">{row.data}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         ARCHITECTURE
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[900px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Architecture"
+                title="Architecture technique"
+                subtitle="Solution web sécurisée avec passerelle IoT biomédicale dédiée."
+                align="center"
+            />
+            <div class="reveal mt-8 rounded-2xl p-8 font-mono text-sm leading-loose text-left overflow-x-auto"
+                 style="background: var(--color-ink); color: var(--color-cloud);">
+                <pre style="color: var(--color-cloud);"><span style="color: var(--color-gold);">POSTE ANESTHÉSISTE</span>  (Navigateur web — Écran bloc)
+        |
+        | HTTPS
+        v
+<span style="color: var(--color-gold);">SERVEUR APPLICATIF</span>
+  Application web sécurisée
+  Moteur de règles & alertes
+  Gestion des prescriptions
+        |
+   +---------+----------+
+   v                     v
+<span style="color: var(--color-cactus-green);">BASE DE DONNÉES</span>       <span style="color: var(--color-amber);">PASSERELLE IoT BIOMÉDICALE</span>
+(SQL Server)           Moniteurs, respi, pousse-seringues</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SÉCURITÉ & CONFORMITÉ
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Sécurité"
+                title="Sécurité et conformité réglementaire"
+                subtitle="Conçu pour les exigences du secteur médical."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2">
+                <div class="bg-white rounded-2xl p-8 border reveal" style="border-color: var(--color-cloud-dark);">
+                    <h3 class="font-heading font-semibold text-lg mb-5" style="color: var(--color-ink);">Protection des données</h3>
+                    <ul class="space-y-3">
+                        {[
+                            'Authentification forte : OAuth 2.0, Active Directory, LDAP',
+                            'Chiffrement des données en transit et au repos',
+                            'Journalisation complète (audit trail inaltérable)',
+                            'Droits d\'accès granulaires (anesthésiste, IADE, cadre)',
+                            'Sauvegarde automatique et plan de reprise d\'activité',
+                        ].map(item => (
+                            <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-8 border reveal reveal-delay-1" style="border-color: var(--color-cloud-dark);">
+                    <h3 class="font-heading font-semibold text-lg mb-5" style="color: var(--color-ink);">Conformité réglementaire</h3>
+                    <ul class="space-y-3">
+                        {[
+                            'Conforme ISO/IEC 27002 (sécurité de l\'information)',
+                            'Respect de la Loi 09-08 (protection des données, Maroc)',
+                            'Traçabilité intégrale médico-légale',
+                            'Archivage conforme aux durées réglementaires',
+                        ].map(item => (
+                            <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <StatsBar stats={[
+        { count: '15', suffix: '+ ans', label: 'd\'expertise IoT médical' },
+        { count: '0', label: 'saisie manuelle requise' },
+        { count: '100', suffix: '%', label: 'traçabilité médico-légale' },
+        { count: '24', suffix: '/7', label: 'support critique disponible' },
+    ]} />
+
+    <!-- ═══════════════════════════════════════
+         SPECS TECHNIQUES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader
+                label="Spécifications"
+                title="Caractéristiques techniques détaillées"
+            />
+            <FeatureTable rows={[
+                { label: 'Type d\'application', value: 'Application web — accessible depuis tout navigateur moderne' },
+                { label: 'Architecture', value: 'Client-serveur, multi-utilisateurs, multi-postes' },
+                { label: 'Base de données', value: 'Microsoft SQL Server' },
+                { label: 'Authentification', value: 'OAuth 2.0, Active Directory, LDAP' },
+                { label: 'Navigateurs', value: 'Chrome, Edge, Firefox (dernières versions)' },
+                { label: 'Déploiement', value: 'On-premise (serveur local) ou cloud privé' },
+                { label: 'Personnalisation', value: 'Interface et paramètres entièrement configurables' },
+                { label: 'Export', value: 'PDF (feuille complète), Excel, CSV' },
+                { label: 'Import', value: 'Excel, CSV (données patient, protocoles)' },
+                { label: 'Réseau', value: 'Ethernet recommandé ou Wi-Fi sécurisé' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DÉPLOIEMENT
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Déploiement"
+                title="Accompagnement de bout en bout"
+                subtitle="Du diagnostic initial à la mise en production, nous restons à vos côtés."
+            />
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
+                {[
+                    { title: 'Audit préalable', desc: 'Analyse de l\'existant, cartographie des équipements biomédicaux, étude de faisabilité.', step: '01' },
+                    { title: 'Installation', desc: 'Déploiement serveur, configuration des protocoles, connexion des équipements.', step: '02' },
+                    { title: 'Formation', desc: 'Formation sur site des équipes médicales et techniques.', step: '03' },
+                    { title: 'Migration', desc: 'Reprise des données historiques depuis les systèmes existants.', step: '04' },
+                    { title: 'Support technique', desc: 'Assistance à distance et sur site, contrat de maintenance évolutive.', step: '05' },
+                    { title: 'Mises à jour', desc: 'Évolutions fonctionnelles continues, corrections de sécurité.', step: '06' },
+                ].map((svc, i) => (
+                    <div class={`bg-white rounded-2xl p-6 border reveal reveal-delay-${(i % 4) + 1}`} style="border-color: var(--color-cloud-dark);">
+                        <span class="font-heading font-bold text-2xl" style="color: rgba(71,106,51,0.15);">{svc.step}</span>
+                        <h3 class="font-heading font-semibold text-[0.95rem] mb-2 mt-1" style="color: var(--color-ink);">{svc.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{svc.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         RÉFÉRENCES
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Références"
+                title="Déploiements réalisés"
+                align="center"
+            />
+            <div class="reveal">
+                <div class="rounded-2xl p-8 border" style="border-color: var(--color-cloud-dark);">
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--color-ink-soft);">
+                        Cactus Informatique conçoit et déploie des solutions intégrées (matériel + logiciel) captant la donnée des équipements hospitaliers depuis plus de 15 ans. L'expertise couvre l'intégration IoT médical, la connectivité des équipements de bloc opératoire et la numérisation des processus cliniques.
+                    </p>
+                    <p class="font-heading font-semibold text-sm" style="color: var(--color-ink);">
+                        Établissements de santé à Marrakech et Rabat
+                    </p>
+                    <p class="text-xs mt-2" style="color: var(--color-ink-muted);">Références clients nominatives disponibles sur demande.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FAQ
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader label="FAQ" title="Questions fréquentes — Anesthésie informatisée" />
+            <FaqAccordion items={[
+                { question: 'Quels équipements biomédicaux sont compatibles ?', answer: 'La solution communique avec les moniteurs multiparamétriques, respirateurs, pousse-seringues et analyseurs de gaz via les protocoles de connectivité biomédicale standards. La compatibilité exacte dépend de vos équipements — nous réalisons un audit préalable gratuit.' },
+                { question: 'Combien de temps prend le déploiement ?', answer: 'Le déploiement typique dans un bloc opératoire prend de 2 à 6 semaines, incluant l\'audit, l\'installation, la connexion des équipements et la formation des équipes. Le délai dépend du nombre de salles et d\'équipements à connecter.' },
+                { question: 'La solution fonctionne-t-elle sans connexion Internet ?', answer: 'Oui. Le déploiement on-premise fonctionne intégralement sur votre réseau local. Aucune connexion Internet n\'est nécessaire pour le fonctionnement quotidien.' },
+                { question: 'Peut-on migrer les données historiques ?', answer: 'Oui. Nous reprenons les données depuis vos systèmes existants (fichiers Excel, bases de données, systèmes tiers) pour assurer la continuité du dossier patient.' },
+                { question: 'Quel est le coût de la solution ?', answer: 'Le coût dépend du nombre de salles, des équipements à connecter et du périmètre fonctionnel. Nous pratiquons la facturation au résultat. Contactez-nous pour un devis personnalisé gratuit.' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION ENTRE FICHES
+         ═══════════════════════════════════════ -->
+    <section class="py-16">
+        <div class="max-w-[800px] mx-auto px-6">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
+                <a href="/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2.pdf" download
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 shadow-md cursor-pointer"
+                   style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    Télécharger la Fiche Détaillée PDF
+                </a>
+                <a href={p('/produits/healthtech/anesthesie/')}
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                   style="background: transparent; color: var(--color-ink-soft); border: 2px solid var(--color-cloud-dark);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                    Version résumée
+                </a>
+                <a href={p('/produits/healthtech/reanimation/')}
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                   style="background: transparent; color: var(--color-amber); border: 2px solid rgba(211,157,76,0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+                    Fiche Réanimation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Modernisez votre bloc opératoire"
+        text="Diagnostic initial gratuit. Nous analysons vos équipements biomédicaux et vous proposons un plan de déploiement adapté."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/') + '?besoin=healthtech-anesthesie'}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>

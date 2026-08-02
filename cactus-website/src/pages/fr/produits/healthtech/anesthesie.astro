@@ -1,0 +1,276 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PageHero from '../../../../components/PageHero.astro';
+import SectionHeader from '../../../../components/SectionHeader.astro';
+import FeatureTable from '../../../../components/FeatureTable.astro';
+import FinalCta from '../../../../components/FinalCta.astro';
+import { getLocalePath } from '../../../../i18n/utils';
+
+const lang = 'fr';
+const p = (path: string) => getLocalePath(lang, path);
+---
+
+<BaseLayout
+    title="Feuille d'Anesthésie Informatisée — Fiche Technique | Cactus HealthTech"
+    description="Solution numérique pour le bloc opératoire : acquisition automatique des constantes vitales, prescription informatisée, suivi SSPI. Fiche technique résumée."
+>
+    <PageHero
+        label="Cactus HealthTech"
+        title="Feuille d'Anesthésie "
+        titleHighlight="Informatisée"
+        subtitle="Remplacez la feuille papier du bloc opératoire par un système numérique intégré qui capture automatiquement les données des équipements biomédicaux, du bilan pré-opératoire à la sortie de SSPI."
+        breadcrumbs={[
+            { label: 'Produits', href: p('/produits/') },
+            { label: 'HealthTech', href: p('/produits/healthtech/') },
+            { label: 'Anesthésie — Résumé' },
+        ]}
+        lang={lang}
+        ctaHref={p('/produits/healthtech/anesthesie-detail/')}
+        ctaLabel="Voir la fiche détaillée"
+        ctaSecondaryHref={p('/contact/') + '?besoin=healthtech-anesthesie'}
+        ctaSecondaryLabel="Demander une démo"
+        imageSrc="/imgs/resized_30pct_webp/medical-sante.webp"
+        imageAlt="Illustration solution médicale Cactus HealthTech"
+    />
+
+    <!-- PDF DOWNLOAD BAR -->
+    <div class="no-print bg-white border-b py-4 px-6 sticky top-[64px] z-30 shadow-sm" style="border-color: var(--color-cloud-dark);">
+        <div class="max-w-[1200px] mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: rgba(71,106,51,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                </div>
+                <div>
+                    <p class="font-heading font-bold text-xs uppercase tracking-wider" style="color: var(--color-cactus-green);">Document Officiel PDF</p>
+                    <p class="text-xs" style="color: var(--color-ink-soft);">Fiche Technique Anesthésie (Version Résumée v2.0 — Format Corporate Blanc)</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <a href="/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2_resume.pdf" download class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-2.5 text-white transition-all shadow-sm hover:shadow-md cursor-pointer" style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    PDF Officiel Standard
+                </a>
+                <a href="/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2_resume_visuelle.pdf" download class="magnetic-btn inline-flex items-center gap-2 font-heading font-semibold text-xs rounded-xl px-4 py-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer" style="background: var(--color-cloud); color: var(--color-ink); border: 1px solid var(--color-cloud-dark);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    PDF Édition Visuelle Illustrée
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         BÉNÉFICES CLÉS
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Bénéfices"
+                title="Pourquoi informatiser votre feuille d'anesthésie ?"
+                subtitle="Des résultats concrets pour votre bloc opératoire."
+            />
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+                {[
+                    { title: 'Zéro saisie manuelle', desc: 'Les données des moniteurs sont capturées automatiquement — l\'anesthésiste se concentre sur le patient, pas sur le papier.', icon: 'zap' },
+                    { title: 'Traçabilité médico-légale', desc: 'Chaque acte, dose et alarme est horodaté et archivé de manière inaltérable. Conformité documentaire totale.', icon: 'shield' },
+                    { title: 'Réduction des erreurs', desc: 'Contrôle automatique des doses, interactions médicamenteuses et protocoles de prescription.', icon: 'check' },
+                    { title: 'Continuité du parcours', desc: 'Pré-opératoire, peropératoire, SSPI et post-opératoire dans un dossier patient unique et cohérent.', icon: 'link' },
+                    { title: 'Pilotage du service', desc: 'Statistiques d\'activité, durées d\'intervention, taux d\'occupation et rotation du bloc opératoire.', icon: 'chart' },
+                ].map((item, i) => (
+                    <div class={`group relative bg-white border rounded-2xl p-7 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-cactus-green reveal reveal-delay-${(i % 4) + 1}`}
+                         style="border-color: var(--color-cloud-dark);">
+                        <div class="card-top-bar"></div>
+                        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                             style="background: rgba(71,106,51,0.1);">
+                            {item.icon === 'zap' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>}
+                            {item.icon === 'shield' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>}
+                            {item.icon === 'check' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>}
+                            {item.icon === 'link' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M15 7h2a5 5 0 0 1 0 10h-2m-6 0H7A5 5 0 0 1 7 7h2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>}
+                            {item.icon === 'chart' && <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-cactus-green);"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>}
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg mb-2" style="color: var(--color-ink);">{item.title}</h3>
+                        <p class="text-sm leading-relaxed" style="color: var(--color-ink-soft);">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FONCTIONNALITÉS PRINCIPALES
+         ═══════════════════════════════════════ -->
+    <section class="py-24" style="background: var(--color-cloud);">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+                label="Fonctionnalités"
+                title="Suivi peropératoire complet"
+            />
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-2">
+                <!-- Suivi peropératoire -->
+                <div class="bg-white rounded-2xl p-8 border reveal" style="border-color: var(--color-cloud-dark);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(219,204,99,0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg" style="color: var(--color-ink);">Suivi clinique</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        {[
+                            'Acquisition temps réel des signes vitaux (fréquence de 1s à 15min)',
+                            'Graphiques dynamiques et tableaux horodatés synchronisés',
+                            'Suivi des injections, doses, débits et chronologie',
+                            'Données de ventilation (volumes, pressions, FiO2, EtCO2)',
+                        ].map(item => (
+                            <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <!-- Prescription -->
+                <div class="bg-white rounded-2xl p-8 border reveal reveal-delay-1" style="border-color: var(--color-cloud-dark);">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(219,204,99,0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-amber);"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>
+                        </div>
+                        <h3 class="font-heading font-semibold text-lg" style="color: var(--color-ink);">Prescription informatisée</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        {[
+                            'Prescriptions pré, per et post-opératoires',
+                            'Contrôle des doses et interactions médicamenteuses',
+                            'Protocoles d\'anesthésie prédéfinis et personnalisables',
+                            'Suivi SSPI avec score d\'Aldrete et critères de sortie',
+                        ].map(item => (
+                            <li class="flex items-start gap-3 text-sm leading-relaxed" style="color: var(--color-ink-soft);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--color-cactus-green);"><path d="m9 12 2 2 4-4"/></svg>
+                                {item}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONNECTIVITÉ BIOMÉDICALE
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6">
+            <SectionHeader
+                label="Connectivité"
+                title="Équipements biomédicaux connectés"
+                subtitle="Acquisition automatique des données depuis vos appareils de bloc opératoire."
+            />
+            <FeatureTable rows={[
+                { label: 'Moniteur multiparamétrique', value: 'FC, SpO2, PNI, PI, température, EtCO2' },
+                { label: 'Respirateur / ventilateur', value: 'Volumes, pressions, FiO2, fréquence' },
+                { label: 'Pousse-seringues', value: 'Débit, volume administré, identification produit' },
+                { label: 'Analyseur de gaz', value: 'Agents halogénés (sevoflurane, desflurane), O2, N2O' },
+            ]} />
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SPECS & SÉCURITÉ
+         ═══════════════════════════════════════ -->
+    <section class="py-20 relative dot-grid" style="background: var(--color-cactus-dark);">
+        <div class="max-w-[1200px] mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Specs -->
+                <div>
+                    <SectionHeader
+                        label="Spécifications"
+                        title="Caractéristiques techniques"
+                        variant="dark"
+                    />
+                    <div class="space-y-4 mt-2 reveal">
+                        {[
+                            { label: 'Application', value: 'Web — tout navigateur moderne' },
+                            { label: 'Architecture', value: 'Client-serveur, multi-utilisateurs' },
+                            { label: 'Base de données', value: 'Microsoft SQL Server' },
+                            { label: 'Authentification', value: 'OAuth 2.0, Active Directory, LDAP' },
+                            { label: 'Déploiement', value: 'On-premise ou cloud privé' },
+                            { label: 'Export', value: 'PDF, Excel, CSV' },
+                        ].map(spec => (
+                            <div class="flex items-center gap-4 py-3 px-5 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);">
+                                <span class="font-heading font-semibold text-sm shrink-0" style="color: var(--color-gold); min-width: 140px;">{spec.label}</span>
+                                <span class="text-sm" style="color: rgba(238,238,238,0.7);">{spec.value}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <!-- Sécurité -->
+                <div>
+                    <SectionHeader
+                        label="Sécurité"
+                        title="Conformité et protection"
+                        variant="dark"
+                    />
+                    <div class="space-y-4 mt-2 reveal reveal-delay-2">
+                        {[
+                            'Chiffrement des données en transit et au repos',
+                            'Audit trail complet et inaltérable',
+                            'Droits d\'accès granulaires par profil',
+                            'Conforme ISO/IEC 27002 et Loi 09-08 (Maroc)',
+                            'Sauvegarde automatique et plan de reprise',
+                        ].map(item => (
+                            <div class="flex items-center gap-3 py-3 px-5 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0" style="color: var(--color-gold);"><path d="m9 12 2 2 4-4"/></svg>
+                                <span class="text-sm" style="color: rgba(238,238,238,0.7);">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DÉPLOIEMENT & VERSIONS
+         ═══════════════════════════════════════ -->
+    <section class="py-24">
+        <div class="max-w-[800px] mx-auto px-6 text-center">
+            <SectionHeader
+                label="Déploiement"
+                title="Prêt à déployer dans votre bloc"
+                subtitle="Audit préalable, installation, formation sur site, migration de données, support technique continu."
+                align="center"
+            />
+            <p class="text-sm reveal mb-8" style="color: var(--color-ink-soft);">
+                <strong style="color: var(--color-ink);">Déploiements réalisés :</strong> Établissements de santé à Marrakech et Rabat.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
+                <a href="/pdfs/HealthTech_Feuille_Anesthesie_Fiche_Technique_v2_resume.pdf" download
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 text-white transition-all hover:-translate-y-0.5 shadow-md cursor-pointer"
+                   style="background: var(--color-cactus-green);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    Télécharger la Fiche PDF
+                </a>
+                <a href={p('/produits/healthtech/anesthesie-detail/')}
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                   style="background: transparent; color: var(--color-cactus-green); border: 2px solid rgba(71,106,51,0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                    Fiche technique détaillée
+                </a>
+                <a href={p('/produits/healthtech/reanimation/')}
+                   class="magnetic-btn inline-flex items-center justify-center gap-2 font-heading font-semibold text-sm rounded-full px-7 py-3.5 transition-all hover:-translate-y-0.5"
+                   style="background: transparent; color: var(--color-amber); border: 2px solid rgba(211,157,76,0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+                    Voir la fiche Réanimation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <FinalCta
+        title="Modernisez votre bloc opératoire"
+        text="Diagnostic initial gratuit. Nous analysons vos équipements biomédicaux et vous proposons un plan de déploiement adapté."
+        ctaLabel="Contactez-nous"
+        ctaHref={p('/contact/') + '?besoin=healthtech-anesthesie'}
+        phone="+212 5 22 34 35 45"
+    />
+</BaseLayout>
