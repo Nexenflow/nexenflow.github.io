@@ -333,8 +333,14 @@ const labelClass = 'form-label';
                         body: JSON.stringify(payload)
                     });
 
-                    if (response.ok) {
-                        showFeedback("Votre message a été envoyé avec succès. Merci !", 'success');
+                    const data = await response.json();
+
+                    if (response.ok && data.success) {
+                        if (data.ticketNumber) {
+                            showFeedback(`Votre demande a été enregistrée avec succès. Votre N° de Ticket FlowOps est : ${data.ticketNumber}`, 'success');
+                        } else {
+                            showFeedback("Votre message a été envoyé avec succès. Merci !", 'success');
+                        }
                         form.reset();
                         // Restore referral URL input value
                         const sourceInput = form.querySelector('#contact-source-url') as HTMLInputElement | null;
@@ -342,9 +348,8 @@ const labelClass = 'form-label';
                             sourceInput.value = document.referrer || window.location.href;
                         }
                     } else {
-                        const errorText = await response.text();
-                        console.error('API Error:', response.status, errorText);
-                        showFeedback("Une erreur est survenue lors de l'envoi. Veuillez réessayer.", 'error');
+                        console.error('API Error:', response.status, data);
+                        showFeedback(data?.message || "Une erreur est survenue lors de l'envoi. Veuillez réessayer.", 'error');
                     }
                 } catch (err) {
                     console.error('Network Error:', err);

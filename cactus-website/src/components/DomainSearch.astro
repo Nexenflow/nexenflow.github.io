@@ -410,13 +410,17 @@ const t = useTranslations(lang);
           return;
         }
 
-        const firstName = (formData.get('first_name') as string || '').trim();
-        const lastName = (formData.get('last_name') as string || '').trim();
+        const firstName = (formData.get('first_name') as string || (document.getElementById('first_name') as HTMLInputElement)?.value || '').trim();
+        const lastName = (formData.get('last_name') as string || (document.getElementById('last_name') as HTMLInputElement)?.value || '').trim();
         const name = `${firstName} ${lastName}`.trim();
-        const email = (formData.get('email') as string || '').trim();
-        const phone = (formData.get('phone') as string || '').trim();
+        const email = (formData.get('email') as string || (document.getElementById('email') as HTMLInputElement)?.value || '').trim();
+        const phone = (formData.get('phone') as string || (document.getElementById('phone') as HTMLInputElement)?.value || '').trim();
         const applicantType = formData.get('applicant_type') as string;
         
+        const cin = (formData.get('cin') as string || (document.getElementById('cin') as HTMLInputElement)?.value || '').trim();
+        const companyName = (formData.get('company_name') as string || (document.getElementById('company_name') as HTMLInputElement)?.value || '').trim();
+        const ice = (formData.get('ice') as string || (document.getElementById('ice') as HTMLInputElement)?.value || '').trim();
+
         // Extract domain name with fallback to result text or input
         const domainName = (formData.get('domain_name') as string || formData.get('domain') as string || resultDomainName?.textContent || hiddenDomainName?.value || '').trim();
         // Helper to convert File to Base64 Data URL
@@ -497,7 +501,7 @@ const t = useTranslations(lang);
           fax: ''
         };
 
-        const response = await fetch('https://nerobel.nexenflow.com/api/public/contact', {
+        const res = await fetch('https://nerobel.nexenflow.com/api/public/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -506,19 +510,25 @@ const t = useTranslations(lang);
           body: JSON.stringify(payload)
         });
 
+        const data = await res.json();
         formMessage.classList.remove('hidden');
-        if (response.ok) {
+
+        if (res.ok && data.success) {
           formMessage.classList.add('bg-cactus-green/10', 'text-cactus-green', 'border', 'border-cactus-green/20');
-          formMessage.textContent = `Votre commande pour ${domainName} a été transmise avec succès ! Notre équipe validera votre dossier sous 24h.`;
+          if (data.ticketNumber) {
+            console.log("Ticket créé avec succès :", data.ticketNumber);
+            formMessage.innerText = `Votre demande a été enregistrée avec succès. Votre N° de Ticket FlowOps est : ${data.ticketNumber}`;
+          } else {
+            formMessage.innerText = "Votre message a été envoyé avec succès.";
+          }
           form.reset();
           setTimeout(() => {
             registrationFlow?.classList.add('hidden');
             if (domainInput) domainInput.value = '';
           }, 5000);
         } else {
-          const errorText = await response.text();
-          console.error('API Error:', response.status, errorText);
-          throw new Error("Une erreur est survenue lors de la transmission de la commande.");
+          console.error('API Error:', res.status, data);
+          throw new Error(data.message || "Une erreur est survenue lors de la transmission de la commande.");
         }
       } catch (error: any) {
         formMessage.classList.remove('hidden');
