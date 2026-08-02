@@ -515,17 +515,25 @@ const t = useTranslations(lang);
 
         if (res.ok && data.success) {
           formMessage.classList.add('bg-cactus-green/10', 'text-cactus-green', 'border', 'border-cactus-green/20');
-          if (data.ticketNumber) {
-            console.log("Ticket créé avec succès :", data.ticketNumber);
-            formMessage.innerText = `Votre demande a été enregistrée avec succès. Votre N° de Ticket FlowOps est : ${data.ticketNumber}`;
+          const ticketNum = data.ticketNumber || data.ticket_number || data.ticketId || data.ticketNo;
+          if (ticketNum) {
+            console.log("Ticket créé avec succès :", ticketNum);
+            formMessage.innerHTML = `
+              <div class="p-2 space-y-2 text-left">
+                <p class="font-bold text-lg text-cactus-green">Votre demande pour <span class="underline">${domainName}</span> a été enregistrée avec succès !</p>
+                <p class="text-sm text-ink">Numéro de ticket de suivi FlowOps :</p>
+                <div class="inline-flex items-center gap-2 bg-cactus-dark text-white font-mono font-bold text-base px-4 py-2.5 rounded-xl shadow-md border border-gold/30">
+                  <span class="text-gold">N° Ticket :</span>
+                  <span class="text-white text-lg tracking-wider font-extrabold select-all">${ticketNum}</span>
+                </div>
+                <p class="text-xs text-ink/70">Veuillez conserver ce numéro pour le suivi de votre dossier avec notre équipe support (validation sous 24h ouvrées).</p>
+              </div>
+            `;
           } else {
-            formMessage.innerText = "Votre message a été envoyé avec succès.";
+            formMessage.innerText = `Votre demande pour ${domainName} a été enregistrée avec succès ! Notre équipe la traitera dans les plus brefs délais.`;
           }
           form.reset();
-          setTimeout(() => {
-            registrationFlow?.classList.add('hidden');
-            if (domainInput) domainInput.value = '';
-          }, 5000);
+          formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
           console.error('API Error:', res.status, data);
           throw new Error(data.message || "Une erreur est survenue lors de la transmission de la commande.");

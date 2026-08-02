@@ -336,8 +336,23 @@ const labelClass = 'form-label';
                     const data = await response.json();
 
                     if (response.ok && data.success) {
-                        if (data.ticketNumber) {
-                            showFeedback(`Votre demande a été enregistrée avec succès. Votre N° de Ticket FlowOps est : ${data.ticketNumber}`, 'success');
+                        const ticketNum = data.ticketNumber || data.ticket_number || data.ticketId || data.ticketNo;
+                        if (ticketNum && feedbackDiv) {
+                            feedbackDiv.innerHTML = `
+                                <div class="space-y-2 text-left">
+                                    <p class="font-bold text-base text-cactus-green">Votre message a été envoyé avec succès !</p>
+                                    <p class="text-sm text-ink">Votre numéro de ticket de suivi FlowOps :</p>
+                                    <div class="inline-flex items-center gap-2 bg-cactus-dark text-white font-mono font-bold text-sm px-3.5 py-2 rounded-lg shadow-sm border border-gold/30">
+                                        <span class="text-gold">N° Ticket :</span>
+                                        <span class="text-white text-base tracking-wider font-extrabold select-all">${ticketNum}</span>
+                                    </div>
+                                    <p class="text-xs text-ink/70">Conservez ce numéro pour le suivi de votre demande.</p>
+                                </div>
+                            `;
+                            feedbackDiv.classList.remove('hidden');
+                            feedbackDiv.style.background = 'rgba(71, 106, 51, 0.08)';
+                            feedbackDiv.style.color = 'var(--color-cactus-green)';
+                            feedbackDiv.style.border = '1px solid rgba(71, 106, 51, 0.2)';
                         } else {
                             showFeedback("Votre message a été envoyé avec succès. Merci !", 'success');
                         }
