@@ -468,7 +468,7 @@ const t = useTranslations(lang);
 
         const company = applicantType === 'business' 
           ? (companyName || 'Entreprise') 
-          : `Particulier (CIN: ${cin || 'N/A'})`;
+          : (cin ? `Particulier - CIN ${cin}` : 'Particulier');
 
         const messageLines = [
           `--- DEMANDE D'ENREGISTREMENT NOM DE DOMAINE .MA ---`,
